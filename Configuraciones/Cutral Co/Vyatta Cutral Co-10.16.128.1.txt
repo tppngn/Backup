@@ -1,0 +1,289 @@
+firewall {
+    broadcast-ping disable
+    conntrack-table-size 5000000
+}
+interfaces {
+    ethernet eth0 {
+        description ISP-TASA
+        hw-id 00:21:5e:4d:f7:23
+        vif 417 {
+            address 200.63.145.186/30
+        }
+    }
+    ethernet eth1 {
+        address 10.16.128.1/19
+        address 190.14.180.1/25
+        address 190.114.128.1/24
+        address 190.114.129.1/24
+        address 190.114.132.1/24
+        address 190.114.131.1/24
+        address 190.14.182.1/23
+        address 192.168.1.1/24
+        address 190.14.181.1/24
+        address 190.14.180.129/25
+        address 190.114.160.1/24
+        address 190.114.161.1/24
+        description Red-canopy
+        hw-id 00:21:5e:4d:f7:24
+        vif 20 {
+            address 10.20.128.1/19
+        }
+        vif 30 {
+            address 10.30.128.1/19
+        }
+    }
+    loopback lo {
+    }
+}
+protocols {
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+    }
+    static {
+        route 0.0.0.0/0 {
+            next-hop 200.63.145.185 {
+            }
+        }
+        route 10.216.121.0/24 {
+            next-hop 10.16.128.121 {
+            }
+        }
+        route 10.216.122.0/24 {
+            next-hop 10.16.128.122 {
+            }
+        }
+        route 10.216.123.0/24 {
+            next-hop 10.16.128.123 {
+            }
+        }
+        route 10.216.124.0/24 {
+            next-hop 10.16.128.124 {
+            }
+        }
+        route 10.216.125.0/24 {
+            next-hop 10.16.128.125 {
+            }
+        }
+        route 10.216.127.0/24 {
+            next-hop 10.16.128.127 {
+            }
+        }
+        route 10.216.129.0/24 {
+            next-hop 10.16.128.129 {
+            }
+        }
+        route 10.216.130.0/24 {
+            next-hop 10.16.128.130 {
+            }
+        }
+        route 10.216.131.0/24 {
+            next-hop 10.16.128.131 {
+            }
+        }
+        route 10.216.132.0/24 {
+            next-hop 10.16.128.132 {
+            }
+        }
+        route 10.216.133.0/24 {
+            next-hop 10.16.128.133 {
+            }
+        }
+        route 10.216.134.0/24 {
+            next-hop 10.16.128.134 {
+            }
+        }
+        route 10.216.135.0/24 {
+            next-hop 10.16.128.135 {
+            }
+        }
+        route 10.216.141.0/24 {
+            next-hop 10.16.128.141 {
+            }
+        }
+        route 10.216.142.0/24 {
+            next-hop 10.16.128.142 {
+            }
+        }
+        route 10.216.143.0/24 {
+            next-hop 10.16.128.143 {
+            }
+        }
+        route 10.216.144.0/24 {
+            next-hop 10.16.128.144 {
+            }
+        }
+        route 10.216.145.0/24 {
+            next-hop 10.16.128.145 {
+            }
+        }
+        route 10.216.156.0/24 {
+            next-hop 10.16.128.156 {
+            }
+        }
+        route 10.216.158.0/24 {
+            next-hop 10.16.128.158 {
+            }
+        }
+    }
+}
+service {
+    nat {
+        rule 11 {
+            destination {
+                address 190.14.180.125
+            }
+            inbound-interface eth0.417
+            inside-address {
+                address 10.16.128.11
+            }
+            type destination
+        }
+        rule 20 {
+            description NatOutsideCutralCo
+            destination {
+                address !10.10.128.0/17
+            }
+            outbound-interface eth0.417
+            outside-address {
+                address 190.14.180.124
+            }
+            source {
+                address 10.16.128.5/32
+            }
+            type source
+        }
+        rule 40 {
+            description NAT_PRUEBA_NETEQ
+            destination {
+                address 10.16.128.200
+            }
+            inbound-interface eth0.417
+            inside-address {
+                address 192.168.1.143
+            }
+            type destination
+        }
+    }
+    ssh {
+        allow-root true
+        port 3522
+    }
+    telnet {
+        allow-root false
+    }
+}
+system {
+    host-name vyatta-CCO
+    login {
+        user admtpp {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+    }
+    ntp-server 69.59.150.135
+    ntp-server 10.16.128.128
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            url http://packages.vyatta.com/vyatta
+        }
+    }
+}
+vpn {
+    ipsec {
+        copy-tos disable
+        esp-group ESP-1CUTRALCO {
+            compression disable
+            lifetime 1800
+            proposal 1 {
+                encryption aes256
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1CUTRALCO {
+            aggressive-mode disable
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+            }
+            proposal 2 {
+                encryption aes256
+            }
+        }
+        ipsec-interfaces {
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.194 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                ike-group IKE-1CUTRALCO
+                local-ip 190.14.180.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local-subnet 10.16.128.0/19
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 2 {
+                    allow-nat-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local-subnet 10.216.0.0/16
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 10 {
+                    allow-nat-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local-subnet 10.16.128.0/19
+                    remote-subnet 192.168.0.0/17
+                }
+                tunnel 11 {
+                    allow-nat-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local-subnet 10.216.0.0/16
+                    remote-subnet 192.168.0.0/17
+                }
+            }
+        }
+    }
+    pptp {
+        remote-access {
+            authentication {
+                local-users {
+                    username motorola {
+                        password ****************
+                    }
+                }
+                mode local
+            }
+            client-ip-pool {
+                start 10.16.131.1
+                stop 10.16.131.5
+            }
+            outside-address 190.14.180.1
+        }
+    }
+}

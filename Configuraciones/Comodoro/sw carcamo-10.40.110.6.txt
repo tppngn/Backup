@@ -1,0 +1,208 @@
+#
+!Software Version V100R005C01SPC100
+ sysname Sw-Carcamo
+#
+ vlan batch 10 20 30
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ undo http server enable
+#
+vlan 10
+ description Suspencion
+vlan 20
+ description Residencial
+vlan 30
+ description Pymes
+#
+aaa
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default                
+ domain default
+ domain default_admin
+ local-user admtpp password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+ local-user admtpp privilege level 4
+ local-user admtpp service-type telnet
+ undo local-user admin
+#
+interface Vlanif1
+ ip address 10.40.110.6 255.255.255.0
+#
+interface MEth0/0/1
+#
+interface GigabitEthernet0/0/1
+ description CMM1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/2
+ description CMM2
+ port link-type trunk                     
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ description CMM3
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/4
+ description SLAVE CDV
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/5
+ description UPS                          
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/7
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/8
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#                                         
+interface GigabitEthernet0/0/9
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/10
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/11
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable                              
+#
+interface GigabitEthernet0/0/13
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/15
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/16
+ shutdown
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/18
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/19
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/20
+ shutdown
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/21
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ shutdown                                 
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.40.110.1
+#
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F000001000021CE
+ snmp-agent community read  tppsa
+ snmp-agent sys-info version v2c v3
+#
+ header login information " TPP S.A. Buenos Aires - Argentina "
+#
+user-interface con 0
+ idle-timeout 0 0
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 15
+ set authentication password cipher VV>D@COR%"_BG&\<+9^UaQ!!
+#
+return 

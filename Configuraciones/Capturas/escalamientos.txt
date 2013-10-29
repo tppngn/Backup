@@ -1,0 +1,157 @@
+Procedimiento de Escalamiento ante Averías Técnicas Telefonica de Argentina
+
+Nivel		Tiempo		Función	Contacto
+Nivel 0		00:00 Hs	Operador: Centro de Atención Técnico Empresas (CATE)	
+Operador de turno: 0800-333-3500
+
+1° Nivel	03:00 Hs	Supervisor: Centro de Atención Técnico Empresas (CATE)	
+Sr. Eduardo Musto (011-4333-1561 / 011-15-6905-1919) o 
+Sr. César Ametlla (011-4333-1545 / 011-15-6905-1919) o 
+Sr. Sebastian Vivas (011-4333-3621 / 011-15-6905-1919)
+
+2° Nivel	05:00 Hs	Responsable Posventa	
+Sr. Claudio Batista 4333-1552 /15-5610-5847
+
+3° Nivel	06:00 Hs	Operador de Gestion Integral de Clientes y Servicios (GICS)	
+Sr. Roberto Pavetti 15-3579-0061
+
+4° Nivel	08:00 Hs	Jefe de Gestion Integral de Clientes y Servicios (GICS)	
+Sr. Damián Jazbec 15-4558-4104
+
+5° Nivel	10:00 Hs	Gerente de Gestion Integral de Clientes y Servicios (GICS)	
+Sr. Antonio Musumeci 15-4420-8094
+
+
+*****************************************************************************************************
+
+Escalamiento de incidencias de Sky On Line / Netizen
+
+			
+1	Apertura de incidencias	
+	Arrieta, Gustavo (hasta 17 hs); C.A.C. 24 hs	Focal Point	
+	0810-170-0810	 5093-5556 & 15-6587-6547	
+	clientescorporativos@skyonline.net.ar	
+	Recepción de casos técnico, apertura de Tickets, seguimiento
+	
+2	Pasada las 2 horas de apertura del reclamo	
+	NOC (Network Operation Center)	Técnicos del NOC	
+	5093-5139		gruponoc@skyonline.net.ar	
+	Recepción, diagnostico y resolución de los reclamos				
+	
+3	Pasadas las 5 horas de apertura del reclamo	
+	Garcia Pereira, Javier	Jefe NOC
+	5093-5134	15-5179-4692	jpereira@skyonline.net.ar	
+	Soporte técnico de solución, problemas de servicios				
+	
+4	Pasada las 3 horas de apertura del reclamo	
+	Scaramello, Marina	Ejecutivo Comercial	
+	5093-5570 15-3122-7438	mscaramello@skyonline.net.ar	
+	Atencion al cliente sin información de avance.	
+	
+5	Pasadas las 6 horas de apertura del reclamo	
+	Rodriguez, Claudio	Gerente de Ingeniería	 
+	5093-5432	 15-6587-6529	crodriguez@skyonline.net.ar	
+	Nivel superior técnico				
+	
+6	Pasadas las 6 horas de apertura del reclamo	
+	Burgos Juan Manuel	Gerente Comercial	 
+	5093-5120	 15-6587-6533	jburgos@skyonline.net.ar	
+	Nivel superior comercial				
+	
+7	Ibañez Rafael	
+	Gerente General	 5093-5200		
+	ribañez@skyonline.net.ar		
+
+*****************************************************************************************************
+
+
+Contactos para Reclamos TELECOM ARGENTINA
+
+Contactos 	
+Primer Nivel	Centro de Atención a Operadores
+Tel.	+54 11 4968 4826 / 4690
+Fax.	+54 11 4968 790
+E-Mail	Cao_teco@ta.telecom.com.ar
+
+	
+
+Contactos (sólo para escalamientos)
+
+1 Nivel Walter Fregenal
+Tel.	+54 11 4968 4817
+Cel	+5491130847449
+E-Mail	wfregena@ta.telecom.com.ar
+
+
+2 Nivel	Omar Fusco
+Tel.	+54 11 4968 4814
+Cel.	+5491158478661
+E-Mail	ofusco@ta.telecom.com.ar
+
+
+3 Nivel	Ruben Pecchia
+Tel.	+54114968-5260
+Cel.	+54911 4470 7534
+E-Mail	Rpecchia@ta.telecom.com.ar
+
+********************************************************************************************************************************************
+Reclamos y Autogestiones
+
+Por la web http://www.iplan.com.ar con el usuario o cgp (numero de gestion personal) 0169815 y el pass tppngn23ar
+
+TEL: 0800-345-0000
+
+Temas Técnicos
+Jefes del Centro de Atención Técnica (CAT)
+Javier Aldamiz jaldamiz@iplan.com.ar
+Diego Delledone ddelledonne@iplan.com.ar
+Emilio Nogueiras enogueiras@iplan.com.ar
+Tel: 115031-6387
+
+
+Gerente de Operaciones
+Rodrigo Alonso ralonso@iplan.com.ar
+Tel: 115031-6431
+
+Temas Administrativos
+Coordinadora de Atención al Cliente
+Jimena Otero jotero@iplan.com.ar
+Tel: 115031-6328
+
+Gerente de Administración de Clientes
+Gustavo Gavassa ggavassa@iplan.com.ar
+Tel: 115031-6484
+
+Gerente General
+Fernando Devesa fdevesa@iplan.com.ar
+Tel: 115031-6308
+
+******************************************************************************************************************************************
+
+Escalamiento Claro (Telmex)
+
+Soporte Técnico Grandes Clientes
+0800-122-1000
+soportegc.ar@claro.com.ar
+
+
+1 hora
+Supervisor Soporte Técnico Grandes Clientes
+Cristian Barreto
+15-3249-8868
+cristian.barreto@claro.com.ar
+
+2 horas
+Jefe Soporte Técnico Grandes Clientes
+Claudia Mitre
+15-3249-8869
+
+
+3 horas
+Gerente Soporte Técnico Grandes Clientes
+Víctor De Angelis
+15-5424-7772
+victor.deangelis@claro.com.ar
+
+
+******************************************************************************************************************************************

@@ -1,0 +1,36 @@
+I recently ran into an issue where my conntrack table filled up. VC5 allows me to increase the table size, but not the hash size (which is equally important). Sharing here in case this is useful to anyone else.
+
+I will also be adding some nodes to tweak the conntrack timeouts soon if anyone has any interest in that I will post here as well.
+
+This new configuration node allows me to change the hash size:
+
+cat /opt/vyatta/share/vyatta-cfg/templates/firewall/conntrack-bucket-num/node.def
+
+#
+# Config template for: firewall conntrack-bucket-num
+#
+# Sets the size of the TCP connection tracking hash table in the netfilter
+# nf_conntrack module, which is used by firewall and NAT. The size of
+# the hash table affects the performance of connection tracking. The standard
+# recommendation is that:
+# conntrack-table-size >= conntrack-bucket-num >= conntrack-table-size / 8
+# Conntrack hash algorithm prefers size be a power of 2 (2^x).
+# The connection tracking table consumes kernel memory, so the size selected
+# should be no larger than necessary.
+#
+
+type: u32
+
+help: Set number of hash buckets for netfilter connection tracking
+
+comp_help:Possible completions:
+<1 - 50000000>\tNumber of hash table slot entries created for connection tracking
+
+syntax:expression: ($VAR(@) >= 1 && $VAR(@) <= 50000000) ; "Value must be between 1 and 50,000,000"
+
+update:
+sudo sh -c "echo $VAR(@) > \
+/sys/module/nf_conntrack/parameters/hashsize"
+delete:
+sudo sh -c "echo 16384 > \
+/sys/module/nf_conntrack/parameters/hashsize"

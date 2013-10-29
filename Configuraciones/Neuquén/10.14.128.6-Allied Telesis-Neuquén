@@ -1,0 +1,180 @@
+#
+!Software Version V100R005C01SPC100
+ sysname Quidway-Folklore
+#
+ vlan batch 10 20 30
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ undo http server enable
+#
+aaa
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user admin password simple admin
+ local-user admin service-type http
+ local-user root password simple tppar
+ local-user root service-type terminal ssh web http
+#                                         
+interface Vlanif1
+ ip address 10.14.128.6 255.255.128.0
+#
+interface MEth0/0/1
+#
+interface GigabitEthernet0/0/1
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/2
+ description Fibra Alta Barda
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ ntdp enable
+ ndp enable
+ bpdu enable
+#                                         
+interface GigabitEthernet0/0/4
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/5
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/7
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/8
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/9
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/10
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/11
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/13           
+ description UPS
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ description CMM Nodo Folklore
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+ undo negotiation auto
+ speed 100
+#
+interface GigabitEthernet0/0/15
+ description Enlace Confluencia
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#                                         
+interface GigabitEthernet0/0/16
+ description Enlace Melipal
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/18
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/19
+ ntdp enable
+ ndp enable
+ bpdu enable
+#                                         
+interface GigabitEthernet0/0/20
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/21
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.14.128.1
+#
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F000001000059B3
+ snmp-agent community read  tppsa
+ snmp-agent sys-info version v2c v3
+#
+user-interface con 0
+ idle-timeout 0 0
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+#
+return

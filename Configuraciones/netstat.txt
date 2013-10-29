@@ -1,0 +1,2 @@
+netstat -w 1 -i eth4
+netstat -s

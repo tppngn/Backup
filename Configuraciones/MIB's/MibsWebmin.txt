@@ -1,0 +1,26 @@
+NetDiscover SNMP MIB/OID/TRAP/NOTIFICATION Database Index (no description, no download)
+
+URL: /MIBs/Ent/W/Webmin/Webmin status module traps/WEBMIN-STATUS-MIB.txt
+
+Parent Directory
+
+MIB File: WEBMIN-STATUS-MIB.txt
+ MIB Module: WEBMIN-STATUS-MIB
+  [OID] Webmin
+  [OID] WebminStatus
+  [OID] WebminStatusMessage
+  [NOTIFICATION] WebminStatusNotification
+  [OID] .1.3.6.1.4.1.10000
+  [OID] .1.3.6.1.4.1.10000.1
+  [OID] .1.3.6.1.4.1.10000.1.1
+  [NOTIFICATION] .1.3.6.1.4.1.10000.1.2
+  [TRAP] .1.3.6.1.4.1.10000.1 6 2
+  [TRAP] .1.3.6.1.4.1.10000.1 enterpriseSpecific 2
+  [TRAP] .1.3.6.1.4.1.10000.1 generic-trap:enterpriseSpecific(6) specific-trap:2
+  [OID] enterprises.10000
+  [OID] enterprises.10000.1
+  [OID] enterprises.10000.1.1
+  [NOTIFICATION] enterprises.10000.1.2
+  [TRAP] enterprises.10000.1 6 2
+  [TRAP] enterprises.10000.1 enterpriseSpecific 2
+  [TRAP] enterprises.10000.1 generic-trap:enterpriseSpecific(6) specific-trap:2

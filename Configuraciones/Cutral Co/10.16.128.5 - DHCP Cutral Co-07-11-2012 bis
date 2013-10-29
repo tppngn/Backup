@@ -1,0 +1,232 @@
+###ldap-server "localhost";
+###ldap-port 389;
+###ldap-username "cn=manager, dc=telecentro, dc=com";
+###ldap-password secret;
+###ldap-base-dn "dc=telecentro, dc=com";
+###ldap-method dynamic;
+authoritative;
+ddns-update-style interim;
+
+
+######## NETWORK DECLARATIONS #######
+
+shared-network Vlan1-Default { 
+
+subnet 10.16.128.0 netmask 255.255.224.0 {
+        }
+		}
+shared-network VLAN10-Morosos { 
+		subnet 172.16.0.0 netmask 255.255.255.0 {
+		range 172.16.0.3 172.16.0.254;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 172.16.0.255;
+		option routers 172.16.0.2;
+		#option domain-name "cutralco.tpp.com.ar";
+		option domain-name-servers 8.8.8.8;
+		default-lease-time 14400;
+		max-lease-time 14400;
+		allow unknown-clients;
+}
+}
+shared-network VLAN-30-Pyme {
+	subnet 10.30.128.0 netmask 255.255.224.0 {
+	}
+	subnet 190.114.161.0 netmask 255.255.255.192 {
+       range 190.114.161.2 190.114.161.60;
+       option subnet-mask 255.255.255.128;
+       option broadcast-address 190.114.161.63;
+       option routers 190.114.161.1;
+#      option domain-name "cutralco.tpp.com.ar";
+##     option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+}
+shared-network VLAN-20-Residencial {
+	subnet 10.20.128.0 netmask 255.255.224.0 {
+}
+	
+subnet 190.114.161.64 netmask 255.255.255.192 {
+       range 190.114.161.66 190.114.161.126;
+       option subnet-mask 255.255.255.128;
+       option broadcast-address 190.114.161.127;
+       option routers 190.114.161.65;
+#      option domain-name "cutralco.tpp.com.ar";
+##     option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+subnet 190.114.161.128 netmask 255.255.255.192 {
+       range 190.114.161.130 190.114.161.190;
+       option subnet-mask 255.255.255.128;
+       option broadcast-address 190.114.161.191;
+       option routers 190.114.161.129;
+#      option domain-name "cutralco.tpp.com.ar";
+##     option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+subnet 190.114.161.192 netmask 255.255.255.192 {
+       range 190.114.161.194 190.114.161.254;
+       option subnet-mask 255.255.255.128;
+       option broadcast-address 190.114.161.255;
+       option routers 190.114.161.193;
+#      option domain-name "cutralco.tpp.com.ar";
+##     option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+	
+subnet 190.14.180.128 netmask 255.255.255.128 {
+        range 190.14.180.130 190.14.180.230; # 231-254 Para IP Reservadas
+		option subnet-mask 255.255.255.128;
+		option broadcast-address 190.14.180.255;
+		option routers 190.14.180.129;
+		#option domain-name "cutralco.tpp.com.ar";
+		##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+		option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+		default-lease-time 14400;
+		max-lease-time 14400;
+		allow unknown-clients;
+ }
+
+		
+subnet 190.14.180.0 netmask 255.255.255.128 {
+       range 190.14.180.2 190.14.180.123; #Excluidas 124-125-126
+       option subnet-mask 255.255.255.128;
+       option broadcast-address 190.14.180.127;
+       option routers 190.14.180.1;
+	   #option domain-name "cutralco.tpp.com.ar";
+	   ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+subnet 190.114.128.0 netmask 255.255.255.0 {
+       range 190.114.128.2 190.114.128.250;
+       option subnet-mask 255.255.255.0;
+       option broadcast-address 190.114.128.255;
+       option routers 190.114.128.1;
+	   #option domain-name "cutralco.tpp.com.ar";
+	   ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+subnet 190.114.129.0 netmask 255.255.255.0 {
+       range 190.114.129.2 190.114.129.254;
+       option subnet-mask 255.255.255.0;
+       option broadcast-address 190.114.129.255;
+       option routers 190.114.129.1;
+	   #option domain-name "cutralco.tpp.com.ar";
+	   ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+subnet 190.114.132.0 netmask 255.255.255.0 {
+       range 190.114.132.2 190.114.132.254;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.114.132.255;
+		option routers 190.114.132.1;
+	    #option domain-name "cutralco.tpp.com.ar";
+	    ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+		option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+        default-lease-time 14400;
+        max-lease-time 14400;
+        allow unknown-clients;
+}
+
+subnet 190.114.131.0 netmask 255.255.255.0 {
+       range 190.114.131.2 190.114.131.254;
+	   option subnet-mask 255.255.255.0;
+	   option broadcast-address 190.114.131.255;
+	   option routers 190.114.131.1;
+	   ##option domain-name "cutralco.tpp.com.ar";
+	   ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 208.67.222.222,8.8.8.8, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+subnet 190.14.182.0 netmask 255.255.254.0 {
+       range 190.14.182.2 190.14.182.254;
+       range 190.14.183.2 190.14.183.254;
+       option subnet-mask 255.255.254.0;
+       option broadcast-address 190.14.183.255;
+       option routers 190.14.182.1;	
+	   #option domain-name "cutralco.tpp.com.ar";
+	   ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+
+
+subnet 190.14.181.0 netmask 255.255.255.0 {
+	range 190.14.181.2 190.14.181.115;
+	range 190.14.181.117 190.14.181.254;
+	option subnet-mask 255.255.255.0;
+	option broadcast-address 190.14.181.255;
+	option routers 190.14.181.1;
+	##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+	option domain-name-servers 156.154.70.1 , 8.8.8.8 , 208.67.222.222 , 200.69.193.1;
+	default-lease-time 14400;
+	max-lease-time 14400;
+	allow unknown-clients;
+	}
+	
+subnet 190.114.160.0 netmask 255.255.255.0 {
+       range 190.114.160.2 190.114.160.250;
+       option subnet-mask 255.255.255.0;
+       option broadcast-address 190.114.160.255;
+       option routers 190.114.160.1;
+	   #option domain-name "cutralco.tpp.com.ar";
+	   ##option domain-name-servers 190.183.60.98, 200.61.135.6, 200.68.222.222;
+       option domain-name-servers 156.154.70.1, 8.8.8.8, 208.67.222.222, 200.69.193.1;
+       default-lease-time 14400;
+       max-lease-time 14400;
+       allow unknown-clients;
+}
+}
+
+######## HOST SPECIFIC DECLARATIONS #######
+
+#ddns-update-style interim;
+
+host UPS-APC { hardware ethernet 00:c0:b7:73:2e:e0; fixed-address 190.14.180.231;}
+host Cl9264 { hardware ethernet 00:14:78:6b:59:65; fixed-address 190.14.180.232;}
+host Cl10457 { hardware ethernet 00:06:4f:7a:3a:53; fixed-address 190.14.180.233;}
+host Cl11208 { hardware ethernet 00:21:29:7b:d6:99; fixed-address 190.14.180.234;}
+host CRM000002021469{ hardware ethernet 00:21:29:7b:d6:99; fixed-address 190.14.182.123;}
+# PC-PruebaNGN
+host PC-PruebaNGN {
+	hardware ethernet 70:71:bc:0e:ab:b9;
+	fixed-address 190.14.183.224;
+	}
+# PC-CRM-24586
+host CRM-24586 {
+	hardware ethernet 0a:00:3e:d5:fa:d2;
+	fixed-address 190.114.128.39;
+	}
+##host Contrato-2254 IP Static 190.14.180.235;	
+##host Contrato-1687 IP Static 190.14.180.236;
+##host CRM-2002624 IP Static 190.14.180.237;
+##host CRM-24586 IP Static 190.14.180.238;
+##190.114.161.61 IP PUBLICA MIKROTIK MOROSOS
+
+
+
+#host Ejemplo { hardware ethernet 00:0e:2e:ad:10:e8; fixed-address 190.30.233.96;}

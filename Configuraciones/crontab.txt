@@ -1,0 +1,10 @@
+*/5 * * * * /usr/bin/php /home/Scripts/Pico/crontab/ejecuta.php
+*/4 * * * * /usr/bin/php /home/Scripts/Pico/crontab/ejecuta2.php
+01 04 * * *     /usr/bin/php /home/Scripts/Backup/Cronbkp.php
+25 22 * * *    /usr/bin/php /home/Scripts/Descubre/CRON.php
+03 01 * * *    /usr/bin/php /home/Scripts/CRONSMS.php
+47 06 * * *    /usr/bin/php /home/Scripts/Licencias/mastercron.php
+*/1 * * * * /usr/bin/php /home/Scripts/Sit/CRON.php
+27 06 * * * /usr/bin/php /home/Scripts/ResetArtigas/Cronbkp.php > /tmp/env.output
+08 22 * * * /usr/bin/php /home/Scripts/ResetArtigas/CronvyattaCR.php > /tmp/env.output
+#33 02 * * * /usr/bin/php /home/Scripts/ResetArtigas/ping-artigas.php

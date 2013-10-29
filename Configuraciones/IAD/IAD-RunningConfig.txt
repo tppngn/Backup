@@ -1,0 +1,85 @@
+IAD2000#show running-config
+!program version=IAD2000V200R002B01D060
+!restore default = off
+ enable
+ configure terminal
+
+!-----------------------------------------------------
+! Device configuration commands
+!-----------------------------------------------------
+ advance
+ lanswitch
+ priority 6
+
+
+!-----------------------------------------------------
+! FAX configuration
+!-----------------------------------------------------
+ configure terminal
+
+
+
+!-----------------------------------------------------
+! RTCP configuration
+!-----------------------------------------------------
+ configure terminal
+
+!-----------------------------------------------------
+! sp configuration
+!-----------------------------------------------------
+ configure terminal
+ mg  software-parameter 3 1
+ mg  attribute domain-name wESknQAioEF6W3rmImIFVwoiPCtyur0JZEb
+ mg  attribute mgcip 200.73.184.142
+
+!-----------------------------------------------------
+! system user configuration
+!-----------------------------------------------------
+ user password
+ <system
+ <lpgdv7E0yBJ
+ <PKUTwQBQGUz
+ <n
+ user password
+ <root
+ <oi4UHSyW2Cy
+ <V9fdpu80OJB
+ <n
+
+!-----------------------------------------------------
+! service management configuration
+!-----------------------------------------------------
+configure terminal
+
+!-----------------------------------------------------
+! port management configuration
+!-----------------------------------------------------
+ mguser add 0
+ mguser add 1
+ mguser add 2
+ mguser add 3
+ mguser add 4
+ mguser add 5
+ mguser add 6
+ mguser add 7
+!------------------------
+!-----------------------------------------------------
+! spc configuration
+!-----------------------------------------------------
+!-----------------------------------------------------
+! System configuration commands
+!-----------------------------------------------------
+ configure terminal
+ iadms 0 ip 200.73.184.142 public private public 162
+ iadms 0 name iadms.com public private public 162
+ iadms 0 dns enable
+ iadms 0 register enable
+ iadms handshake switch on
+ iadms handshake interval 30
+ ip address 192.168.100.10 255.255.128.0 192.168.42.102
+ eid 00-e0-fc-03-02-01
+!-----------------------------------------------------
+! ftp server configuration
+!-----------------------------------------------------
+ configure terminal
+ ftpserver csp csp

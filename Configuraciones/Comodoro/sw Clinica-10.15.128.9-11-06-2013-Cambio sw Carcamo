@@ -1,0 +1,221 @@
+ sysname Sw-Clinica
+#
+ FTP server enable
+#
+ vlan batch 10 to 11 20 30 50
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ undo http server enable
+#
+vlan 10
+ description Suspencion
+vlan 20
+ description Residencial
+vlan 30
+ description Pymes
+#
+aaa
+ authentication-scheme default            
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user admtpp password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+ local-user admtpp privilege level 4
+ local-user admtpp service-type telnet
+ undo local-user admin
+#
+interface Vlanif1
+ ip address 10.15.128.9 255.255.224.0
+ ip address 172.1.2.3 255.255.255.0 sub
+#
+interface MEth0/0/1
+#
+interface GigabitEthernet0/0/1
+ description ""
+ shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable                              
+#
+interface GigabitEthernet0/0/2
+ description ""
+ shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ description UPS Clinica-10.15.129.10
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/4
+ description NetEQ-10.15.128.11
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/5
+ description CMM-10.15.128.128
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6
+ description PTP54400-10.15.128.181-lnk-Carcamo
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/7
+ description ""
+ shutdown                                 
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+ undo negotiation auto
+#
+interface GigabitEthernet0/0/8
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/9
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/10
+ shutdown
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/11
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/13
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ shutdown
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/15
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/16
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/18
+ shutdown                                 
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/19
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/20
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/21
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22           
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ description PTP Cronica
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.18 preference 30
+#                                         
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F000001000021CE
+ snmp-agent community read  tppsa
+ snmp-agent sys-info version v2c v3
+#
+ header login information " TPP S.A. Buenos Aires - Argentina "
+#
+user-interface con 0
+ idle-timeout 0 0
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 15
+ set authentication password cipher VV>D@COR%"_BG&\<+9^UaQ!!
+#
+return

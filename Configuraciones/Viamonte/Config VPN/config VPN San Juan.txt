@@ -1,0 +1,32 @@
+set vpn ipsec site-to-site peer 190.14.170.1 authentication mode pre-shared-secret 
+set vpn ipsec site-to-site peer 190.14.170.1 authentication pre-shared-secret tppvpnsj
+set vpn ipsec site-to-site peer 190.14.170.1 ike-group IKE-1SJ
+set vpn ipsec site-to-site peer 190.14.170.1 local-ip 190.2.46.194
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 1 allow-nat-networks disable
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 1 esp-group ESP-1SJ         
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 1 local-subnet 10.10.128.0/17
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 1 remote-subnet 10.11.128.0/17
+
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 2 allow-nat-networks disable 
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 2 esp-group ESP-1SJ            
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 2 local-subnet 192.168.0.0/16
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 2 remote-subnet 10.11.128.0/17
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 3 allow-nat-networks disable  
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 3 esp-group ESP-1SJ            
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 3 local-subnet 10.10.128.0/17                 
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 3   remote-subnet 10.12.128.0/17
+
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 4 allow-nat-networks disable     
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 4 esp-group ESP-1SJ              
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 4 local-subnet 192.168.0.0/16
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 4 remote-subnet 10.12.128.0/17
+
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 5 allow-nat-networks disable   
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 5 esp-group ESP-1SJ           
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 5 local-subnet 10.10.128.0/17
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 5 remote-subnet 10.211.0.0/16
+
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 6 allow-nat-networks disable  
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 6 esp-group ESP-1SJ           
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 6 local-subnet 192.168.0.0/16
+set vpn ipsec site-to-site peer 190.14.170.1 tunnel 6 remote-subnet 10.211.0.0/16

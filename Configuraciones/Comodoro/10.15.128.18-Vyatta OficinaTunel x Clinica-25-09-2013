@@ -1,0 +1,593 @@
+set firewall all-ping 'enable'
+set firewall broadcast-ping 'disable'
+set firewall ipv6-receive-redirects 'disable'
+set firewall ipv6-src-route 'disable'
+set firewall ip-src-route 'enable'
+set firewall log-martians 'enable'
+set firewall receive-redirects 'enable'
+set firewall send-redirects 'enable'
+set firewall source-validation 'disable'
+set firewall syn-cookies 'enable'
+set interfaces ethernet eth0 address '10.100.128.1/19'
+set interfaces ethernet eth0 address '190.14.191.193/29'
+set interfaces ethernet eth0 address '10.15.128.18/19'
+set interfaces ethernet eth0 duplex 'full'
+set interfaces ethernet eth0 hw-id '5c:f3:fc:f2:0c:ce'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed '1000'
+set interfaces ethernet eth0 traffic-policy out 'Ramdom'
+set interfaces ethernet eth0 vif 15 address '10.15.15.1/16'
+set interfaces ethernet eth0 vif 15 address '10.200.128.1/24'
+set interfaces ethernet eth0 vif 20 address '190.14.173.1/24'
+set interfaces ethernet eth0 vif 30 address '10.31.128.1/19'
+set interfaces ethernet eth0 vif 30 address '190.14.163.1/24'
+set interfaces ethernet eth0 vif 30 address '190.14.168.1/23'
+set interfaces ethernet eth0 vif 30 address '190.14.188.1/23'
+set interfaces ethernet eth0 vif 30 address '190.14.186.1/23'
+set interfaces ethernet eth0 vif 30 address '190.14.184.1/23'
+set interfaces ethernet eth0 vif 30 address '190.114.146.1/24'
+set interfaces ethernet eth0 vif 30 address '190.14.191.1/25'
+set interfaces ethernet eth0 vif 30 address '190.14.160.1/24'
+set interfaces ethernet eth0 vif 30 address '190.114.144.1/24'
+set interfaces ethernet eth0 vif 30 address '190.114.148.1/24'
+set interfaces ethernet eth0 vif 30 address '190.14.161.1/24'
+set interfaces ethernet eth0 vif 30 address '190.14.162.1/24'
+set interfaces ethernet eth0 vif 30 address '190.114.168.1/24'
+set interfaces ethernet eth0 vif 30 address '190.114.188.1/24'
+set interfaces ethernet eth0 vif 30 address '190.114.183.1/24'
+set interfaces ethernet eth0 vif 30 address '181.225.2.1/24'
+set interfaces ethernet eth0 vif 30 address '181.225.3.1/24'
+set interfaces ethernet eth0 vif 30 address '190.14.190.1/24'
+set interfaces ethernet eth0 vif 160 address '10.15.161.1/28'
+set interfaces ethernet eth0 vif 160 address '10.15.160.1/24'
+set interfaces ethernet eth1 description 'WAN'
+set interfaces ethernet eth1 duplex 'full'
+set interfaces ethernet eth1 hw-id '5c:f3:fc:f2:0c:cf'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed '1000'
+set interfaces ethernet eth1 vif 428 address '200.51.216.238/30'
+set interfaces loopback 'lo'
+set nat destination rule 12 description 'MuxApparTV'
+set nat destination rule 12 destination address '190.14.163.253'
+set nat destination rule 12 inbound-interface 'eth1.428'
+set nat destination rule 12 translation address '10.15.160.2'
+set nat destination rule 13 description 'MuxStreamTel'
+set nat destination rule 13 destination address '190.14.163.254'
+set nat destination rule 13 inbound-interface 'eth1.428'
+set nat destination rule 13 translation address '10.15.160.5'
+set nat destination rule 19 description 'EPGServer'
+set nat destination rule 19 destination address '190.14.163.251'
+set nat destination rule 19 inbound-interface 'eth1.428'
+set nat destination rule 19 translation address '10.15.160.6'
+set nat destination rule 40 description 'NatPrizm'
+set nat destination rule 40 destination address '190.14.163.252'
+set nat destination rule 40 inbound-interface 'eth1.428'
+set nat destination rule 40 translation address '10.15.128.4'
+set nat source rule 20 description 'NatOutsideCanlDelVientoNet'
+set nat source rule 20 destination address '!10.10.128.0/17'
+set nat source rule 20 outbound-interface 'eth1.428'
+set nat source rule 20 source address '10.15.160.0/24'
+set nat source rule 20 translation address '190.14.163.250'
+set protocols static route 0.0.0.0/0 next-hop '200.51.216.237'
+set protocols static route 10.10.128.0/17 next-hop '10.15.128.1'
+set protocols static route 10.22.128.0/24 next-hop '10.15.128.1'
+set protocols static route 10.40.0.0/16 next-hop '10.15.128.24'
+set protocols static route 10.50.128.0/24 next-hop '10.15.128.6'
+set protocols static route 10.100.128.0/24 next-hop '190.14.173.234'
+set protocols static route 172.16.0.0/22 next-hop '10.15.128.24'
+set protocols static route 172.40.41.0/24 next-hop '10.15.128.24'
+set protocols static route 172.40.111.0/24 next-hop '10.15.128.24'
+set protocols static route 181.225.20.0/24 next-hop '10.15.128.24'
+set protocols static route 190.14.164.0/24 next-hop '10.15.128.24'
+set protocols static route 190.14.165.0/24 next-hop '10.15.128.24'
+set protocols static route 190.14.166.0/23 next-hop '10.15.128.24'
+set protocols static route 190.14.172.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.145.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.147.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.149.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.150.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.151.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.152.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.153.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.154.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.155.0/25 next-hop '10.15.128.24'
+set protocols static route 190.114.155.128/26 next-hop '10.40.130.50'
+set protocols static route 190.114.155.192/26 next-hop '10.40.130.5'
+set protocols static route 190.114.156.0/22 next-hop '10.15.128.18'
+set protocols static route 190.114.169.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.170.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.171.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.172.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.173.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.189.0/24 next-hop '10.15.128.24'
+set protocols static route 190.114.190.0/24 next-hop '10.15.128.24'
+set service 'https'
+set service snmp community tppsa authorization 'ro'
+set service snmp community tppsa client '10.10.128.129'
+set service snmp community tppsa network '10.10.128.0/17'
+set service snmp listen-address 10.10.128.166 port '161'
+set service snmp location 'Comodoro'
+set service ssh 'allow-root'
+set service ssh port '3522'
+set service ssh protocol-version 'v2'
+set service telnet 'allow-root'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system conntrack expect-table-size '625000'
+set system conntrack hash-size '625000'
+set system conntrack table-size '50000000'
+set system console device ttyS0 speed '9600'
+set system host-name 'RouterCR-Oficina'
+set system login banner pre-login '\n\n\t--------------------------------------------------------------------\n\tThese is a device property of TPP SA\n\tAll unauthorized use will be traced and prosecuted\n\tFor more information contact TPP SA +54 11 43723310 - www.tpp.com.ar\n\t--------------------------------------------------------------------\n\n\n'
+set system login user root authentication encrypted-password '$1$ZIwtUMfl$H0PAjePai6h8a6B4isuEb1'
+set system login user root authentication plaintext-password ''
+set system login user root level 'admin'
+set system login user vyatta authentication encrypted-password '$1$3S3/yq5E$t04.fTYDnjpSHeKHt3TRo.'
+set system login user vyatta authentication plaintext-password ''
+set system login user vyatta level 'admin'
+set system ntp server '0.vyatta.pool.ntp.org'
+set system ntp server '1.vyatta.pool.ntp.org'
+set system ntp server '2.vyatta.pool.ntp.org'
+set system ntp server '10.15.128.128'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'notice'
+set system syslog global facility protocols level 'debug'
+set system time-zone 'America/Buenos_Aires'
+set traffic-policy random-detect Ramdom bandwidth '480mbit'
+set vpn ipsec esp-group ESP-1CDR compression 'disable'
+set vpn ipsec esp-group ESP-1CDR lifetime '1800'
+set vpn ipsec esp-group ESP-1CDR mode 'tunnel'
+set vpn ipsec esp-group ESP-1CDR pfs 'enable'
+set vpn ipsec esp-group ESP-1CDR proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1CDR proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CDR proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CDR proposal 2 hash 'md5'
+set vpn ipsec esp-group ESP-1CO compression 'disable'
+set vpn ipsec esp-group ESP-1CO lifetime '1800'
+set vpn ipsec esp-group ESP-1CO mode 'tunnel'
+set vpn ipsec esp-group ESP-1CO pfs 'enable'
+set vpn ipsec esp-group ESP-1CO proposal 1 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CO proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 2 hash 'md5'
+set vpn ipsec ike-group IKE-1CDR lifetime '3600'
+set vpn ipsec ike-group IKE-1CDR proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CDR proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1CDR proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1CDR proposal 2 hash 'sha1'
+set vpn ipsec ike-group IKE-1CO lifetime '3600'
+set vpn ipsec ike-group IKE-1CO proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CO proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1CO proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1CO proposal 2 hash 'sha1'
+set vpn ipsec ipsec-interfaces interface 'eth0'
+set vpn ipsec ipsec-interfaces interface 'eth0.15'
+set vpn ipsec ipsec-interfaces interface 'eth0.30'
+set vpn ipsec 'site-to-site'
+
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    ip-src-route enable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    ethernet eth0 {
+        address 10.100.128.1/19
+        address 190.14.191.193/29
+        address 10.15.128.18/19
+        duplex full
+        hw-id 5c:f3:fc:f2:0c:ce
+        smp_affinity auto
+        speed 1000
+        traffic-policy {
+            out Ramdom
+        }
+        vif 15 {
+            address 10.15.15.1/16
+            address 10.200.128.1/24
+        }
+        vif 20 {
+            address 190.14.173.1/24
+        }
+        vif 30 {
+            address 10.31.128.1/19
+            address 190.14.163.1/24
+            address 190.14.168.1/23
+            address 190.14.188.1/23
+            address 190.14.186.1/23
+            address 190.14.184.1/23
+            address 190.114.146.1/24
+            address 190.14.191.1/25
+            address 190.14.160.1/24
+            address 190.114.144.1/24
+            address 190.114.148.1/24
+            address 190.14.161.1/24
+            address 190.14.162.1/24
+            address 190.114.168.1/24
+            address 190.114.188.1/24
+            address 190.114.183.1/24
+            address 181.225.2.1/24
+            address 181.225.3.1/24
+            address 190.14.190.1/24
+        }
+        vif 160 {
+            address 10.15.161.1/28
+            address 10.15.160.1/24
+        }
+    }
+    ethernet eth1 {
+        description WAN
+        duplex full
+        hw-id 5c:f3:fc:f2:0c:cf
+        smp_affinity auto
+        speed 1000
+        vif 428 {
+            address 200.51.216.238/30
+        }
+    }
+    loopback lo {
+    }
+}
+nat {
+    destination {
+        rule 12 {
+            description MuxApparTV
+            destination {
+                address 190.14.163.253
+            }
+            inbound-interface eth1.428
+            translation {
+                address 10.15.160.2
+            }
+        }
+        rule 13 {
+            description MuxStreamTel
+            destination {
+                address 190.14.163.254
+            }
+            inbound-interface eth1.428
+            translation {
+                address 10.15.160.5
+            }
+        }
+        rule 19 {
+            description EPGServer
+            destination {
+                address 190.14.163.251
+            }
+            inbound-interface eth1.428
+            translation {
+                address 10.15.160.6
+            }
+        }
+        rule 40 {
+            description NatPrizm
+            destination {
+                address 190.14.163.252
+            }
+            inbound-interface eth1.428
+            translation {
+                address 10.15.128.4
+            }
+        }
+    }
+    source {
+        rule 20 {
+            description NatOutsideCanlDelVientoNet
+            destination {
+                address !10.10.128.0/17
+            }
+            outbound-interface eth1.428
+            source {
+                address 10.15.160.0/24
+            }
+            translation {
+                address 190.14.163.250
+            }
+        }
+    }
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop 200.51.216.237 {
+            }
+        }
+        route 10.10.128.0/17 {
+            next-hop 10.15.128.1 {
+            }
+        }
+        route 10.22.128.0/24 {
+            next-hop 10.15.128.1 {
+            }
+        }
+        route 10.40.0.0/16 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 10.50.128.0/24 {
+            next-hop 10.15.128.6 {
+            }
+        }
+        route 10.100.128.0/24 {
+            next-hop 190.14.173.234 {
+            }
+        }
+        route 172.16.0.0/22 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 172.40.41.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 172.40.111.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 181.225.20.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.14.164.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.14.165.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.14.166.0/23 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.14.172.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.145.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.147.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.149.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.150.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.151.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.152.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.153.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.154.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.155.0/25 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.155.128/26 {
+            next-hop 10.40.130.50 {
+            }
+        }
+        route 190.114.155.192/26 {
+            next-hop 10.40.130.5 {
+            }
+        }
+        route 190.114.156.0/22 {
+            next-hop 10.15.128.18 {
+            }
+        }
+        route 190.114.169.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.170.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.171.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.172.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.173.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.189.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 190.114.190.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+    }
+}
+service {
+    https {
+    }
+    snmp {
+        community tppsa {
+            authorization ro
+            client 10.10.128.129
+            network 10.10.128.0/17
+        }
+        listen-address 10.10.128.166 {
+            port 161
+        }
+        location Comodoro
+    }
+    ssh {
+        allow-root
+        port 3522
+        protocol-version v2
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    conntrack {
+        expect-table-size 625000
+        hash-size 625000
+        table-size 50000000
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name RouterCR-Oficina
+    login {
+        banner {
+            pre-login "\n\n\t--------------------------------------------------------------------\n\tThese is a device property of TPP SA\n\tAll unauthorized use will be traced and prosecuted\n\tFor more information contact TPP SA +54 11 43723310 - www.tpp.com.ar\n\t--------------------------------------------------------------------\n\n\n"
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    ntp {
+        server 0.vyatta.pool.ntp.org {
+        }
+        server 1.vyatta.pool.ntp.org {
+        }
+        server 2.vyatta.pool.ntp.org {
+        }
+        server 10.15.128.128 {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone America/Buenos_Aires
+}
+traffic-policy {
+    random-detect Ramdom {
+        bandwidth 480mbit
+    }
+}
+vpn {
+    ipsec {
+        esp-group ESP-1CDR {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        esp-group ESP-1CO {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption 3des
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1CDR {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ike-group IKE-1CO {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth0
+            interface eth0.15
+            interface eth0.30
+        }
+        site-to-site {
+        }
+    }
+}

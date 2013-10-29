@@ -1,0 +1,552 @@
+set firewall all-ping 'enable'
+set firewall broadcast-ping 'disable'
+set firewall conntrack-expect-table-size '625000'
+set firewall conntrack-hash-size '625000'
+set firewall conntrack-table-size '50000000'
+set firewall conntrack-tcp-loose 'enable'
+set firewall ipv6-receive-redirects 'disable'
+set firewall ipv6-src-route 'disable'
+set firewall ip-src-route 'enable'
+set firewall log-martians 'enable'
+set firewall receive-redirects 'enable'
+set firewall send-redirects 'enable'
+set firewall source-validation 'disable'
+set firewall syn-cookies 'enable'
+set interfaces ethernet eth0 address '190.14.171.253/30'
+set interfaces ethernet eth0 address '172.18.18.10/32'
+set interfaces ethernet eth0 description 'Lnk-TELECOM'
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id '00:21:5e:68:6f:4c'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth1 address '10.11.128.1/19'
+set interfaces ethernet eth1 address '10.12.128.1/19'
+set interfaces ethernet eth1 description 'CnpyNet'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id '00:21:5e:68:6f:4d'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth1 vif 10 address '172.16.111.1/24'
+set interfaces ethernet eth1 vif 20 address '10.30.128.1/24'
+set interfaces ethernet eth1 vif 20 address '190.14.171.129/26'
+set interfaces ethernet eth1 vif 20 address '190.14.170.1/24'
+set interfaces ethernet eth1 vif 20 description 'PYME'
+set interfaces ethernet eth1 vif 30 address '10.20.128.1/24'
+set interfaces ethernet eth1 vif 30 address '190.114.140.1/24'
+set interfaces ethernet eth1 vif 30 address '190.114.141.1/24'
+set interfaces ethernet eth1 vif 30 address '190.114.142.1/24'
+set interfaces ethernet eth1 vif 30 address '190.114.191.1/24'
+set interfaces ethernet eth1 vif 30 address '190.14.171.1/25'
+set interfaces ethernet eth1 vif 30 address '190.14.171.193/27'
+set interfaces loopback 'lo'
+set protocols static route 0.0.0.0/0 next-hop '190.14.171.254'
+set protocols static route 10.211.129.0/24 next-hop '10.11.129.1'
+set protocols static route 10.211.130.0/24 next-hop '10.11.130.1'
+set protocols static route 10.211.131.0/24 next-hop '10.11.131.1'
+set protocols static route 10.211.132.0/24 next-hop '10.11.132.1'
+set protocols static route 10.211.133.0/24 next-hop '10.11.133.1'
+set protocols static route 10.211.134.0/24 next-hop '10.11.134.1'
+set protocols static route 10.211.136.0/24 next-hop '10.11.136.1'
+set protocols static route 10.211.137.0/24 next-hop '10.11.137.1'
+set protocols static route 10.211.138.0/24 next-hop '10.11.138.1'
+set protocols static route 10.211.139.0/24 next-hop '10.11.139.1'
+set protocols static route 10.211.140.0/24 next-hop '10.11.140.1'
+set protocols static route 10.211.141.0/24 next-hop '10.11.141.1'
+set protocols static route 10.211.144.0/24 next-hop '10.11.144.1'
+set protocols static route 10.211.145.0/24 next-hop '10.11.145.1'
+set protocols static route 10.211.146.0/24 next-hop '10.11.146.1'
+set protocols static route 10.211.147.0/24 next-hop '10.11.147.1'
+set protocols static route 10.211.148.0/24 next-hop '10.11.148.1'
+set protocols static route 10.211.149.0/24 next-hop '10.11.149.1'
+set protocols static route 10.211.151.0/24 next-hop '10.11.151.1'
+set protocols static route 10.211.153.0/24 next-hop '10.11.153.1'
+set protocols static route 10.211.154.0/24 next-hop '10.11.154.1'
+set protocols static route 10.211.157.0/24 next-hop '10.11.157.1'
+set protocols static route 10.211.160.0/24 next-hop '10.11.128.160'
+set protocols static route 10.211.161.0/24 next-hop '10.11.128.161'
+set protocols static route 10.211.162.0/24 next-hop '10.11.128.162'
+set protocols static route 10.211.163.0/24 next-hop '10.11.128.163'
+set protocols static route 10.211.164.0/24 next-hop '10.11.128.164'
+set protocols static route 10.211.166.0/24 next-hop '10.11.128.166'
+set protocols static route 10.211.167.0/24 next-hop '10.11.128.167'
+set protocols static route 10.211.170.0/24 next-hop '10.11.128.170'
+set protocols static route 10.211.173.0/24 next-hop '10.11.128.173'
+set protocols static route 10.211.174.0/24 next-hop '10.11.128.174'
+set protocols static route 192.168.0.0/17 next-hop '10.11.128.254'
+set service snmp community tppsa authorization 'ro'
+set service ssh 'allow-root'
+set service ssh listen-address '10.11.128.1'
+set service ssh listen-address '172.18.18.10'
+set service ssh port '3522'
+set service ssh protocol-version 'v2'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system console device ttyS0 speed '9600'
+set system host-name 'vyatta-SJ'
+set system 'ip'
+set system login banner pre-login '\nThese is a device property of TPP SA.\nALL UNAUTHORIZED USE WILL BE TRACED AND PROSECUTED.\nFor more information contact - TPP SA +54 11 43723310 - www.tpp.com.ar\n\n'
+set system login user root authentication encrypted-password '$1$fX5ZrhDz$mhEm9I.sAlRxjBE.WQwTh0'
+set system login user root authentication plaintext-password ''
+set system login user root level 'admin'
+set system login user sj-admtpp authentication encrypted-password '$1$.Lx7sB0T$Y0AjoYv7wzRPYX5YEGKqi1'
+set system login user sj-admtpp level 'admin'
+set system login user vyatta authentication encrypted-password '$1$cy3u/Jcd$2fiOQ9wwdHzRpz2ngDsYd/'
+set system login user vyatta authentication plaintext-password ''
+set system login user vyatta level 'admin'
+set system name-server '8.8.8.8'
+set system ntp server '0.vyatta.pool.ntp.org'
+set system ntp server '1.vyatta.pool.ntp.org'
+set system ntp server '2.vyatta.pool.ntp.org'
+set system options reboot-on-panic 'true'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'notice'
+set system syslog global facility protocols level 'debug'
+set system time-zone 'America/Argentina/San_Juan'
+set vpn ipsec esp-group ESP-1SJ compression 'disable'
+set vpn ipsec esp-group ESP-1SJ lifetime '1800'
+set vpn ipsec esp-group ESP-1SJ mode 'tunnel'
+set vpn ipsec esp-group ESP-1SJ pfs 'enable'
+set vpn ipsec esp-group ESP-1SJ proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1SJ proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1SJ proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1SJ proposal 2 hash 'md5'
+set vpn ipsec ike-group IKE-1SJ lifetime '3600'
+set vpn ipsec ike-group IKE-1SJ proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1SJ proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1SJ proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1SJ proposal 2 hash 'sha1'
+set vpn ipsec ipsec-interfaces interface 'eth1'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication pre-shared-secret 'tppvpnsj'
+set vpn ipsec site-to-site peer 190.2.46.194 connection-type 'initiate'
+set vpn ipsec site-to-site peer 190.2.46.194 ike-group 'IKE-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 local-ip '190.14.170.1'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 esp-group 'ESP-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 local subnet '10.11.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 esp-group 'ESP-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 local subnet '10.11.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 esp-group 'ESP-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 local subnet '10.12.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 esp-group 'ESP-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 local subnet '10.12.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 esp-group 'ESP-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 local subnet '10.211.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 esp-group 'ESP-1SJ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 local subnet '10.211.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 remote subnet '192.168.0.0/16'
+
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    conntrack-expect-table-size 625000
+    conntrack-hash-size 625000
+    conntrack-table-size 50000000
+    conntrack-tcp-loose enable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    ip-src-route enable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    ethernet eth0 {
+        address 190.14.171.253/30
+        address 172.18.18.10/32
+        description Lnk-TELECOM
+        duplex auto
+        hw-id 00:21:5e:68:6f:4c
+        smp_affinity auto
+        speed auto
+    }
+    ethernet eth1 {
+        address 10.11.128.1/19
+        address 10.12.128.1/19
+        description CnpyNet
+        duplex auto
+        hw-id 00:21:5e:68:6f:4d
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 172.16.111.1/24
+        }
+        vif 20 {
+            address 10.30.128.1/24
+            address 190.14.171.129/26
+            address 190.14.170.1/24
+            description PYME
+        }
+        vif 30 {
+            address 10.20.128.1/24
+            address 190.114.140.1/24
+            address 190.114.141.1/24
+            address 190.114.142.1/24
+            address 190.114.191.1/24
+            address 190.14.171.1/25
+            address 190.14.171.193/27
+        }
+    }
+    loopback lo {
+    }
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop 190.14.171.254 {
+            }
+        }
+        route 10.211.129.0/24 {
+            next-hop 10.11.129.1 {
+            }
+        }
+        route 10.211.130.0/24 {
+            next-hop 10.11.130.1 {
+            }
+        }
+        route 10.211.131.0/24 {
+            next-hop 10.11.131.1 {
+            }
+        }
+        route 10.211.132.0/24 {
+            next-hop 10.11.132.1 {
+            }
+        }
+        route 10.211.133.0/24 {
+            next-hop 10.11.133.1 {
+            }
+        }
+        route 10.211.134.0/24 {
+            next-hop 10.11.134.1 {
+            }
+        }
+        route 10.211.136.0/24 {
+            next-hop 10.11.136.1 {
+            }
+        }
+        route 10.211.137.0/24 {
+            next-hop 10.11.137.1 {
+            }
+        }
+        route 10.211.138.0/24 {
+            next-hop 10.11.138.1 {
+            }
+        }
+        route 10.211.139.0/24 {
+            next-hop 10.11.139.1 {
+            }
+        }
+        route 10.211.140.0/24 {
+            next-hop 10.11.140.1 {
+            }
+        }
+        route 10.211.141.0/24 {
+            next-hop 10.11.141.1 {
+            }
+        }
+        route 10.211.144.0/24 {
+            next-hop 10.11.144.1 {
+            }
+        }
+        route 10.211.145.0/24 {
+            next-hop 10.11.145.1 {
+            }
+        }
+        route 10.211.146.0/24 {
+            next-hop 10.11.146.1 {
+            }
+        }
+        route 10.211.147.0/24 {
+            next-hop 10.11.147.1 {
+            }
+        }
+        route 10.211.148.0/24 {
+            next-hop 10.11.148.1 {
+            }
+        }
+        route 10.211.149.0/24 {
+            next-hop 10.11.149.1 {
+            }
+        }
+        route 10.211.151.0/24 {
+            next-hop 10.11.151.1 {
+            }
+        }
+        route 10.211.153.0/24 {
+            next-hop 10.11.153.1 {
+            }
+        }
+        route 10.211.154.0/24 {
+            next-hop 10.11.154.1 {
+            }
+        }
+        route 10.211.157.0/24 {
+            next-hop 10.11.157.1 {
+            }
+        }
+        route 10.211.160.0/24 {
+            next-hop 10.11.128.160 {
+            }
+        }
+        route 10.211.161.0/24 {
+            next-hop 10.11.128.161 {
+            }
+        }
+        route 10.211.162.0/24 {
+            next-hop 10.11.128.162 {
+            }
+        }
+        route 10.211.163.0/24 {
+            next-hop 10.11.128.163 {
+            }
+        }
+        route 10.211.164.0/24 {
+            next-hop 10.11.128.164 {
+            }
+        }
+        route 10.211.166.0/24 {
+            next-hop 10.11.128.166 {
+            }
+        }
+        route 10.211.167.0/24 {
+            next-hop 10.11.128.167 {
+            }
+        }
+        route 10.211.170.0/24 {
+            next-hop 10.11.128.170 {
+            }
+        }
+        route 10.211.173.0/24 {
+            next-hop 10.11.128.173 {
+            }
+        }
+        route 10.211.174.0/24 {
+            next-hop 10.11.128.174 {
+            }
+        }
+        route 192.168.0.0/17 {
+            next-hop 10.11.128.254 {
+            }
+        }
+    }
+}
+service {
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+    }
+    ssh {
+        allow-root
+        listen-address 10.11.128.1
+        listen-address 172.18.18.10
+        port 3522
+        protocol-version v2
+    }
+    telnet {
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name vyatta-SJ
+    ip {
+    }
+    login {
+        banner {
+            pre-login "\nThese is a device property of TPP SA.\nALL UNAUTHORIZED USE WILL BE TRACED AND PROSECUTED.\nFor more information contact - TPP SA +54 11 43723310 - www.tpp.com.ar\n\n"
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+        user sj-admtpp {
+            authentication {
+                encrypted-password ****************
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 8.8.8.8
+    ntp {
+        server 0.vyatta.pool.ntp.org {
+        }
+        server 1.vyatta.pool.ntp.org {
+        }
+        server 2.vyatta.pool.ntp.org {
+        }
+    }
+    options {
+        reboot-on-panic true
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone America/Argentina/San_Juan
+}
+vpn {
+    ipsec {
+        esp-group ESP-1SJ {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1SJ {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.194 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                connection-type initiate
+                ike-group IKE-1SJ
+                local-ip 190.14.170.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1SJ
+                    local {
+                        subnet 10.11.128.0/17
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 2 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1SJ
+                    local {
+                        subnet 10.11.128.0/17
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 3 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1SJ
+                    local {
+                        subnet 10.12.128.0/17
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 4 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1SJ
+                    local {
+                        subnet 10.12.128.0/17
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 5 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1SJ
+                    local {
+                        subnet 10.211.0.0/16
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 6 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1SJ
+                    local {
+                        subnet 10.211.0.0/16
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+            }
+        }
+    }
+}

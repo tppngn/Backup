@@ -1,0 +1,174 @@
+#
+ sysname Quidway-Tasistro
+#
+ super password level 3 simple tppar
+#
+ vfs check check-method fix
+#
+ link-aggregation group 3 mode manual
+#
+radius scheme system
+#
+domain system
+#
+local-user root
+ password simple tppar
+ service-type lan-access
+ service-type telnet
+ service-type ftp
+#
+ stp mode stp
+#
+vlan 1
+#
+vlan 10                                   
+#
+vlan 20
+#
+vlan 30
+#
+vlan 50
+#
+vlan 320
+#
+interface Vlan-interface1
+ ip address 10.15.128.17 255.255.224.0
+ ip address 10.22.128.116 255.255.255.0 sub
+ ip address 10.30.128.254 255.255.224.0 sub
+#
+interface Aux1/0/0
+#
+interface GigabitEthernet1/0/1
+ stp loop-protection
+ description Enlace Comodoro 10.15.128.103
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/2            
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30 50 160
+ lacp enable
+#
+interface GigabitEthernet1/0/3
+ description PTP-800 Iglesia 10.30.128.141
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30
+#
+interface GigabitEthernet1/0/4
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30
+#
+interface GigabitEthernet1/0/5
+#
+interface GigabitEthernet1/0/6
+#
+interface GigabitEthernet1/0/7
+#
+interface GigabitEthernet1/0/8
+#
+interface GigabitEthernet1/0/9            
+#
+interface GigabitEthernet1/0/10
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/11
+ description PTP-600 Caleta 10.15.128.107
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 3
+#
+interface GigabitEthernet1/0/12
+ description PTP-600 Caleta 10.15.128.103
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 3
+#
+interface GigabitEthernet1/0/13
+#
+interface GigabitEthernet1/0/14
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30 50 160 
+#
+interface GigabitEthernet1/0/15
+#
+interface GigabitEthernet1/0/16
+ description PTP-800 Tasistro 10.30.128.20
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/17
+ description Segundo Link SW .16
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/18
+ description Link SW .16
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/19
+ port link-type trunk
+ port trunk permit vlan all
+#                                         
+interface GigabitEthernet1/0/20
+ speed 1000
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/21
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/22
+ description Red Tasistro
+ port access vlan 320
+#
+interface GigabitEthernet1/0/23
+ port access vlan 320
+ line-rate outbound 10240
+#
+interface GigabitEthernet1/0/24
+ port access vlan 320
+#
+interface GigabitEthernet1/0/25           
+ description Red Tasistro
+ shutdown
+ port access vlan 320
+#
+interface GigabitEthernet1/0/26
+ shutdown
+ port access vlan 320
+#
+interface GigabitEthernet1/0/27
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/28
+ shutdown
+ port access vlan 320
+ line-rate outbound 10240
+#
+interface Cascade1/2/1
+#
+interface Cascade1/2/2
+#
+interface NULL0                           
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.1 preference 60
+#
+ snmp-agent
+ snmp-agent local-engineid 800007DB000FE216873D6877
+ snmp-agent community read tppsa
+ snmp-agent sys-info version all
+#
+ ntp-service unicast-server 10.15.128.128
+#
+user-interface aux 0 7
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password simple tppar
+#
+return

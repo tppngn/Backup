@@ -1,0 +1,16 @@
+Cisco2851Ats(config)#interface vlan 4
+Cisco2851Ats(config-if)#no  rate-limit input access-group 135 128000 32000 32000 conform-action transmit exceed-action drop
+Cisco2851Ats(config-if)#no  rate-limit output access-group 135 256000 32000 32000 conform-action transmit exceed-action drop
+
+
+
+Cisco2851Ats(config)#interface GigabitEthernet0/1
+Cisco2851Ats(config-if)#no  rate-limit input access-group 135 128000 32000 32000 conform-action transmit exceed-action drop
+Cisco2851Ats(config-if)#no  rate-limit output access-group 135 256000 32000 32000 conform-action transmit exceed-action drop
+Cisco2851Ats(config-if)#exit
+Cisco2851Ats(config)#exit
+
+se quita también
+
+ip route 192.168.0.5 255.255.255.255 172.18.18.1
+ip route 192.168.128.0 255.255.255.0 172.18.18.1

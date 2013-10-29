@@ -1,0 +1,1069 @@
+interfaces {
+    ethernet eth0 {
+        description Salida_Telmex
+        duplex auto
+        hw-id 00:1a:64:21:99:42
+        smp_affinity auto
+        speed auto
+        vif 424 {
+            address 190.221.60.234/29
+        }
+    }
+    ethernet eth1 {
+        address 190.114.156.1/22
+        address 10.15.128.1/19
+        address 10.30.128.1/24
+        duplex auto
+        hw-id 00:1a:64:21:99:43
+        smp_affinity auto
+        speed auto
+        vif 20 {
+            address 10.20.128.1/19
+        }
+        vif 160 {
+        }
+    }
+    loopback lo {
+    }
+}
+protocols {
+    bgp 52232 {
+        neighbor 200.69.129.36 {
+            ebgp-multihop 4
+            remote-as 11664
+        }
+        network 190.114.156.0/22 {
+        }
+    }
+    static {
+        route 10.10.128.0/19 {
+            next-hop 10.15.128.18 {
+            }
+        }
+        route 10.15.160.0/24 {
+            next-hop 10.15.128.18 {
+            }
+        }
+        route 10.40.0.0/16 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 10.115.40.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 10.140.141.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 10.141.141.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 10.215.110.0/24 {
+            next-hop 10.30.128.110 {
+            }
+        }
+        route 10.215.111.0/24 {
+            next-hop 10.30.128.111 {
+            }
+        }
+        route 10.215.112.0/24 {
+            next-hop 10.30.128.112 {
+            }
+        }
+        route 10.215.113.0/24 {
+            next-hop 10.30.128.113 {
+            }
+        }
+        route 10.215.120.0/24 {
+            next-hop 10.30.128.120 {
+            }
+        }
+        route 10.215.121.0/24 {
+            next-hop 10.30.128.121 {
+            }
+        }
+        route 10.215.122.0/24 {
+            next-hop 10.30.128.122 {
+            }
+        }
+        route 10.215.123.0/24 {
+            next-hop 10.30.128.123 {
+            }
+        }
+        route 10.215.124.0/24 {
+            next-hop 10.30.128.124 {
+            }
+        }
+        route 10.215.129.0/24 {
+            next-hop 10.15.128.129 {
+            }
+        }
+        route 10.215.130.0/24 {
+            next-hop 10.15.128.130 {
+            }
+        }
+        route 10.215.131.0/24 {
+            next-hop 10.15.128.131 {
+            }
+        }
+        route 10.215.132.0/24 {
+            next-hop 10.15.128.132 {
+            }
+        }
+        route 10.215.133.0/24 {
+            next-hop 10.15.128.133 {
+            }
+        }
+        route 10.215.134.0/24 {
+            next-hop 10.15.128.134 {
+            }
+        }
+        route 10.215.138.0/24 {
+            next-hop 10.15.128.138 {
+            }
+        }
+        route 10.215.139.0/24 {
+            next-hop 10.15.128.139 {
+            }
+        }
+        route 10.215.140.0/24 {
+            next-hop 10.15.128.140 {
+            }
+        }
+        route 10.215.141.0/24 {
+            next-hop 10.15.128.141 {
+            }
+        }
+        route 10.215.142.0/24 {
+            next-hop 10.15.128.142 {
+            }
+        }
+        route 10.215.143.0/24 {
+            next-hop 10.15.128.143 {
+            }
+        }
+        route 10.215.144.0/24 {
+            next-hop 10.15.128.144 {
+            }
+        }
+        route 10.215.145.0/24 {
+            next-hop 10.15.128.145 {
+            }
+        }
+        route 10.215.146.0/24 {
+            next-hop 10.15.128.146 {
+            }
+        }
+        route 10.215.147.0/24 {
+            next-hop 10.15.128.147 {
+            }
+        }
+        route 10.215.148.0/24 {
+            next-hop 10.15.128.148 {
+            }
+        }
+        route 10.215.149.0/24 {
+            next-hop 10.15.128.149 {
+            }
+        }
+        route 10.215.150.0/24 {
+            next-hop 10.15.128.150 {
+            }
+        }
+        route 10.215.151.0/24 {
+            next-hop 10.15.128.151 {
+            }
+        }
+        route 10.215.152.0/24 {
+            next-hop 10.15.128.152 {
+            }
+        }
+        route 10.215.153.0/24 {
+            next-hop 10.15.128.153 {
+            }
+        }
+        route 10.215.171.0/24 {
+            next-hop 10.15.128.171 {
+            }
+        }
+        route 10.215.172.0/24 {
+            next-hop 10.15.128.172 {
+            }
+        }
+        route 10.215.173.0/24 {
+            next-hop 10.15.128.173 {
+            }
+        }
+        route 10.215.174.0/24 {
+            next-hop 10.15.128.174 {
+            }
+        }
+        route 10.215.175.0/24 {
+            next-hop 10.15.128.175 {
+            }
+        }
+        route 10.215.176.0/24 {
+            next-hop 10.15.128.176 {
+            }
+        }
+        route 10.215.177.0/24 {
+            next-hop 10.15.128.177 {
+            }
+        }
+        route 10.215.178.0/24 {
+            next-hop 10.15.128.178 {
+            }
+        }
+        route 10.215.191.0/24 {
+            next-hop 10.15.128.191 {
+            }
+        }
+        route 10.215.192.0/24 {
+            next-hop 10.15.128.192 {
+            }
+        }
+        route 10.215.193.0/24 {
+            next-hop 10.15.128.193 {
+            }
+        }
+        route 10.215.199.0/24 {
+            next-hop 10.15.128.199 {
+            }
+        }
+        route 10.215.202.0/24 {
+            next-hop 10.15.128.202 {
+            }
+        }
+        route 10.215.203.0/24 {
+            next-hop 10.15.128.203 {
+            }
+        }
+        route 10.215.204.0/24 {
+            next-hop 10.15.128.204 {
+            }
+        }
+        route 10.215.205.0/24 {
+            next-hop 10.15.128.205 {
+            }
+        }
+        route 10.215.206.0/24 {
+            next-hop 10.15.128.206 {
+            }
+        }
+        route 10.215.209.0/24 {
+            next-hop 10.15.128.209 {
+            }
+        }
+        route 10.215.210.0/24 {
+            next-hop 10.15.128.210 {
+            }
+        }
+        route 10.215.211.0/24 {
+            next-hop 10.15.128.211 {
+            }
+        }
+        route 10.215.212.0/24 {
+            next-hop 10.15.128.212 {
+            }
+        }
+        route 10.215.218.0/24 {
+            next-hop 10.15.128.218 {
+            }
+        }
+        route 10.215.219.0/24 {
+            next-hop 10.15.128.219 {
+            }
+        }
+        route 10.215.220.0/24 {
+            next-hop 10.15.128.220 {
+            }
+        }
+        route 10.215.241.0/24 {
+            next-hop 10.15.128.241 {
+            }
+        }
+        route 10.215.242.0/24 {
+            next-hop 10.15.128.242 {
+            }
+        }
+        route 10.215.243.0/24 {
+            next-hop 10.15.128.243 {
+            }
+        }
+        route 10.215.245.0/24 {
+            next-hop 10.15.128.245 {
+            }
+        }
+        route 10.215.249.0/24 {
+            next-hop 10.15.128.249 {
+            }
+        }
+        route 10.230.93.0/24 {
+            next-hop 10.30.128.93 {
+            }
+        }
+        route 10.230.94.0/24 {
+            next-hop 10.30.128.94 {
+            }
+        }
+        route 10.230.95.0/24 {
+            next-hop 10.30.128.95 {
+            }
+        }
+        route 10.230.96.0/24 {
+            next-hop 10.30.128.96 {
+            }
+        }
+        route 10.230.97.0/24 {
+            next-hop 10.30.128.97 {
+            }
+        }
+        route 10.230.98.0/24 {
+            next-hop 10.30.128.98 {
+            }
+        }
+        route 10.230.124.0/24 {
+            next-hop 10.30.128.124 {
+            }
+        }
+        route 10.230.126.0/24 {
+            next-hop 10.30.128.126 {
+            }
+        }
+        route 10.230.128.0/24 {
+            next-hop 10.30.128.128 {
+            }
+        }
+        route 10.230.129.0/24 {
+            next-hop 10.30.128.129 {
+            }
+        }
+        route 10.230.130.0/24 {
+            next-hop 10.30.128.130 {
+            }
+        }
+        route 10.230.131.0/24 {
+            next-hop 10.30.128.131 {
+            }
+        }
+        route 10.230.132.0/24 {
+            next-hop 10.30.128.132 {
+            }
+        }
+        route 10.230.133.0/24 {
+            next-hop 10.30.128.133 {
+            }
+        }
+        route 10.230.134.0/24 {
+            next-hop 10.30.128.134 {
+            }
+        }
+        route 10.230.135.0/24 {
+            next-hop 10.30.128.135 {
+            }
+        }
+        route 10.230.137.0/24 {
+            next-hop 10.30.128.137 {
+            }
+        }
+        route 10.230.150.0/24 {
+            next-hop 10.30.128.150 {
+            }
+        }
+        route 10.230.151.0/24 {
+            next-hop 10.30.128.151 {
+            }
+        }
+        route 10.230.152.0/24 {
+            next-hop 10.30.128.152 {
+            }
+        }
+        route 10.230.161.0/24 {
+            next-hop 10.30.128.161 {
+            }
+        }
+        route 10.230.165.0/24 {
+            next-hop 10.30.128.165 {
+            }
+        }
+        route 10.230.166.0/24 {
+            next-hop 10.30.128.166 {
+            }
+        }
+        route 10.230.167.0/24 {
+            next-hop 10.30.128.167 {
+            }
+        }
+        route 10.230.168.0/24 {
+            next-hop 10.30.128.168 {
+            }
+        }
+        route 10.240.0.0/16 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 172.16.0.0/22 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 172.40.41.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 172.40.111.0/24 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 200.69.129.36/30 {
+            next-hop 190.221.60.233 {
+            }
+        }
+    }
+}
+service {
+    dns {
+        forwarding {
+            cache-size 500
+            listen-on eth1
+            name-server 8.8.8.8
+            name-server 8.8.4.4
+            system
+        }
+    }
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+    }
+    ssh {
+        allow-root
+        port 3522
+        protocol-version v2
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name TelmexCR
+    login {
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 8.8.8.8
+    name-server 8.8.4.4
+    ntp {
+        server 0.vyatta.pool.ntp.org {
+        }
+        server 1.vyatta.pool.ntp.org {
+        }
+        server 2.vyatta.pool.ntp.org {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone GMT
+}
+vpn {
+    ipsec {
+        esp-group ESP-1CDR {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        esp-group ESP-1CO {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption 3des
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1CDR {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ike-group IKE-1CO {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth0
+            interface eth0.424
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.194 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                connection-type initiate
+                ike-group IKE-1CDR
+                local-ip 190.114.156.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.15.128.0/19
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 2 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.15.128.0/19
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 3 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.30.128.0/24
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 4 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.15.160.0/24
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 5 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.15.160.0/24
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 6 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.30.128.0/24
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 7 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.215.0.0/16
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 8 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.215.0.0/16
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 9 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.115.40.0/24
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 10 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.230.0.0/16
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 11 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.40.0.0/16
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 12 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.40.0.0/16
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 14 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.140.141.0/24
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 15 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.140.141.0/24
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 16 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.141.141.0/24
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 17 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.240.0.0/16
+                    }
+                    remote {
+                        subnet 10.10.128.0/17
+                    }
+                }
+                tunnel 18 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.240.0.0/16
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+                tunnel 19 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CDR
+                    local {
+                        subnet 10.141.141.0/24
+                    }
+                    remote {
+                        subnet 192.168.0.0/16
+                    }
+                }
+            }
+            peer 190.114.133.1 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                connection-type initiate
+                ike-group IKE-1CO
+                local-ip 190.114.156.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CO
+                    local {
+                        subnet 10.15.128.0/19
+                    }
+                    remote {
+                        subnet 10.22.128.0/24
+                    }
+                }
+            }
+        }
+    }
+}
+
+set interfaces ethernet eth0 description 'Salida_Telmex'
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id '00:1a:64:21:99:42'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth0 vif 424 address '190.221.60.234/29'
+set interfaces ethernet eth1 address '190.114.156.1/22'
+set interfaces ethernet eth1 address '10.15.128.1/19'
+set interfaces ethernet eth1 address '10.30.128.1/24'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id '00:1a:64:21:99:43'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth1 vif 20 address '10.20.128.1/19'
+set interfaces ethernet eth1 vif '160'
+set interfaces loopback 'lo'
+set protocols bgp 52232 neighbor 200.69.129.36 ebgp-multihop '4'
+set protocols bgp 52232 neighbor 200.69.129.36 remote-as '11664'
+set protocols bgp 52232 network '190.114.156.0/22'
+set protocols static route 10.10.128.0/19 next-hop '10.15.128.18'
+set protocols static route 10.15.160.0/24 next-hop '10.15.128.18'
+set protocols static route 10.40.0.0/16 next-hop '10.15.128.24'
+set protocols static route 10.115.40.0/24 next-hop '10.15.128.24'
+set protocols static route 10.140.141.0/24 next-hop '10.15.128.24'
+set protocols static route 10.141.141.0/24 next-hop '10.15.128.24'
+set protocols static route 10.215.110.0/24 next-hop '10.30.128.110'
+set protocols static route 10.215.111.0/24 next-hop '10.30.128.111'
+set protocols static route 10.215.112.0/24 next-hop '10.30.128.112'
+set protocols static route 10.215.113.0/24 next-hop '10.30.128.113'
+set protocols static route 10.215.120.0/24 next-hop '10.30.128.120'
+set protocols static route 10.215.121.0/24 next-hop '10.30.128.121'
+set protocols static route 10.215.122.0/24 next-hop '10.30.128.122'
+set protocols static route 10.215.123.0/24 next-hop '10.30.128.123'
+set protocols static route 10.215.124.0/24 next-hop '10.30.128.124'
+set protocols static route 10.215.129.0/24 next-hop '10.15.128.129'
+set protocols static route 10.215.130.0/24 next-hop '10.15.128.130'
+set protocols static route 10.215.131.0/24 next-hop '10.15.128.131'
+set protocols static route 10.215.132.0/24 next-hop '10.15.128.132'
+set protocols static route 10.215.133.0/24 next-hop '10.15.128.133'
+set protocols static route 10.215.134.0/24 next-hop '10.15.128.134'
+set protocols static route 10.215.138.0/24 next-hop '10.15.128.138'
+set protocols static route 10.215.139.0/24 next-hop '10.15.128.139'
+set protocols static route 10.215.140.0/24 next-hop '10.15.128.140'
+set protocols static route 10.215.141.0/24 next-hop '10.15.128.141'
+set protocols static route 10.215.142.0/24 next-hop '10.15.128.142'
+set protocols static route 10.215.143.0/24 next-hop '10.15.128.143'
+set protocols static route 10.215.144.0/24 next-hop '10.15.128.144'
+set protocols static route 10.215.145.0/24 next-hop '10.15.128.145'
+set protocols static route 10.215.146.0/24 next-hop '10.15.128.146'
+set protocols static route 10.215.147.0/24 next-hop '10.15.128.147'
+set protocols static route 10.215.148.0/24 next-hop '10.15.128.148'
+set protocols static route 10.215.149.0/24 next-hop '10.15.128.149'
+set protocols static route 10.215.150.0/24 next-hop '10.15.128.150'
+set protocols static route 10.215.151.0/24 next-hop '10.15.128.151'
+set protocols static route 10.215.152.0/24 next-hop '10.15.128.152'
+set protocols static route 10.215.153.0/24 next-hop '10.15.128.153'
+set protocols static route 10.215.171.0/24 next-hop '10.15.128.171'
+set protocols static route 10.215.172.0/24 next-hop '10.15.128.172'
+set protocols static route 10.215.173.0/24 next-hop '10.15.128.173'
+set protocols static route 10.215.174.0/24 next-hop '10.15.128.174'
+set protocols static route 10.215.175.0/24 next-hop '10.15.128.175'
+set protocols static route 10.215.176.0/24 next-hop '10.15.128.176'
+set protocols static route 10.215.177.0/24 next-hop '10.15.128.177'
+set protocols static route 10.215.178.0/24 next-hop '10.15.128.178'
+set protocols static route 10.215.191.0/24 next-hop '10.15.128.191'
+set protocols static route 10.215.192.0/24 next-hop '10.15.128.192'
+set protocols static route 10.215.193.0/24 next-hop '10.15.128.193'
+set protocols static route 10.215.199.0/24 next-hop '10.15.128.199'
+set protocols static route 10.215.202.0/24 next-hop '10.15.128.202'
+set protocols static route 10.215.203.0/24 next-hop '10.15.128.203'
+set protocols static route 10.215.204.0/24 next-hop '10.15.128.204'
+set protocols static route 10.215.205.0/24 next-hop '10.15.128.205'
+set protocols static route 10.215.206.0/24 next-hop '10.15.128.206'
+set protocols static route 10.215.209.0/24 next-hop '10.15.128.209'
+set protocols static route 10.215.210.0/24 next-hop '10.15.128.210'
+set protocols static route 10.215.211.0/24 next-hop '10.15.128.211'
+set protocols static route 10.215.212.0/24 next-hop '10.15.128.212'
+set protocols static route 10.215.218.0/24 next-hop '10.15.128.218'
+set protocols static route 10.215.219.0/24 next-hop '10.15.128.219'
+set protocols static route 10.215.220.0/24 next-hop '10.15.128.220'
+set protocols static route 10.215.241.0/24 next-hop '10.15.128.241'
+set protocols static route 10.215.242.0/24 next-hop '10.15.128.242'
+set protocols static route 10.215.243.0/24 next-hop '10.15.128.243'
+set protocols static route 10.215.245.0/24 next-hop '10.15.128.245'
+set protocols static route 10.215.249.0/24 next-hop '10.15.128.249'
+set protocols static route 10.230.93.0/24 next-hop '10.30.128.93'
+set protocols static route 10.230.94.0/24 next-hop '10.30.128.94'
+set protocols static route 10.230.95.0/24 next-hop '10.30.128.95'
+set protocols static route 10.230.96.0/24 next-hop '10.30.128.96'
+set protocols static route 10.230.97.0/24 next-hop '10.30.128.97'
+set protocols static route 10.230.98.0/24 next-hop '10.30.128.98'
+set protocols static route 10.230.124.0/24 next-hop '10.30.128.124'
+set protocols static route 10.230.126.0/24 next-hop '10.30.128.126'
+set protocols static route 10.230.128.0/24 next-hop '10.30.128.128'
+set protocols static route 10.230.129.0/24 next-hop '10.30.128.129'
+set protocols static route 10.230.130.0/24 next-hop '10.30.128.130'
+set protocols static route 10.230.131.0/24 next-hop '10.30.128.131'
+set protocols static route 10.230.132.0/24 next-hop '10.30.128.132'
+set protocols static route 10.230.133.0/24 next-hop '10.30.128.133'
+set protocols static route 10.230.134.0/24 next-hop '10.30.128.134'
+set protocols static route 10.230.135.0/24 next-hop '10.30.128.135'
+set protocols static route 10.230.137.0/24 next-hop '10.30.128.137'
+set protocols static route 10.230.150.0/24 next-hop '10.30.128.150'
+set protocols static route 10.230.151.0/24 next-hop '10.30.128.151'
+set protocols static route 10.230.152.0/24 next-hop '10.30.128.152'
+set protocols static route 10.230.161.0/24 next-hop '10.30.128.161'
+set protocols static route 10.230.165.0/24 next-hop '10.30.128.165'
+set protocols static route 10.230.166.0/24 next-hop '10.30.128.166'
+set protocols static route 10.230.167.0/24 next-hop '10.30.128.167'
+set protocols static route 10.230.168.0/24 next-hop '10.30.128.168'
+set protocols static route 10.240.0.0/16 next-hop '10.15.128.24'
+set protocols static route 172.16.0.0/22 next-hop '10.15.128.24'
+set protocols static route 172.40.41.0/24 next-hop '10.15.128.24'
+set protocols static route 172.40.111.0/24 next-hop '10.15.128.24'
+set protocols static route 200.69.129.36/30 next-hop '190.221.60.233'
+set service dns forwarding cache-size '500'
+set service dns forwarding listen-on 'eth1'
+set service dns forwarding name-server '8.8.8.8'
+set service dns forwarding name-server '8.8.4.4'
+set service dns forwarding 'system'
+set service snmp community tppsa authorization 'ro'
+set service ssh 'allow-root'
+set service ssh port '3522'
+set service ssh protocol-version 'v2'
+set service telnet 'allow-root'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system console device ttyS0 speed '9600'
+set system host-name 'TelmexCR'
+set system login user vyatta authentication encrypted-password '$1$CnjuCODk$HKMnJPNFp7HjRQNOyPYP40'
+set system login user vyatta authentication plaintext-password ''
+set system login user vyatta level 'admin'
+set system name-server '8.8.8.8'
+set system name-server '8.8.4.4'
+set system ntp server '0.vyatta.pool.ntp.org'
+set system ntp server '1.vyatta.pool.ntp.org'
+set system ntp server '2.vyatta.pool.ntp.org'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'notice'
+set system syslog global facility protocols level 'debug'
+set system time-zone 'GMT'
+set vpn ipsec esp-group ESP-1CDR compression 'disable'
+set vpn ipsec esp-group ESP-1CDR lifetime '1800'
+set vpn ipsec esp-group ESP-1CDR mode 'tunnel'
+set vpn ipsec esp-group ESP-1CDR pfs 'enable'
+set vpn ipsec esp-group ESP-1CDR proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1CDR proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CDR proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CDR proposal 2 hash 'md5'
+set vpn ipsec esp-group ESP-1CO compression 'disable'
+set vpn ipsec esp-group ESP-1CO lifetime '1800'
+set vpn ipsec esp-group ESP-1CO mode 'tunnel'
+set vpn ipsec esp-group ESP-1CO pfs 'enable'
+set vpn ipsec esp-group ESP-1CO proposal 1 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CO proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 2 hash 'md5'
+set vpn ipsec ike-group IKE-1CDR lifetime '3600'
+set vpn ipsec ike-group IKE-1CDR proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CDR proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1CDR proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1CDR proposal 2 hash 'sha1'
+set vpn ipsec ike-group IKE-1CO lifetime '3600'
+set vpn ipsec ike-group IKE-1CO proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CO proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1CO proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1CO proposal 2 hash 'sha1'
+set vpn ipsec ipsec-interfaces interface 'eth0'
+set vpn ipsec ipsec-interfaces interface 'eth0.424'
+set vpn ipsec ipsec-interfaces interface 'eth1'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication pre-shared-secret 'tppvpncr'
+set vpn ipsec site-to-site peer 190.2.46.194 connection-type 'initiate'
+set vpn ipsec site-to-site peer 190.2.46.194 ike-group 'IKE-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 local-ip '190.114.156.1'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 local subnet '10.15.128.0/19'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 local subnet '10.15.128.0/19'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 local subnet '10.30.128.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 local subnet '10.15.160.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 local subnet '10.15.160.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 local subnet '10.30.128.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 local subnet '10.215.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 local subnet '10.215.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 9 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 9 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 9 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 9 local subnet '10.115.40.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 9 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 local subnet '10.230.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 local subnet '10.40.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 12 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 12 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 12 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 12 local subnet '10.40.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 12 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 14 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 14 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 14 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 14 local subnet '10.140.141.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 14 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 15 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 15 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 15 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 15 local subnet '10.140.141.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 15 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 16 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 16 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 16 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 16 local subnet '10.141.141.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 16 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 17 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 17 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 17 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 17 local subnet '10.240.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 17 remote subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 18 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 18 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 18 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 18 local subnet '10.240.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 18 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 19 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 19 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 19 esp-group 'ESP-1CDR'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 19 local subnet '10.141.141.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 19 remote subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.114.133.1 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.114.133.1 authentication pre-shared-secret 'tppvpncol'
+set vpn ipsec site-to-site peer 190.114.133.1 connection-type 'initiate'
+set vpn ipsec site-to-site peer 190.114.133.1 ike-group 'IKE-1CO'
+set vpn ipsec site-to-site peer 190.114.133.1 local-ip '190.114.156.1'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 esp-group 'ESP-1CO'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 local subnet '10.15.128.0/19'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 remote subnet '10.22.128.0/24'

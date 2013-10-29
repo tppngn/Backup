@@ -1,0 +1,245 @@
+ sysname SW-Penales_Artigas
+#
+ super password level 3 simple tppar
+#
+ vlan batch 4 60
+#
+ stp mode stp
+ stp enable
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ dhcp enable
+#
+ undo http server enable
+#
+ drop illegal-mac alarm
+#
+vlan 4
+ description Vlan Mux Penales             
+ loop-detect eth-loop alarm-only
+vlan 60
+ description Vlan Prueba Penales Catan
+ loop-detect eth-loop alarm-only
+#
+aaa
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user admin password simple tppngn23ar
+ local-user admin privilege level 3
+ local-user admin service-type telnet
+ local-user admtpp password simple tppngn23ar
+ local-user admtpp privilege level 3
+ local-user admtpp service-type telnet
+ local-user root password simple tppngn23ar
+ local-user root privilege level 3
+ local-user root service-type telnet
+#
+ ntp-service unicast-server 10.10.127.1
+#                                         
+interface Vlanif4
+ ip address 10.10.127.100 255.255.255.0
+#
+interface MEth0/0/1
+#
+interface GigabitEthernet0/0/1
+ description "Cascada Vyatta 10.10.127.1"
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/2
+ description "Mux L. Zamora-port bridge"
+ port link-type access
+ port default vlan 4
+ loopback-detect enable
+ stp loop-protection
+ stp instance 0 cost 1000
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ description "Mux L. Zamora-port router"
+ port link-type access
+ port default vlan 4
+ loopback-detect enable
+ stp loop-protection
+ stp instance 0 cost 1000
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/4
+ description "Mux G. Cata, port Router"
+ port link-type access
+ port default vlan 4
+ loopback-detect enable
+ stp loop-protection
+ stp instance 0 cost 1000
+ ntdp enable
+ ndp enable
+ bpdu enable                              
+#
+interface GigabitEthernet0/0/5
+ description "Mux San Martin port Router"
+ port link-type access
+ port default vlan 4
+ loopback-detect enable
+ stp loop-protection
+ stp instance 0 cost 1000
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/7
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable                              
+#
+interface GigabitEthernet0/0/8
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/9
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/10
+ description "Prueba vlan 60"
+ port link-type access
+ port default vlan 60
+ loopback-detect enable
+ stp loop-protection
+ stp instance 0 cost 1000
+ ntdp enable
+ ndp enable
+ bpdu enable                              
+#
+interface GigabitEthernet0/0/11
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/13
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ loopback-detect enable
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/15
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/16
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/18
+ loopback-detect enable
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/19
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/20
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/21
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22
+ loopback-detect enable                   
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ loopback-detect enable
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 172.18.18.1
+#
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F00000100005AD2
+ snmp-agent community read  tppsa         
+ snmp-agent sys-info contact TPP NGN - mail: ngn@tpp.c
+ snmp-agent sys-info location Nodo Artigas - CABA
+ snmp-agent sys-info version v2c v3
+#
+ ssh server authentication-retries 5
+#
+user-interface maximum-vty 6
+user-interface con 0
+ idle-timeout 0 0
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ set authentication password simple tppar
+user-interface vty 5
+#
+return

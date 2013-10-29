@@ -1,0 +1,230 @@
+#
+ sysname Quidway
+#
+ super password level 3 cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+#
+ FTP server enable
+#
+ vfs check check-method fix
+#
+radius scheme system
+#
+domain system
+#
+local-user ftp
+ service-type ftp ftp-directory flash:
+local-user ftpuser
+ password simple tppar
+ service-type telnet
+ service-type ftp
+local-user root
+ password simple fiplextm
+ service-type lan-access
+#
+vlan 1                                    
+#
+vlan 5
+#
+vlan 10
+#
+vlan 20
+#
+vlan 30
+#
+vlan 160
+#
+vlan 424
+#
+interface Vlan-interface1
+ ip address 10.15.128.3 255.255.224.0
+ ip address 172.1.2.3 255.255.255.0 sub
+#
+interface Vlan-interface5
+#
+interface Aux1/0/0
+#
+interface GigabitEthernet1/0/1            
+ description RDL-2000-NodoPortugues-10.15.128.34
+ duplex full
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30
+#
+interface GigabitEthernet1/0/2
+ description DHCP-eth0-10.15.130.1
+ duplex full
+ speed 1000
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/3
+ port link-type trunk
+ undo port trunk permit vlan 1
+ port trunk permit vlan 20 to 30
+#
+interface GigabitEthernet1/0/4
+ description Prizm-eth0-10.15.128.4
+ port link-type trunk
+ port trunk permit vlan 1
+ broadcast-suppression 4                  
+#
+interface GigabitEthernet1/0/5
+ description PTP100
+ duplex full
+ speed 100
+ port link-type trunk
+ undo port trunk permit vlan 1
+ port trunk permit vlan 10 to 30
+#
+interface GigabitEthernet1/0/6
+ description PTP54400-10.15.128.181-lnk-Carcamo
+ port link-type trunk
+ port trunk permit vlan all
+ loopback-detection control enable
+#
+interface GigabitEthernet1/0/7
+ description VLAN160-eth2-vyatta
+ port link-type trunk
+ port trunk permit vlan 1 160
+#
+interface GigabitEthernet1/0/8
+ description Enlace Rada Tilly BH5.7
+ port link-type trunk                     
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/9
+ description PTP500-10.15.128.100-lnk-Chenque
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/10
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/11
+ description CMM-CdelValle-10.15.128.128
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/12
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/13
+ description PTP57400-NodoProtugues-10.15.128.232
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/14
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/15
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+#
+interface GigabitEthernet1/0/16
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+#
+interface GigabitEthernet1/0/17
+ description UPS-APC
+ duplex full                              
+ speed 100
+ port link-type trunk
+ port trunk permit vlan all
+ flow-control
+#
+interface GigabitEthernet1/0/18
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+#
+interface GigabitEthernet1/0/19
+ description PTP54400-NodoCarcamo-10.15.128.146
+ port link-type trunk
+ port trunk permit vlan all
+ loopback-detection control enable
+#
+interface GigabitEthernet1/0/20
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+#                                         
+interface GigabitEthernet1/0/21
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+#
+interface GigabitEthernet1/0/22
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30
+ broadcast-suppression 1
+ multicast-suppression 1
+#
+interface GigabitEthernet1/0/23
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+#
+interface GigabitEthernet1/0/24
+ description PTP Cronica
+ port link-type trunk
+ port trunk permit vlan all               
+#
+interface GigabitEthernet1/0/25
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30
+ broadcast-suppression 1
+ multicast-suppression 1
+ shutdown
+#
+interface GigabitEthernet1/0/26
+ description PTP Cronica
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/27
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+ shutdown
+#
+interface GigabitEthernet1/0/28
+ port link-type trunk                     
+ port trunk permit vlan all
+ broadcast-suppression 1
+ multicast-suppression 1
+ shutdown
+#
+interface Cascade1/2/1
+#
+interface Cascade1/2/2
+#
+interface NULL0
+#
+ospf 1
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.18 preference 30
+#
+ snmp-agent
+ snmp-agent local-engineid 800007DB000FE21687316877
+ snmp-agent community read tppsa
+ snmp-agent sys-info version all
+#
+user-interface aux 0 7
+user-interface vty 0 4                    
+ user privilege level 3
+ set authentication password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+#
+return

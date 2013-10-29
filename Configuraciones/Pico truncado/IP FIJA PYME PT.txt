@@ -1,0 +1,12 @@
+Marbar        0a-00-3e-db-d5-6c  AP 101   IP FIJA:190.114.139.10
+Ing obr       0a-00-3e-db-8c-15  AP 101   IP FIJA:190.114.139.11
+no esta       0a-00-ed-db-79-2d  No esta en ningun lado
+Humberto      0a-00-3e-da-b6-f0  AP 102   IP FIJA:190.114.139.12
+paola lopez   0a-00-3e-dc-50-f7  AP 107   IP FIJA:190.114.139.13
+JMB           0a-00-3e-dd-63-60  AP 106   IP FIJA:190.114.139.251
+paola pailla  0a-00-3e-da-a0-97  AP 105   IP FIJA:190.114.139.14
+Tarjetas      0a-00-3e-bd-d6-40  AP 102   IP FIJA:190.114.139.15
+NN	      0a-00-3e-d2-df-01	 NO ESTA 
+Sucecion      0a-00-3e-da-5d-a8  AP 110   IP FIJA:190.114.139.16
+Tarjetas2     0a-00-3e-27-67-a1  AP 113   IP FIJA:190.114.139.17
+Cruz del sur  0a-00-3e-27-53-5b  AP 112   IP FIJA:190.114.139.252

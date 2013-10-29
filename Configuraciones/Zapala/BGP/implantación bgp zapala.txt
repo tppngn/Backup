@@ -1,0 +1,7 @@
+set protocols bgp 52232 neighbor 200.63.145.133 remote-as '10834'
+set protocols bgp 52232 network '190.114.144.1/24'
+set protocols bgp 52232 network '190.114.165.1/26'
+set protocols bgp 52232 neighbor 200.63.145.133 remote-as '22927'
+set protocols bgp 52232 network '190.114.144.0/24'
+set protocols bgp 52232 network '190.114.164.0/24'
+set protocols bgp 52232 network '190.114.165.0/24'

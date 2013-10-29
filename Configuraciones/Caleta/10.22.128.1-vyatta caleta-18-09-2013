@@ -1,0 +1,543 @@
+interfaces {
+    ethernet eth0 {
+        duplex auto
+        hw-id b8:ac:6f:99:80:aa
+        smp_affinity auto
+        speed auto
+        vif 432 {
+            address 190.221.138.218/29
+        }
+    }
+    ethernet eth1 {
+        address 190.114.133.1/24
+        address 10.22.128.1/24
+        address 190.114.134.1/24
+        address 190.114.135.1/24
+        duplex auto
+        hw-id b8:ac:6f:99:80:ab
+        smp_affinity auto
+        speed auto
+    }
+    ethernet eth2 {
+        duplex auto
+        hw-id 00:10:18:91:8d:b8
+        smp_affinity auto
+        speed auto
+    }
+    ethernet eth3 {
+        duplex auto
+        hw-id 00:10:18:91:8d:ba
+        smp_affinity auto
+        speed auto
+    }
+    loopback lo {
+    }
+}
+protocols {
+    bgp 52232 {
+        neighbor 200.69.129.36 {
+            ebgp-multihop 4
+            remote-as 11664
+        }
+        network 190.114.133.0/24 {
+        }
+        network 190.114.134.0/24 {
+        }
+        network 190.114.135.0/24 {
+        }
+    }
+    static {
+        route 10.10.128.0/17 {
+            next-hop 10.15.128.1 {
+            }
+        }
+        route 10.222.93.0/24 {
+            next-hop 10.22.128.93 {
+            }
+        }
+        route 10.222.94.0/24 {
+            next-hop 10.22.128.94 {
+            }
+        }
+        route 10.222.95.0/24 {
+            next-hop 10.22.128.95 {
+            }
+        }
+        route 10.222.96.0/24 {
+            next-hop 10.22.128.96 {
+            }
+        }
+        route 10.222.97.0/24 {
+            next-hop 10.22.128.97 {
+            }
+        }
+        route 10.222.98.0/24 {
+            next-hop 10.22.128.98 {
+            }
+        }
+        route 10.222.101.0/24 {
+            next-hop 10.22.128.101 {
+            }
+        }
+        route 10.222.110.0/24 {
+            next-hop 10.22.128.110 {
+            }
+        }
+        route 10.222.113.0/24 {
+            next-hop 10.22.128.113 {
+            }
+        }
+        route 10.222.114.0/24 {
+            next-hop 10.22.128.114 {
+            }
+        }
+        route 10.222.115.0/24 {
+            next-hop 10.22.128.115 {
+            }
+        }
+        route 200.69.129.36/30 {
+            next-hop 190.221.138.217 {
+            }
+        }
+    }
+}
+service {
+    dhcp-server {
+        disabled false
+        shared-network-name ETH1_POOL {
+            authoritative disable
+            subnet 190.114.133.0/24 {
+                default-router 190.114.133.1
+                dns-server 10.22.128.1
+                dns-server 200.80.194.18
+                dns-server 200.80.195.18
+                lease 86400
+                start 190.114.133.10 {
+                    stop 190.114.133.250
+                }
+            }
+            subnet 190.114.134.0/24 {
+                default-router 190.114.134.1
+                dns-server 10.22.128.1
+                dns-server 200.80.194.18
+                lease 86400
+                start 190.114.134.2 {
+                    stop 190.114.134.200
+                }
+            }
+            subnet 190.114.135.0/24 {
+                default-router 190.114.135.1
+                dns-server 10.22.128.1
+                dns-server 200.80.194.18
+                lease 86400
+                start 190.114.135.2 {
+                    stop 190.114.135.250
+                }
+            }
+        }
+    }
+    dns {
+        forwarding {
+            cache-size 500
+            listen-on eth0
+            listen-on eth0.432
+            listen-on eth1
+            system
+        }
+    }
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+    }
+    ssh {
+        port 22
+        protocol-version v2
+    }
+    telnet {
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    flow-accounting {
+        interface eth0
+        netflow {
+            engine-id 9
+            server 10.10.128.139 {
+                port 2055
+            }
+            timeout {
+                expiry-interval 60
+                flow-generic 3600
+                icmp 300
+                max-active-life 604800
+                tcp-fin 300
+                tcp-generic 3600
+                tcp-rst 120
+                udp 300
+            }
+            version 9
+        }
+        sflow {
+            agent-address auto
+            server 10.10.128.139 {
+                port 6343
+            }
+        }
+        syslog-facility daemon
+    }
+    host-name VyattaCaleta
+    login {
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 8.8.8.8
+    name-server 8.8.4.4
+    ntp {
+        server 10.15.128.128 {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone GMT
+}
+vpn {
+    ipsec {
+        esp-group ESP-1CO {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        esp-group ESP-1COL {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        esp-group ESP-2COL {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1CO {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ike-group IKE-1COL {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ike-group IKE-2COL {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.250 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                ike-group IKE-2COL
+                local-ip 190.114.133.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-2COL
+                    local-subnet 10.22.128.0/24
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 2 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-2COL
+                    local-subnet 10.22.128.0/24
+                    remote-subnet 192.168.0.0/17
+                }
+                tunnel 3 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-2COL
+                    local-subnet 10.222.0.0/16
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 4 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-2COL
+                    local-subnet 10.222.0.0/16
+                    remote-subnet 192.168.0.0/17
+                }
+            }
+            peer 190.114.156.1 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                ike-group IKE-1CO
+                local-ip 190.114.133.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CO
+                    local-subnet 10.22.128.0/24
+                    remote-subnet 10.15.128.0/19
+                }
+            }
+        }
+    }
+}
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id 'b8:ac:6f:99:80:aa'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth0 vif 432 address '190.221.138.218/29'
+set interfaces ethernet eth1 address '190.114.133.1/24'
+set interfaces ethernet eth1 address '10.22.128.1/24'
+set interfaces ethernet eth1 address '190.114.134.1/24'
+set interfaces ethernet eth1 address '190.114.135.1/24'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id 'b8:ac:6f:99:80:ab'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth2 duplex 'auto'
+set interfaces ethernet eth2 hw-id '00:10:18:91:8d:b8'
+set interfaces ethernet eth2 smp_affinity 'auto'
+set interfaces ethernet eth2 speed 'auto'
+set interfaces ethernet eth3 duplex 'auto'
+set interfaces ethernet eth3 hw-id '00:10:18:91:8d:ba'
+set interfaces ethernet eth3 smp_affinity 'auto'
+set interfaces ethernet eth3 speed 'auto'
+set interfaces loopback 'lo'
+set protocols bgp 52232 neighbor 200.69.129.36 ebgp-multihop '4'
+set protocols bgp 52232 neighbor 200.69.129.36 remote-as '11664'
+set protocols bgp 52232 network '190.114.133.0/24'
+set protocols bgp 52232 network '190.114.134.0/24'
+set protocols bgp 52232 network '190.114.135.0/24'
+set protocols static route 10.10.128.0/17 next-hop '10.15.128.1'
+set protocols static route 10.222.93.0/24 next-hop '10.22.128.93'
+set protocols static route 10.222.94.0/24 next-hop '10.22.128.94'
+set protocols static route 10.222.95.0/24 next-hop '10.22.128.95'
+set protocols static route 10.222.96.0/24 next-hop '10.22.128.96'
+set protocols static route 10.222.97.0/24 next-hop '10.22.128.97'
+set protocols static route 10.222.98.0/24 next-hop '10.22.128.98'
+set protocols static route 10.222.101.0/24 next-hop '10.22.128.101'
+set protocols static route 10.222.110.0/24 next-hop '10.22.128.110'
+set protocols static route 10.222.113.0/24 next-hop '10.22.128.113'
+set protocols static route 10.222.114.0/24 next-hop '10.22.128.114'
+set protocols static route 10.222.115.0/24 next-hop '10.22.128.115'
+set protocols static route 200.69.129.36/30 next-hop '190.221.138.217'
+set service dhcp-server disabled 'false'
+set service dhcp-server shared-network-name ETH1_POOL authoritative 'disable'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.133.0/24 default-router '190.114.133.1'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.133.0/24 dns-server '10.22.128.1'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.133.0/24 dns-server '200.80.194.18'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.133.0/24 dns-server '200.80.195.18'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.133.0/24 lease '86400'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.133.0/24 start 190.114.133.10 stop '190.114.133.250'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.134.0/24 default-router '190.114.134.1'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.134.0/24 dns-server '10.22.128.1'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.134.0/24 dns-server '200.80.194.18'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.134.0/24 lease '86400'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.134.0/24 start 190.114.134.2 stop '190.114.134.200'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.135.0/24 default-router '190.114.135.1'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.135.0/24 dns-server '10.22.128.1'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.135.0/24 dns-server '200.80.194.18'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.135.0/24 lease '86400'
+set service dhcp-server shared-network-name ETH1_POOL subnet 190.114.135.0/24 start 190.114.135.2 stop '190.114.135.250'
+set service dns forwarding cache-size '500'
+set service dns forwarding listen-on 'eth0'
+set service dns forwarding listen-on 'eth0.432'
+set service dns forwarding listen-on 'eth1'
+set service dns forwarding 'system'
+set service snmp community tppsa authorization 'ro'
+set service ssh port '22'
+set service ssh protocol-version 'v2'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system console device ttyS0 speed '9600'
+set system flow-accounting interface 'eth0'
+set system flow-accounting netflow engine-id '9'
+set system flow-accounting netflow server 10.10.128.139 port '2055'
+set system flow-accounting netflow timeout expiry-interval '60'
+set system flow-accounting netflow timeout flow-generic '3600'
+set system flow-accounting netflow timeout icmp '300'
+set system flow-accounting netflow timeout max-active-life '604800'
+set system flow-accounting netflow timeout tcp-fin '300'
+set system flow-accounting netflow timeout tcp-generic '3600'
+set system flow-accounting netflow timeout tcp-rst '120'
+set system flow-accounting netflow timeout udp '300'
+set system flow-accounting netflow version '9'
+set system flow-accounting sflow agent-address 'auto'
+set system flow-accounting sflow server 10.10.128.139 port '6343'
+set system flow-accounting syslog-facility 'daemon'
+set system host-name 'VyattaCaleta'
+set system login user vyatta authentication encrypted-password '$1$nvmYY3xV$BnDPcQc.iZvpgWF03exN4/'
+set system login user vyatta authentication plaintext-password ''
+set system login user vyatta level 'admin'
+set system name-server '8.8.8.8'
+set system name-server '8.8.4.4'
+set system ntp server '10.15.128.128'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'notice'
+set system syslog global facility protocols level 'debug'
+set system time-zone 'GMT'
+set vpn ipsec esp-group ESP-1CO compression 'disable'
+set vpn ipsec esp-group ESP-1CO lifetime '1800'
+set vpn ipsec esp-group ESP-1CO mode 'tunnel'
+set vpn ipsec esp-group ESP-1CO pfs 'enable'
+set vpn ipsec esp-group ESP-1CO proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1CO proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CO proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 2 hash 'md5'
+set vpn ipsec esp-group ESP-1COL compression 'disable'
+set vpn ipsec esp-group ESP-1COL lifetime '1800'
+set vpn ipsec esp-group ESP-1COL mode 'tunnel'
+set vpn ipsec esp-group ESP-1COL pfs 'enable'
+set vpn ipsec esp-group ESP-1COL proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1COL proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1COL proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1COL proposal 2 hash 'md5'
+set vpn ipsec esp-group ESP-2COL compression 'disable'
+set vpn ipsec esp-group ESP-2COL lifetime '1800'
+set vpn ipsec esp-group ESP-2COL mode 'tunnel'
+set vpn ipsec esp-group ESP-2COL pfs 'enable'
+set vpn ipsec esp-group ESP-2COL proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-2COL proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-2COL proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-2COL proposal 2 hash 'md5'
+set vpn ipsec ike-group IKE-1CO lifetime '3600'
+set vpn ipsec ike-group IKE-1CO proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CO proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1CO proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1CO proposal 2 hash 'sha1'
+set vpn ipsec ike-group IKE-1COL lifetime '3600'
+set vpn ipsec ike-group IKE-1COL proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1COL proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1COL proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1COL proposal 2 hash 'sha1'
+set vpn ipsec ike-group IKE-2COL lifetime '3600'
+set vpn ipsec ike-group IKE-2COL proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-2COL proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-2COL proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-2COL proposal 2 hash 'sha1'
+set vpn ipsec ipsec-interfaces interface 'eth1'
+set vpn ipsec site-to-site peer 190.2.46.250 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.2.46.250 authentication pre-shared-secret 'tppvpncol'
+set vpn ipsec site-to-site peer 190.2.46.250 ike-group 'IKE-2COL'
+set vpn ipsec site-to-site peer 190.2.46.250 local-ip '190.114.133.1'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 1 esp-group 'ESP-2COL'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 1 local-subnet '10.22.128.0/24'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 1 remote-subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 2 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 2 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 2 esp-group 'ESP-2COL'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 2 local-subnet '10.22.128.0/24'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 2 remote-subnet '192.168.0.0/17'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 3 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 3 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 3 esp-group 'ESP-2COL'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 3 local-subnet '10.222.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 3 remote-subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 4 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 4 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 4 esp-group 'ESP-2COL'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 4 local-subnet '10.222.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.250 tunnel 4 remote-subnet '192.168.0.0/17'
+set vpn ipsec site-to-site peer 190.114.156.1 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.114.156.1 authentication pre-shared-secret 'tppvpncol'
+set vpn ipsec site-to-site peer 190.114.156.1 ike-group 'IKE-1CO'
+set vpn ipsec site-to-site peer 190.114.156.1 local-ip '190.114.133.1'
+set vpn ipsec site-to-site peer 190.114.156.1 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.114.156.1 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.114.156.1 tunnel 1 esp-group 'ESP-1CO'
+set vpn ipsec site-to-site peer 190.114.156.1 tunnel 1 local-subnet '10.22.128.0/24'
+set vpn ipsec site-to-site peer 190.114.156.1 tunnel 1 remote-subnet '10.15.128.0/19'
+

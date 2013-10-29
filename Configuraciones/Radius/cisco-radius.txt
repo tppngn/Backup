@@ -1,0 +1,59 @@
+version 12.3
+service telnet-zeroidle
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret level 1 5 $1$3DLH$BitjGr8N6XoZ9fRYj5rX20
+enable secret 5 $1$p4Eq$YeyexjrYDSsg.P2Tbjvue1
+enable password tppngn33ar
+!
+no network-clock-participate slot 1 
+no network-clock-participate wic 0 
+aaa new-model
+!
+!
+aaa authentication login CISCO group radius local
+aaa authentication login cisco group radius
+aaa session-id common
+ip subnet-zero
+ip cef
+!
+!
+!
+no ftp-server write-enable
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 10.10.128.12 255.255.128.0
+ duplex auto
+ speed auto
+!
+interface Serial0/0
+ no ip address
+ shutdown
+!
+ip classless
+ip http server
+!
+ip radius source-interface FastEthernet0/0 
+radius-server host 10.10.140.60 auth-port 1812 acct-port 1812 key cisco
+radius-server key CISCOPRUEBA
+!
+line con 0
+line aux 0
+line vty 0 4
+ password tppngn23ar
+ login authentication CISCO
+ transport input telnet
+!
+!
+!
+end

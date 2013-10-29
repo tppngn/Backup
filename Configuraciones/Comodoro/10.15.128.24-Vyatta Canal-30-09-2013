@@ -1,0 +1,27 @@
+<?php
+$hostname = "localhost";
+$username = "root";
+$password = "tppngn23ar";
+$usertable = "ips";
+$dbName = "Comunidades";
+MYSQL_CONNECT($hostname, $username, $password) OR DIE("Socorro, no conecto!!!");
+@mysql_select_db( "$dbName") or die( "No Conecto");
+$query = mysql_query ("SELECT ip,comunidad FROM ipdiscover");
+$columns = 1;
+$num_rows = mysql_num_rows($query);
+$rows = ceil($num_rows / $columns);
+while($row = mysql_fetch_array($query)) {
+$data[] = $row['ip'];
+$data1[] =$row['comunidad'];
+}
+for($i = 0; $i < $rows; $i++) {
+$comilla ='"';
+$parte1=("<?php exec($comilla/usr/bin/php /home/Scripts/Descubre/scaneo2.php ");
+$parte2=(" $comilla) ?> ");
+#$resultado = $parte1.$data[$i + ($j * $rows)]." ".$data1[$i + ($j * $rows)]." ".$data4[$i + ($j * $rows)]." ".$data2[$i + ($j * $rows)]." ".$data3[$i + ($j * $rows)]."".$parte2."\r\n";
+#$resultado = $parte1.$data[$i + ($j * $rows)]." ".$data1[$i + ($j * $rows)]."".$parte2."\r\n";
+echo $resultado;
+#echo $resultado2;
+
+}
+?>

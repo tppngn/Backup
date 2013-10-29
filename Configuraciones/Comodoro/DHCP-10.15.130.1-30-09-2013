@@ -1,0 +1,996 @@
+###ldap-server "localhost";
+###ldap-port 389;
+###ldap-username "cn=manager, dc=telecentro, dc=com";
+###ldap-password secret;
+###ldap-base-dn "dc=telecentro, dc=com";
+###ldap-method dynamic;
+#authoritative;
+ddns-update-style interim;
+#DHCPARGS=eth0;
+
+######## NETWORK DECLARATIONS #######
+
+shared-network Vlan1-Default { 
+	subnet 10.15.128.0 netmask 255.255.224.0 {
+		option subnet-mask 255.255.224.0;
+		option broadcast-address 10.15.159.255;
+		option routers 10.15.128.1;
+}
+
+
+# #Ruteado por Telmex Vlan1
+	subnet 190.114.156.0 netmask 255.255.254.0 {
+		range 190.114.156.10 190.114.156.250;
+		range 190.114.157.2 190.114.157.250;
+		option subnet-mask 255.255.254.0;
+		option broadcast-address 190.114.157.255;
+		option routers 190.114.156.1;
+		option domain-name-servers 10.15.128.18, 200.80.194.18 , 200.80.195.18;
+		option dhcp-rebinding-time 300;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		allow unknown-clients;
+		}
+
+	}
+
+##############################################################
+### AGREGADO DE PRUEBA. PROBAR CON LUIS. BORRAR 27/12/2011 ###
+##############################################################
+
+shared-network Vlan1-Default-Diadema {
+	subnet 10.40.141.0 netmask 255.255.255.0 {
+							 }
+
+	# #DIADEMA-Ruteado por VLAN1(Clientes AP52)
+	subnet 190.114.147.0 netmask 255.255.255.0 {
+		range 190.114.147.160 190.114.147.250;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.114.147.255;
+		option routers 190.114.147.1;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		}
+		
+		# #DIADEMA-Ruteado por VLAN1(Clientes AP52)
+	subnet 181.225.20.0 netmask 255.255.255.0 {
+		range 181.225.20.2 181.225.20.250;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 181.225.20.255;
+		option routers 181.225.20.1;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		}
+		
+	}
+	shared-network Vlan1-Default-CForestal {
+
+		subnet 10.40.40.0 netmask 255.255.255.0 {
+							}
+	#	subnet 190.14.166.0 netmask 255.255.255.0 {
+	#		range 190.14.166.10 190.14.166.253;
+	#		option subnet-mask 255.255.255.0;
+	#		option broadcast-address 190.14.166.255;
+	#		option routers 190.14.166.1;
+	#		default-lease-time 21600;
+	#		max-lease-time 21600;
+	#		}
+	}
+
+	shared-network Vlan10-Morosos-CForestal {
+
+		subnet 10.40.41.0 netmask 255.255.255.0 {
+							 }
+
+		# #CForestal-Ruteado por VLAN10
+		subnet 172.40.41.0 netmask 255.255.255.0 {
+			range 172.40.41.30 172.40.41.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 172.40.41.255;
+			option routers 172.40.41.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+	}
+	###########################
+	### FIN AGREGADO PRUEBA ###
+	###########################
+
+	shared-network VLAN20-PYMES-C.Forestal {
+		
+		subnet 10.40.42.0 netmask 255.255.255.0 {
+							}
+
+##CFORESTAL-Ruteado por VLAN20
+	subnet 190.14.172.48 netmask 255.255.255.248 {
+			Range 190.14.172.50 190.14.172.54;
+			Option subnet-mask 255.255.255.248;
+			Option broadcast-address 190.14.172.55;
+			Option routers 190.14.172.49;
+			Option domain-name-servers 10.15.128.24, 208.67.222.222, 8.8.8.8;
+			Default-lease-time 432000;
+			Max-lease-time 43200;
+								}
+		# #CFORESTAL-Ruteado por VLAN20
+		subnet 190.14.172.0 netmask 255.255.255.248 {
+			range 190.14.172.3 190.14.172.6;
+			option subnet-mask 255.255.255.248;
+			option broadcast-address 190.14.172.7;
+			option routers 190.14.172.1;
+			option domain-name-servers 10.15.128.24 , 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+						} #fin shared-network VLAN20-PYMES-C.Forestal
+
+	### PARA TEST - SACAR
+
+	#shared-network VLAN30-RES-Caleta {
+	#subnet 10.22.128.0 netmask 255.255.255.0 {
+	#						}
+	#	subnet 172.5.5.0 netmask 255.255.255.0 {
+	#		range 172.5.5.10 172.5.5.30;
+	#		option subnet-mask 255.255.255.0;
+	#		option broadcast-address 172.5.5.255;
+	#		option routers 172.5.5.1;
+	#		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+	#		default-lease-time 3600;
+	#		max-lease-time 3600;
+	#		}
+	#}
+	## PARA TEST
+
+
+	shared-network VLAN20-Pymes { 
+	subnet 10.20.128.0 netmask 255.255.224.0 {
+	}
+
+	##Ruteado por VLAN20Pyme
+		  subnet 190.14.173.0 netmask 255.255.255.0 {
+		  range 190.14.173.3 190.14.173.52;
+		  range 190.14.173.54 190.14.173.168;
+		  range 190.14.173.170 190.14.173.190;
+	##      range 190.14.173.191 190.14.173.254; ##Reservacion IP STATIC
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.14.173.255;
+		option routers 190.14.173.1;
+		option domain-name-servers 10.15.128.24, 208.67.222.222, 8.8.8.8;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		allow unknown-clients;
+	}
+	}
+
+	shared-network VLAN30-RES-C.Forestal {
+		
+	subnet 10.40.43.0 netmask 255.255.255.0 {
+							}
+
+		# #CFORESTAL-Ruteado por VLAN30
+		subnet 190.14.166.0 netmask 255.255.254.0 {
+			range 190.14.166.3 190.14.166.254;
+			range 190.14.167.2 190.14.167.254;
+			option subnet-mask 255.255.254.0;
+			option broadcast-address 190.14.167.255;
+			option routers 190.14.166.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 3600;
+			max-lease-time 3600;
+			}
+
+	##CFORESTAL-Ruteado por VLAN30
+	subnet 190.114.171.0 netmask 255.255.255.0 {
+		   range 190.114.171.2 190.114.171.254;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.114.171.255;
+		   option routers 190.114.171.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+
+	}
+
+
+	} #Fin shared-network VLAN30-RES-C.Forestal
+
+	shared-network VLAN30-RES { 
+	subnet 10.31.128.0 netmask 255.255.224.0 {
+	}
+
+	### SUBNET TEST
+	#subnet 10.22.128.0 netmask 255.255.255.0{
+	#}
+	### FIN SUBNET TEST
+
+
+	##Ruteado por VLAN30 .172 separada para ruteo cordon
+
+	##CRuteado por VLAN30
+	subnet 190.14.163.0 netmask 255.255.255.0 {
+		   range 190.14.163.2 190.14.163.219;
+		   range 190.14.163.225 190.14.163.227;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.14.163.255;
+		   option routers 190.14.163.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+        
+	##Ruteado por VLAN30
+	subnet 190.14.161.0 netmask 255.255.255.0 {
+		   range 190.14.161.3 190.14.161.250;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.14.161.255;
+		   option routers 190.14.161.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+	##Ruteado por VLAN30
+	subnet 190.14.168.0 netmask 255.255.254.0 {
+			range 190.14.168.2 190.14.168.254;
+			range 190.14.169.2 190.14.169.197;
+			range 190.14.169.199 190.14.169.254;
+		   option subnet-mask 255.255.254.0;
+		   option broadcast-address 190.14.169.255;
+		   option routers 190.14.168.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;       
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+		   subnet 190.14.188.0 netmask 255.255.254.0 {
+		   range 190.14.188.2 190.14.188.254;
+		   range 190.14.189.2 190.14.189.158;
+		   range 190.14.189.160 190.14.189.254;
+		   option subnet-mask 255.255.254.0;
+		   option broadcast-address 190.14.189.255;
+		   option routers 190.14.188.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+	subnet 190.14.186.0 netmask 255.255.254.0 {
+			range 190.14.186.2 190.14.186.254;
+			range 190.14.187.2 190.14.187.254;
+			option subnet-mask 255.255.254.0;
+			option broadcast-address 190.14.187.255;
+			option routers 190.14.186.1;
+			option domain-name-servers 208.67.222.222, 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+	subnet 190.14.184.0 netmask 255.255.254.0 {
+		   range 190.14.184.2 190.14.184.250; 
+		   range 190.14.185.2 190.14.185.254;
+		   option subnet-mask 255.255.254.0;
+		   option broadcast-address 190.14.185.255;
+		   option routers 190.14.184.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+	subnet 190.114.148.0 netmask 255.255.255.0 {
+		range 190.114.148.2 190.114.148.254;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.114.148.255;
+		option routers 190.114.148.1;
+		option domain-name-servers 208.67.222.222, 8.8.8.8;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		allow unknown-clients;
+	}
+
+
+	##Ruteado por VLAN30
+		   subnet 190.114.146.0 netmask 255.255.255.0 {
+		   range 190.114.146.2 190.114.146.254;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.114.146.255;
+		   option routers 190.114.146.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+	##       subnet 190.114.147.0 netmask 255.255.255.0 {
+	##       range 190.114.147.2 190.114.147.254;
+	##       option subnet-mask 255.255.255.0;
+	##       option broadcast-address 190.114.147.255;
+	##       option routers 190.114.147.1;
+	##       option domain-name-servers 208.67.222.222, 8.8.8.8;
+	##       default-lease-time 21600;
+	##       max-lease-time 21600;
+	##       allow unknown-clients;
+	##}
+
+	##Ruteado por VLAN30
+	subnet 190.14.160.0 netmask 255.255.255.0 {
+		   range 190.14.160.7 190.14.160.250;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.14.160.255;
+		   option routers 190.14.160.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+	subnet 190.14.190.0 netmask 255.255.255.0 {
+		   range 190.14.190.2 190.14.190.254;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.14.190.255;
+		   option routers 190.14.190.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+	##Ruteado por VLAN30
+	subnet 190.14.191.0 netmask 255.255.255.128 {
+		   range 190.14.191.2 190.14.191.126;
+		   option subnet-mask 255.255.255.128;
+		   option broadcast-address 190.14.191.127;
+		   option routers 190.14.191.1;
+		   #  option domain-name "CDR.tpp.com.ar";
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	##Ruteado por VLAN30
+	subnet 190.14.162.0 netmask 255.255.255.0 {
+		   range 190.14.162.2 190.14.162.254;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.14.162.255;
+		   option routers 190.14.162.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+
+	}
+
+	##Ruteado por VLAN30
+	subnet 190.114.168.0 netmask 255.255.255.0 {
+		   range 190.114.168.2 190.114.168.254;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.114.168.255;
+		   option routers 190.114.168.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+
+	}
+      ##Ruteado por VLAN30
+	subnet 190.114.188.0 netmask 255.255.255.0 {
+		   range 190.114.188.2 190.114.188.250;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.114.188.255;
+		   option routers 190.114.188.1;
+		   option domain-name-servers 208.67.222.222, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+
+	}
+
+##Ruteado por VLAN30
+	subnet 190.114.183.0 netmask 255.255.255.0 {
+		   range 190.114.183.2 190.114.183.250;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 190.114.183.255;
+		   option routers 190.114.183.1;
+		   option domain-name-servers 201.216.254.107, 8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+
+	}
+##Ruteado por VLAN30
+        subnet 181.225.2.0 netmask 255.255.255.0 {
+		   range 181.225.2.2 181.225.2.250;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 181.225.2.255;
+		   option routers 181.225.2.1;
+		   option domain-name-servers 201.216.254.107,8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+        ##Ruteado por VLAN30
+        subnet 181.225.3.0 netmask 255.255.255.0 {
+		   range 181.225.3.2 181.225.3.250;
+		   option subnet-mask 255.255.255.0;
+		   option broadcast-address 181.225.3.255;
+		   option routers 181.225.3.1;
+		   option domain-name-servers 201.216.254.107,8.8.8.8;
+		   default-lease-time 21600;
+		   max-lease-time 21600;
+		   allow unknown-clients;
+	}
+
+	}
+
+
+	shared-network VLAN10-Morosos { 
+		subnet 172.16.0.0 netmask 255.255.252.0 {
+			range 172.16.0.27 172.16.3.254;
+			option subnet-mask 255.255.252.0;
+			option broadcast-address 172.16.3.255;
+			option routers 172.16.0.3;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 3600;
+			max-lease-time 3600;
+			allow unknown-clients;
+			}
+	}
+
+
+	###########################################
+	############ NODO CARCAMO #################
+	########################################## 
+
+	### INICIO DEFINICION CARCAMO ###
+
+	shared-network Vlan1-Default-CARCAMO {
+
+		subnet 10.40.110.0 netmask 255.255.255.0 {
+							}
+					}
+
+	shared-network Vlan10-Morosos-CARCAMO {
+
+		subnet 10.40.111.0 netmask 255.255.255.0 {
+							}
+
+		subnet 172.40.111.0 netmask 255.255.255.0 {
+			range 172.40.111.27 172.40.111.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 172.40.111.255;
+			option routers 172.40.111.1;
+			option domain-name-servers 208.67.222.222, 8.8.8.8;
+			default-lease-time 3600;
+			max-lease-time 3600;
+							}
+
+						}
+
+	shared-network Vlan20-PyME-CARCAMO {
+		subnet 10.40.112.0 netmask 255.255.255.0 {
+			}
+		
+		# #CARCAMO-Ruteado por VLAN20
+		subnet 190.114.155.0 netmask 255.255.255.128 {
+			range 190.114.155.2 190.114.155.126;
+			option subnet-mask 255.255.255.128;
+			option broadcast-address 190.114.155.127;
+			option routers 190.114.155.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+	}
+
+	shared-network Vlan30-Residencial-CARCAMO {
+	authoritative;
+		subnet 10.40.113.0 netmask 255.255.255.0 {
+							}
+						
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.150.0 netmask 255.255.255.0 {
+			range 190.114.150.2 190.114.150.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.150.255;
+			option routers 190.114.150.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.151.0 netmask 255.255.255.0 {
+			range 190.114.151.2 190.114.151.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.151.255;
+			option routers 190.114.151.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.152.0 netmask 255.255.255.0 {
+			range 190.114.152.2 190.114.152.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.152.255;
+			option routers 190.114.152.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.153.0 netmask 255.255.255.0 {
+			range 190.114.153.2 190.114.153.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.153.255;
+			option routers 190.114.153.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.154.0 netmask 255.255.255.0 {
+			range 190.114.154.2 190.114.154.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.154.255;
+			option routers 190.114.154.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.149.0 netmask 255.255.255.0 {
+			range 190.114.149.2 190.114.149.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.149.255;
+			option routers 190.114.149.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+		# #CARCAMO-Ruteado por VLAN30
+		subnet 190.14.164.0 netmask 255.255.255.0 {
+			range 190.14.164.2 190.14.164.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.14.164.255;
+			option routers 190.14.164.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+	 # #CARCAMO-Ruteado por VLAN30
+		subnet 190.14.165.0 netmask 255.255.255.0 {
+			range 190.14.165.2 190.14.165.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.14.165.255;
+			option routers 190.14.165.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+	 # #CARCAMO-Ruteado por VLAN30
+		subnet 190.114.190.0 netmask 255.255.255.0 {
+			range 190.114.190.2 190.114.190.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.190.255;
+			option routers 190.114.190.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+          # #CARCAMO-Ruteado por VLAN30
+		subnet 181.225.21.0 netmask 255.255.255.0 {
+			range 181.225.21.2 181.225.21.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 181.225.21.255;
+			option routers 181.225.21.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+	}
+	##############################
+	### FIN DEFINICION CARCAMO ###	
+	##############################
+
+	####################################
+	###     NODO RADATILLY           ###
+	####################################
+
+	shared-network VLAN1-Default-RADATILLY {
+		
+		# #RADATILLY-VLAN1-Default
+		subnet 10.40.130.0 netmask 255.255.255.0 {
+							}
+						}
+
+	shared-network VLAN10-Morosos-RADATILLY {
+
+		subnet 10.40.131.0 netmask 255.255.255.0 {
+							}
+
+		# #RADATILLY-VLAN10(MOROSOS)
+		subnet 172.40.131.0 netmask 255.255.255.0 {
+			range 172.40.131.27 172.40.131.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 172.40.131.255;
+			option routers 172.40.131.26;
+			option domain-name-servers 208.67.222.222, 8.8.8.8;
+			default-lease-time 3600;
+			max-lease-time 3600;
+	}
+	}
+
+	shared-network VLAN20-PyME-RADATILLY {
+
+		subnet 10.40.132.0 netmask 255.255.255.0 {
+							}
+		# #RADATILLY-Ruteado por VLAN20
+		subnet 190.14.172.8 netmask 255.255.255.248 {
+			range 190.14.172.11 190.14.172.14;
+			option subnet-mask 255.255.255.248;
+			option broadcast-address 190.14.172.15;
+			option routers 190.14.172.9;
+			option domain-name-servers 10.15.128.24 , 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+
+		# #RADATILLY-Ruteado por VLAN20
+		subnet 190.14.172.16 netmask 255.255.255.248 {
+			range 190.14.172.18 190.14.172.21;
+			option subnet-mask 255.255.255.248;
+			option broadcast-address 190.14.172.23;
+			option routers 190.14.172.17;
+			option domain-name-servers 10.15.128.24 , 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+
+
+	# #RADATILLY-Ruteado por VLAN20
+		subnet 190.14.172.24 netmask 255.255.255.248 {
+			range 190.14.172.26 190.14.172.30;
+			option subnet-mask 255.255.255.248;
+			option broadcast-address 190.14.172.31;
+			option routers 190.14.172.25;
+			option domain-name-servers 10.15.128.24 , 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+
+	}
+
+	shared-network VLAN30-Residencial-RADATILLY {
+
+	subnet 10.40.133.0 netmask 255.255.255.0 {
+							}
+
+
+		# #RADATILLY-Ruteado por VLAN30
+		subnet 190.114.145.0 netmask 255.255.255.0 {
+			range 190.114.145.2 190.114.145.253;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.145.255;
+			option routers 190.114.145.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+
+
+              # #RADATILLY-Ruteado por VLAN30
+		subnet 190.114.189.0 netmask 255.255.255.0 {
+			range 190.114.189.2 190.114.189.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.189.255;
+			option routers 190.114.189.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+	}
+
+	###################################
+	### 	FIN NODO-RADATILLY	      ###
+	###################################
+
+
+	####################################
+	###     INICIO NODO-ABASOLO      ###
+	####################################
+
+	shared-network VLAN1-Default-ABASOLO {
+		
+		# #ABASOLO-VLAN1-Default
+		subnet 10.40.100.0 netmask 255.255.255.0 {
+							}
+						}
+
+	shared-network VLAN10-Morosos-ABASOLO {
+
+		subnet 10.40.101.0 netmask 255.255.255.0 {
+							}
+
+		# #ABASOLO-VLAN10(MOROSOS)
+		subnet 172.40.101.0 netmask 255.255.255.0 {
+			range 172.40.101.27 172.40.101.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 172.40.101.255;
+			option routers 172.40.101.1;
+			option domain-name-servers 208.67.222.222, 8.8.8.8;
+			default-lease-time 3600;
+			max-lease-time 3600;
+	}
+	}
+
+	shared-network VLAN20-PyME-ABASOLO {
+
+		subnet 10.40.102.0 netmask 255.255.255.0 {
+							}
+		# #ABASOLO-Ruteado por VLAN20
+		subnet 190.14.172.32 netmask 255.255.255.248 {
+			range 190.14.172.34 190.14.172.38;
+			option subnet-mask 255.255.255.248;
+			option broadcast-address 190.14.172.39;
+			option routers 190.14.172.33;
+				   option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+# #ABASOLO-Ruteado por VLAN20
+		subnet 190.14.172.64 netmask 255.255.255.248 {
+			range 190.14.172.66 190.14.172.70;
+			option subnet-mask 255.255.255.248;
+			option broadcast-address 190.14.172.71;
+			option routers 190.14.172.65;
+				   option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			}
+	}
+
+	shared-network VLAN30-Residencial-ABASOLO {
+
+	subnet 10.40.103.0 netmask 255.255.255.0 {
+							}
+
+
+	##ABASOLO-Ruteado por VLAN30
+		subnet 190.114.172.0 netmask 255.255.255.0 {
+			range 190.114.172.2 190.114.172.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.172.255;
+			option routers 190.114.172.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+			
+	##ABASOLO-Ruteado por VLAN30
+		subnet 190.114.173.0 netmask 255.255.255.0 {
+			range 190.114.173.2 190.114.173.250;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 190.114.173.255;
+			option routers 190.114.173.1;
+			option domain-name-servers 208.67.222.222 , 8.8.8.8;
+			default-lease-time 21600;
+			max-lease-time 21600;
+			allow unknown-clients;
+			}
+			
+	}
+
+	##############################
+	### 	FIN NODO-ABASOLO   ###
+	#####################*########
+	#############################
+	###     NODO PORTUGUES     ###
+	#############################
+
+shared-network VLAN1-Default-PORTUGUES {
+
+	subnet 10.40.120.0 netmask 255.255.255.0 {
+								}
+							}
+
+shared-network VLAN10-Morosos-PORTUGUES {
+	subnet 10.40.121.0 netmask 255.255.255.0 {
+								}
+ #Portugues-Ruteado por VLAN10
+	subnet 172.40.121.0 netmask 255.255.255.0 {
+		range 172.40.121.2 172.40.121.254;
+		Option subnet-mask 255.255.255.0;
+		Option broadcast-address 172.40.121.255;
+		Option routers 172.40.121.1;
+		Option domain-name-servers 172.40.121.1;
+		Default-lease-time 43200;
+		Max-lease-time 43200;
+								}
+							}
+
+	shared-network VLAN20-PyME-PORTUGES {
+		subnet 10.40.122.0 netmask 255.255.255.0 {
+								}
+	# #Portugues-Ruteado por VLAN20
+		subnet 190.14.172.40 netmask 255.255.255.248 {
+			range 190.14.172.42 190.14.172.46;
+			Option subnet-mask 255.255.255.248;
+			Option broadcast-address 190.14.172.47;
+			Option routers 190.14.172.41;
+			Option domain-name-servers 10.15.128.24, 208.67.222.222, 8.8.8.8;
+			Default-lease-time 432000;
+			Max-lease-time 43200;
+								}
+							
+	
+# #Portugues-Ruteado por VLAN20
+	subnet 190.14.172.56 netmask 255.255.255.248 {
+			range 190.14.172.58 190.14.172.61;
+			Option subnet-mask 255.255.255.248;
+			Option broadcast-address 190.14.172.63;
+			Option routers 190.14.172.57;
+			Option domain-name-servers 10.15.128.24, 208.67.222.222, 8.8.8.8;
+			Default-lease-time 432000;
+			Max-lease-time 43200;
+								}
+
+# #Portugues-Ruteado por VLAN20
+	subnet 190.14.172.72 netmask 255.255.255.248 {
+			range 190.14.172.74 190.14.172.78;
+			Option subnet-mask 255.255.255.248;
+			Option broadcast-address 190.14.172.79;
+			Option routers 190.14.172.73;
+			Option domain-name-servers 10.15.128.24, 208.67.222.222, 8.8.8.8;
+			Default-lease-time 432000;
+			Max-lease-time 43200;
+								}
+
+								}								
+shared-network VLAN30-Residencial-Portugues {
+
+	subnet 10.40.123.0 netmask 255.255.255.0 {
+							}
+# #Portugues-Ruteado por VLAN30
+	subnet 190.114.169.0 netmask 255.255.255.0 {
+		range 190.114.169.2 190.114.169.250;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.114.169.255;
+		option routers 190.114.169.1;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		allow unknown-clients;
+												}
+		# #Portugues-Ruteado por VLAN30
+	subnet 190.114.170.0 netmask 255.255.255.0 {
+		range 190.114.170.2 190.114.170.250;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.114.170.255;
+		option routers 190.114.170.1;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 21600;
+		max-lease-time 21600;
+		allow unknown-clients;
+												}
+											}
+######## HOST SPECIFIC DECLARATIONS #######
+#ddns-update-style interim;
+#Red 190.14.163.0
+## CLAMEX SRL AP 224 RADA TILLY 190.14.172.10  0a-00-3e-27-c5-87
+## PC NODO 190.14.163.3
+##190.14.163.220 to 190.14.163.224 cl1893
+##190.14.163.228 Switch-Quidway-TPP
+##190.14.163.229 --SM MAC 0A003EFC0731  FORTALEZA CE SRL
+##190.14.163.230 to 190.14.163.234 Cl8515
+##190.14.163.235 APC-RadaTilly
+##190.14.163.236 to 190.14.163.240 Cl9923
+##190.14.163.241 to 190.14.163.242 Enlace Caleta PTP
+##190.14.163.243 Tasistro
+##190.14.163.244 --LIBRE
+##190.14.163.245 Nat Inside CanlDelViento
+##190.14.163.246 Pruebas Wimax
+##190.14.163.247 --LIBRE
+##190.14.163.248 APC-Hermite
+##190.14.163.249 Asterisk@CDR
+##190.14.163.250 Nat Inside/Outside CanalDelViento
+##190.14.163.251 Prizm30
+##190.14.163.252 CanalDelViento
+##190.14.163.253 Nat Inside CanalDelViento
+##190.14.163.254 TPP-netEQ
+#Red 190.14.173.0 VLAN20-PYME 
+##190.14.173.2  Prizm31 Eth0.20
+## CMC Servicios SRL 190.14.173.195 0a-00-3e-56-e2-cd
+## Cl454 5 IPs FIJA 190.14.173.201 hasta 190.14.173.205
+##CRM 2000722 5IPs FIJA 190.14.173.206 hasta 190.14.173.210
+##CRM 2005972 5Ips FIJA 190.14.173.213 hasta 190.14.173.217 - 15062010
+##190.14.173.212 N-CTR-9403 Griffith 
+##190.14.173.218 -CRM000002004549  JAVIER MORALES
+##190.14.173.219 -CRM000002004757  DELIA DEL CARMEN FUENTES BELLO  
+##190.14.173.220 -CRM000002005476  JAVIER ABRAHAM MORALES 
+##190.14.173.221 -CRM000002005477   SANTOS ABRAHAM MORALES 
+##190.14.173.222 -CRM000000787074   MARCELA ARCE 
+##190.14.173.223 -CRM000002005483   FERNANDO ARIEL CARRIZO 
+##190.14.173.224 -CRM000000759088  SEGUFER MINERA S.A
+##190.14.173.225 -CRM000002006221 DANIEL LUIS LAPEGRINI
+##190.14.173.229 Cl2961
+##190.14.173.230 -CRM000002002100  ARMADURAS DE LA PATAGONIA S.A.  
+##190.14.173.231 prueba windows 7
+##190.14.173.232 0a-00-3e-fb-73-7e en AP 155
+##190.14.173.234 Prueba Wimax en AP 177
+##190.14.173.235 Prueba Wimax PC Lucas en AP 177
+##190.14.173.240 IP CRM000000786158 GRUPO ANTU SA 
+##190.14.173.241 Policastro,AP 93 y el SM es 0a-00-3e-d7-c3-d2
+##190.14.173.242 SM 0a-00-3e-d9-71-08 en AP 10.30.128.95
+##190.14.173.243 SM 0a-00-3e-ff-f5-c8 en AP 218 Sim Movil
+##190.14.173.244 SM 0a-00-3e-ff-f5-c8 en AP 218 Sim Movil
+##190.14.173.53 SM AP 218 Sim Movil
+##190.14.173.169 SM AP 218 Sim Movil
+##190.14.173.245 CRM000002012042 AP178 SM7391
+##190.14.173.246 CRM000002012195 AP242 SM1E32
+##190.14.173.247 BW000000000000003754 AP133 SM13C0
+##190.14.173.248 BW000000000000010577  AP123 Jorge Gonzalez
+##190.14.173.249 CRM000000785008 ESCARABAJAL INGENIERIA SRL
+##190.14.173.250 BW05874 carrusca jorge hector
+##190.114.169.250 0a-00-3e-d3-46-77
+##190.14.173.200-196 CRM000000786057 ENERGIA DEL SUR S.A contrato 3099
+host chosco { hardware ethernet 00:15:60:ca:a0:79; fixed-address 190.14.165.251;}
+host Cl3174 { hardware ethernet 00:11:3b:10:45:68; fixed-address 190.14.173.254;}
+host ClBW11888 { hardware ethernet 00:19:5b:fa:e1:19; fixed-address 190.14.173.253;}
+host NCTR9403 { hardware ethernet 00:21:29:DA:B2:B1; fixed-address 190.14.173.212;}
+##UPS
+host UPS-CdV { hardware ethernet 00:c0:b7:72:5b:a9; fixed-address 10.15.129.10;}
+host UPS-RadaTilly { hardware ethernet 00:c0:b7:cf:c1:f1; fixed-address 10.15.129.15;}
+host UPS-Carcamo { hardware ethernet 00:c0:b7:d7:f8:56; fixed-address 10.15.129.11;}
+host UPS-Balming { hardware ethernet 00:c0:b7:73:2f:7b; fixed-address 10.15.129.13;}
+host Cl-temporal { hardware ethernet 00:1d:0f:e9:2f:51; fixed-address 201.251.136.24;}
+host ROuterOficina { hardware ethernet 00:25:9c:35:24:8f; fixed-address 190.14.169.198;}
+host CRM2004534 { hardware ethernet 00:18:f8:bc:e8:f9; fixed-address 190.14.173.211;} #27-04-2010
+host Lucas1 { hardware ethernet 00:25:9c:f5:8d:fa; fixed-address 190.14.173.169;} #15-11-2010
+host Lucas2 { hardware ethernet 00:1b:7e:d3:3a:0c; fixed-address 190.14.173.53;} #19-11-2010
+host MikrotikOficina{ hardware ethernet 00:1b:7e:d3:3a:0c; fixed-address 190.114.157.132;} #19-11-2010
+host TintiDiego{ hardware ethernet 0a:00:3e:d6:17:af; fixed-address 190.14.172.22;}
+# host PamelaTest { hardware ethernet 00:0C:42:AD:08:F6; fixed-address 10.15.128.8;}
+##host MikrotikMorosos{ hardware ethernet ; fixed-address 190.114.157.254;} #21-05-2012
+##Osdipp 190.14.173.193 0a-00-3e-d7-d6-31 #01/02/13
+
+###cordon Forestal
+host ForalezaSRL{ hardware ethernet 0a:00:3e:fc:07:31; fixed-address 190.14.172.62;}
+##

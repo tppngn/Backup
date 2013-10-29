@@ -1,0 +1,180 @@
+!Software Version V100R005C01SPC100
+ sysname Quidway-Hermite
+#
+ vlan batch 10 20 30
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ dhcp enable
+#
+ undo http server enable
+#
+aaa
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user admin password simple admin
+ local-user admin service-type http
+#                                         
+interface Vlanif1
+ ip address 10.15.128.167 255.255.128.0
+#
+interface MEth0/0/1
+#
+interface GigabitEthernet0/0/1
+ description Enlace Canal 23Ghz 10.15.128.33
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/2
+ description Enlace Balming 215
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ description CMM 229                      
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/4
+ description CMM 169
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/5
+ description CMM 170
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6            
+ description UPS Apc 10.15.129.12
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/7
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/8
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/9
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/10
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/11
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/13
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/15           
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/16
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/18
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/19
+ ntdp enable
+ ndp enable
+ bpdu enable                              
+#
+interface GigabitEthernet0/0/20
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/21
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.1
+#
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F000001000025F6
+ snmp-agent community read  tppsa
+ snmp-agent sys-info version v2c v3
+#
+user-interface con 0
+ idle-timeout 0 0
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+#
+return

@@ -1,0 +1,12 @@
+ar.pool.ntp.org
+2.ar.pool.ntp.org
+0.south-america.pool.ntp.org
+3.south-america.pool.ntp.org
+
+yum install ntp
+date
+mv /etc/localtime /etc/localtime-old
+ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime
+/usr/sbin/ntpdate -u  ar.pool.ntp.org
+/sbin/hwclock --systohc
+ date

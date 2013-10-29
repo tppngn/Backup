@@ -1,0 +1,170 @@
+[root@centos-server ~]# history 
+    1  ifconfig
+    2  ping 10.10.128.166
+    3  reload 
+    4  reboot
+    5  ifconfig
+    6  nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+    7  nano /etc/sysconfig/network-scripts/ifcfg-lo 
+    8  nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+    9  /etc/init.d/network restart
+   10  ping 10.10.128.184
+   11  ping 10.10.128.166
+   12  ifconfig
+   13  ping 10.10.18.186
+   14  ifconfig
+   15  nano /etc/sysconfig/network-scripts/ifup-eth 
+   16  ifup eth0
+   17  nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+   18  /etc/init.d/network restart
+   19  ping 10.10.128.184
+   20  reboot
+   21  ifconfig -a
+   22  nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+   23  /etc/init.d/network restart
+   24  ifconfig -a
+   25  ping 10.10.128.184
+   26  ping 10.10.128.166
+   27  ping 10.10.128.156
+   28  system-config-network tui
+   29  /etc/init.d/network restart
+   30  ifconfig 
+   31  ping 10.10.128.166
+   32  ifconfig
+   33  ifconfig eth0 10.10.128.186/17 up
+   34  ping 10.10.128.166
+   35  route add default gw 10.10.255.254 eth0
+   36  ping 8.8.8.8
+   37  reboot 
+   38  ping 8.8.8.8
+   39  ipconfig
+   40  ifconfig
+   41  system-config-network tui
+   42  ifconfig
+   43  ping 8.8.8.8
+   44  ifconfig
+   45  ping 8.8.8.8
+   46  ifconfig
+   47  system-config-network tui
+   48  ifconfig
+   49  system-config-network tui
+   50  nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+   51  ifconfig
+   52  ping 8.8.8.8
+   53  cat /proc/net/dev
+   54  dmidecode 
+   55  dmidecode -q
+   56  cat /proc/net/dev
+   57  ping 8.8.8.8
+   58  ifconfig
+   59  nano /etc/sysconfig/network-scripts/ifcfg-eth0 
+   60  ifconfig
+   61  ifconfig eth1 10.10.128.186/17 up
+   62  ifconfig
+   63  ping 8.8.8.8
+   64  ifconfig eth1 10.10.128.186/17 gw 10.10.255.254
+   65  route add default eth1 gw 10.10.255.254
+   66  route add default gw 10.10.255.254 eth1
+   67  ping 8.8.8.8
+   68  nano /etc/sysconfig/network-scripts/ifcfg-eth1
+   69  reboot
+   70  ping 8.8.8.8
+   71  ifconfig
+   72  nano /etc/sysconfig/network-scripts/ifcfg-eth1 
+   73  nano /etc/sysconfig/network-scripts/ifcfg-eth0
+   74  /etc/init.d/network restart
+   75  nano /etc/sysconfig/network-scripts/ifcfg-eth1 
+   76  ping 8.8.8.8
+   77  /etc/init.d/network restart
+   78  ping 8.8.8.8
+   79  reboot
+   80  ping 8.8.8.8
+   81  service httpd start
+   82  chkconfig --level 235 httpd on
+   83  nano /etc/sysconfig/iptables
+   84  /etc/init.d/iptables restart
+   85  /etc/init.d/httpd status
+   86  host
+   87  host -l
+   88  hostname
+   89  service mysqld status
+   90  service 
+   91  yum install mysql mysql-server
+   92  service mysqld start
+   93  chkconfig mysqld on
+   94  /usr/bin/mysqladmin -u root password 'tppngn23ar'
+   95  mysql_secure_installation
+   96  chkconfig --level 2345 mysqld on
+   97  apt-get install phpmyadmin
+   98  yum install phpmyadmin
+   99  yum install php
+  100  service httpd restart
+  101  yum install php-mysql php-gd php-imap php-ldap php-mbstring php-odbc php-pear php-xml php-xmlrpc
+  102  service httpd restart
+  103  yum install phpmyadmin
+  104  rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+  105  yum -enablerepo=remi install phpmyadmin
+  106  yum -enablerepo=remi,remi-test install phpmyadmin
+  107  yum install phpmyadmin
+  108  service httpd restart
+  109  nano /etc/httpd/conf.d/phpMyAdmin.conf
+  110  yum - enablerepo=remi install phpmyadmin
+  111  yum --enablerepo=remi install phpmyadmin
+  112  cp /usr/share/phpMyAdmin/config.sample.inc.php /usr/share/phpMyAdmin/config.inc.php
+  113  nano /usr/share/phpMyAdmin/config.inc.php
+  114  service httpd restart
+  115  cat /usr/local/apache/logs/error_log
+  116  cat /usr/local/apache/logs
+  117  ls -lisa /usr/sbin/sendmail
+  118  cd /usr/local/
+  119  ls
+  120  cd bin/
+  121  ls
+  122  cd ..
+  123  cd sbin/ 
+  124  ls
+  125  cd ..
+  126  cd
+  127  chown root:mailtrap /usr/sbin/sendmail
+  128  chmod 2755 /usr/sbin/sendmail
+  129  chown root:mailtrap /usr/sbin/sendmail
+  130  ping 192.168.0.5
+  131  iptables -t filter -L
+  132  iptables -t 
+  133  iptables -t filter -L
+  134  iptables -L
+  135  iptables
+  136  iptables -h
+  137  iptables -L
+  138  iptables -A INPUT -m state --state NEW -p tcp --dport 25 -j ACCEPT
+  139  service iptables restart
+  140  service iptables stop
+  141  service iptables start
+  142  service iptables stop
+  143  iptables -A INPUT -s 0.0.0.0/0 -p tcp --dport 25 -j ACCEPT
+  144  yum install sendmail
+  145  service sendmail start
+  146  chkconfig sendmail on
+  147  nano /etc/mail/sendmail.mc
+  148  service sendmail status
+  149  service sendmail start
+  150  service sendmail status
+  151  sudo  yum install sendmail-cf
+  152  sudo  /etc/rc.d/init.d/postfix stop
+  153  sudo service sendmail restart
+  154  sudo chkconfig sendmail on
+  155  nano /etc/mail/sendmail.mc
+  156  sudo service sendmail restart
+  157  getsebool -a | grep mail
+  158  sudo -u root setsebool -P httpd_can_sendmail on
+  159  getsebool -a | grep mail
+  160  sudo service sendmail restart
+  161  /usr/sbin/sendmail pguarnieri@tpp.com.ar
+  162  more var/spool/mail/root
+  163  more /var/spool/mail/root
+  164  sudo service sendmail restart
+  165  shutdown 
+  166  yum install net-snmp
+  167  yum install snmpwalk
+  168  yum install snmpget
+  169  yum install net-snmp-utils

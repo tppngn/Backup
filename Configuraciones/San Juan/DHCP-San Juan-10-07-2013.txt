@@ -1,0 +1,278 @@
+###ldap-server "localhost";
+###ldap-port 389;
+###ldap-username "cn=manager, dc=telecentro, dc=com";
+###ldap-password secret;
+###ldap-base-dn "dc=telecentro, dc=com";
+###ldap-method dynamic;
+authoritative;
+ddns-update-style interim;
+
+
+######## NETWORK DECLARATIONS #######
+
+
+
+
+shared-network SJ-CPE-Iplan {
+
+
+subnet 10.11.128.0 netmask 255.255.224.0 {
+	not authoritative;
+#	deny unknown-clients;
+
+}
+
+
+
+subnet 190.2.46.0 netmask 255.255.255.128 {
+##    	range 190.2.46.2 190.2.46.11;
+##	range 190.2.46.22 190.2.46.59;
+##    	range 190.2.46.61 190.2.46.110;
+# RANGO PARA Pymes	range 190.2.46.64 190.2.46.126;
+    	option subnet-mask 255.255.255.128;
+    	option routers 190.2.46.1;
+    	#  option domain-name "sj.tpp.com.ar";
+    	option domain-name-servers 201.216.254.107 , 201.216.254.108;
+	##option domain-name-servers 200.69.193.1, 200.69.193.2;
+    	default-lease-time 43200;
+    	max-lease-time 43200;
+	allow unknown-clients;
+	#Bloque IPLAN Cant. Host:124
+}
+
+
+subnet 190.14.170.0 netmask 255.255.255.0 {
+        range 190.14.170.2 190.14.170.138;
+	range 190.14.170.140 190.14.170.170;
+	range 190.14.170.172 190.14.170.199;
+##Rangos Ip Fija PYME
+##	range 190.14.170.200 190.14.170.220;
+##	range 190.14.170.221 190.14.170.250;
+#Range IP NAT TPP 190.14.170.251 190.14.170.254;
+        option subnet-mask 255.255.255.0;
+        option routers 190.14.170.1;
+#option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+#Ruteado por TECO Cant. Host:252
+}
+subnet 190.14.171.128 netmask 255.255.255.192 {
+#03/11 para liberar trafico en TECO        
+range 190.14.171.130 190.14.171.136;
+range 190.14.171.138 190.14.171.141;
+range 190.14.171.143 190.14.171.159;
+range 190.14.171.161 190.14.171.190;
+option subnet-mask 255.255.255.192;
+option routers 190.14.171.129;
+# option domain-name "sj.tpp.com.ar";
+option domain-name-servers 201.216.254.107 , 201.216.254.108;
+default-lease-time 21600;
+max-lease-time 21600;
+allow unknown-clients;
+}
+
+subnet 190.14.171.0 netmask 255.255.255.128 {
+# Rango	para Pymes	range 190.14.171.2 190.14.171.65;
+	range 190.14.171.66 190.14.171.94;
+	range 190.14.171.96  190.14.171.117;
+        range 190.14.171.119 190.14.171.126;
+	option subnet-mask 255.255.255.128;
+        option routers 190.14.171.1;
+        #  option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+	#Ruteado por TECO Cant. Host: 124;
+}
+
+subnet 190.14.171.192 netmask 255.255.255.224 {
+        range 190.14.171.194 190.14.171.222;
+        option subnet-mask 255.255.255.224;
+        option routers 190.14.171.193;
+        #  option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+	#Ruteado por TECO Cant. Host:28;
+}
+
+
+subnet 190.114.140.0 netmask 255.255.255.0 {
+        range 190.114.140.2 190.114.140.250;
+        option subnet-mask 255.255.255.0;
+        option routers 190.114.140.1;
+        #  option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+	#Ruteado por TECO Cant. Host:248;
+}
+
+
+subnet 190.114.141.0 netmask 255.255.255.0 {
+        range 190.114.141.2 190.114.141.250;
+        option subnet-mask 255.255.255.0;
+        option routers 190.114.141.1;
+        #  option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+	#Ruteado por TECO Cant. Host:248;
+}
+
+subnet 190.114.142.0 netmask 255.255.255.0 {
+        range 190.114.142.2 190.114.142.68;
+        range 190.114.142.70 190.114.142.250;
+        option subnet-mask 255.255.255.0;
+        option routers 190.114.142.1;
+        #  option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+	#Ruteado por TECO Cant. Host:248;
+}
+
+subnet 190.114.191.0 netmask 255.255.255.0 {
+        range 190.114.191.2 190.114.191.250;
+        option subnet-mask 255.255.255.0;
+        option routers 190.114.191.1;
+        #option domain-name "sj.tpp.com.ar";
+        option domain-name-servers 201.216.254.107 , 201.216.254.108;
+        default-lease-time 21600;
+        max-lease-time 21600;
+        allow unknown-clients;
+	#Ruteado por TECO Cant. Host:250;
+}
+
+}
+
+
+######## HOST SPECIFIC DECLARATIONS #######
+#-update-style interim;
+
+### Reservaciones RED 190.2.46.0 ############################################
+### RANGO PARA Pymes 190.2.46.64 190.2.46.126 ##########################
+# Cl3138 10 IPs 190.2.46.12 hasta 190.2.46.21
+# Cl1487 5IP fijas 190.2.46.122 hasta 190.2.46.126
+# CRM000000759699 AMODEY MARCELO 190.2.46.121
+# CRM759266 Carlos Lozano 190.2.46.120
+# CRM000000759755  FERNANDEZ RODOLFO  190.2.46.119
+# CRM000002004317 RODOLFO OMAR FLORES 190.2.46.118
+# Luis Alberto - Matioli 190.2.46.117
+##
+
+
+
+###Reservaciones 201.216.254.X ###############################################
+#Oficina SanJuan 201.216.254.90 to 201.216.254.94 (Leo Mattioli)
+#Cl104 5IPs 201.216.254.122 to 201.216.254.126;
+
+###Reservaciones 190.14.170.X #################################################
+#Cl1155 IP static 190.14.170.139
+#ClBorisAhumada IP static 190.14.171.95
+# Rango para PYMES	range 190.14.170.200 190.14.170.220;
+# Rango para PYMES	range 190.14.170.221 190.14.170.250;
+host CL2246 { hardware ethernet 00:40:F4:BA:49:59; fixed-address 190.14.170.200;}
+host CL2483 { hardware ethernet 00:11:3B:0F:42:5F; fixed-address 190.14.170.201;}
+host CL1955 { hardware ethernet 00:14:78:8E:F0:95; fixed-address 190.14.170.202;}
+#Cl2388/3022 y 3020 -- 7 IP Static 190.14.170.203 hasta 190.14.170.210
+host Cl3162 { hardware ethernet 00:11:09:07:93:52; fixed-address 190.14.170.211;}
+host CL2913 { hardware ethernet 00:1B:11:27:B2:A9; fixed-address 190.14.170.212;}
+host CL2809 { hardware ethernet 00:08:A1:97:F1:DF; fixed-address 190.14.170.213;}
+host CL3063 { hardware ethernet 00:E0:7D:F9:50:55; fixed-address 190.14.170.214;}
+host CL1957 { hardware ethernet 00:18:F8:B9:C4:CC; fixed-address 190.14.170.215;}
+host CL1835 { hardware ethernet 00:19:E0:10:B2:A9; fixed-address 190.14.170.216;}
+#host LIBRE { hardware ethernet ; fixed-address 190.14.170.217;}
+host CL1275 { hardware ethernet 00:11:3B:0C:51:66; fixed-address 190.14.170.218;}
+host CL271 { hardware ethernet 00:0A:15:00:00:01; fixed-address 190.14.170.219;}
+#Cl8841 5ips 190.14.170.220 hasta 190.14.170.224
+# Cl3019 IP Static 190.14.170.225 hasta 190.14.227
+# ClElectromet.Andina 5 IP statica 190.14.170.228 hasta 190.14.170.232
+host CL1484 { hardware ethernet 0a:00:3e:f5:e2:89; 
+fixed-address 190.14.170.233;}
+# IP Leonardo Matiolli 190.14.170.234
+# IP Leonardo Matiolli Para Cliente 190.14.170.235
+# IP Leonardo Matiolli Para Cliente 190.14.170.236
+# IP Leonardo Matiolli Para Cliente 190.14.170.237
+# IP Municipalidad Pocitos 00:0C:42:13:68:4C 190.14.170.238
+# IP prueba matiolli 190.14.170.239
+# IP fagale 190.14.170.240
+# 190.14.170.241
+# 190.14.170.242  0a-00-3e-db-58-9a Claudia Miriam Cortez
+
+##Reservacion 190.14.171.X ####################################################
+host CL352 { hardware ethernet 00:18:F8:F3:34:FF; fixed-address 190.14.171.2;}
+host CL477 { hardware ethernet 00:0E:E8:1B:51:80; fixed-address 190.14.171.3;}
+#Cl2158 IP fija 190.14.171.4;}
+host CL209 { hardware ethernet 00:1C:10:D2:81:63; fixed-address 190.14.171.5;}
+host CL267 { hardware ethernet 00:18:E7:48:A9:4F; fixed-address 190.14.171.6;}
+host CL436 { hardware ethernet 00:0E:08:CC:AD:D6; fixed-address 190.14.171.7;}
+#host LIBRE { hardware ethernet ; fixed-address 190.14.171.8;}
+host CL3069 { hardware ethernet 00:15:E9:E4:AD:78; fixed-address 190.14.171.9;}
+host CL508 { hardware ethernet 00:19:E0:97:8A:33; fixed-address 190.14.171.10;}
+host CL1427 { hardware ethernet 00:1A:70:41:FB:98; fixed-address 190.14.171.11;}
+host CL1956 { hardware ethernet 00:1F:C6:17:46:5A; fixed-address 190.14.171.12;}
+host CL269 { hardware ethernet 00:11:3B:01:BA:EF; fixed-address 190.14.171.13;}
+host CL494 { hardware ethernet 00:14:78:E2:A2:A1; fixed-address 190.14.171.14;}
+host CL3307 { hardware ethernet 00:08:A1:B1:44:4F; fixed-address 190.14.171.15;}
+host CL1681 { hardware ethernet 00:1C:10:08:96:9B; fixed-address 190.14.171.16;}
+host CL3479 { hardware ethernet 00:E0:4C:F3:84:00; fixed-address 190.14.171.17;}
+host Cl-Gil-Ernesto { hardware ethernet 00:0e:2e:c0:d9:7c; fixed-address 190.14.171.18;}
+#host cl9835 ip fija 190.14.171.19;}
+host CL3137 { hardware ethernet 00:0C:42:12:6B:E4; fixed-address 190.14.171.20;}
+#host LIBRE { hardware ethernet ; fixed-address 190.14.171.21;}
+#host LIBRE { hardware ethernet ; fixed-address 190.14.171.22;}
+#host LIBRE { hardware ethernet ; fixed-address 190.14.171.23;}
+host CL4194 { hardware ethernet 00:1a:70:5d:c9:ad; fixed-address 190.14.171.24;}
+host CL6035 { hardware ethernet 00:1C:10:33:91:2A; fixed-address 190.14.171.25;}
+host CL2261-2 { hardware ethernet 00:1A:70:6E:70:20; fixed-address 190.14.171.26;}
+host CL1814 { hardware ethernet 00:1A:70:2F:8C:9A; fixed-address 190.14.171.27;}
+host CL3458 { hardware ethernet 00:1A:70:DC:A7:B6; fixed-address 190.14.171.28;}
+#host LIBRE { hardware ethernet ; fixed-address 190.14.171.29;}
+host CL529 { hardware ethernet 00:13:46:53:9B:6E; fixed-address 190.14.171.30;}
+host CL1964 { hardware ethernet 00:0C:6E:A2:41:70; fixed-address 190.14.171.31;}
+host CL164 { hardware ethernet 00:19:E0:97:7C:31; fixed-address 190.14.171.32;}
+host Cl1740 { hardware ethernet 00:1C:10:2D:CB:A1; fixed-address 190.14.171.33;}
+host CL1623 { hardware ethernet 00:C0:02:1C:05:37; fixed-address 190.14.171.34;}
+host CL635 { hardware ethernet 08:10:74:0B:5E:B7; fixed-address 190.14.171.35;}
+host CL2056 { hardware ethernet 00:02:A5:9A:E6:AF; fixed-address 190.14.171.36;}
+host CL1617 { hardware ethernet 00:13:8F:AE:E4:46; fixed-address 190.14.171.37;}
+host CL1449 { hardware ethernet 00:14:78:6B:67:95; fixed-address 190.14.171.38;}
+host CL7143 { hardware ethernet 00:19:66:67:b5:8a; fixed-address 190.14.171.39;}
+host CL869 { hardware ethernet 00:18:E7:24:AF:D9; fixed-address 190.14.171.40;}
+host CL3321 { hardware ethernet 00:E0:7D:73:49:5A; fixed-address 190.14.171.41;}
+host CL5194 { hardware ethernet 00:1B:11:27:BE:1B; fixed-address 190.14.171.42;}
+host CL3598 { hardware ethernet 00:1E:E5:57:33:8F; fixed-address 190.14.171.43;}
+host CL136 { hardware ethernet 00:06:4F:60:A1:09; fixed-address 190.14.171.44;}
+host CL2431 { hardware ethernet 00:4F:67:01:BB:39; fixed-address 190.14.171.45;}
+host CL1740 { hardware ethernet 00:1C:10:2D:CB:A1; fixed-address 190.14.171.46;}
+host CL1512 { hardware ethernet 00:C0:02:F4:D8:E7; fixed-address 190.14.171.47;}
+host CL2409 { hardware ethernet 00:1D:7E:29:19:60; fixed-address 190.14.171.48;}
+host CL2261-1 { hardware ethernet 00:19:5B:E4:AF:B1; fixed-address 192.14.171.49;}
+host CL2418 { hardware ethernet 00:1B:11:D1:FE:1A; fixed-address 190.14.171.50;}
+host CL3772 { hardware ethernet 00:18:E7:2B:3E:62; fixed-address 190.14.171.51;}
+host CL3487 { hardware ethernet 00:1C:10:58:A3:F1; fixed-address 190.14.171.52;}
+host CL4110 { hardware ethernet 00:16:D3:9B:CD:BE; fixed-address 190.14.171.53;}
+host CL3702 { hardware ethernet 00:19:DB:A2:34:BD; fixed-address 190.14.171.54;}
+host CL3079 { hardware ethernet 00:1C:10:2B:69:D5; fixed-address 190.14.171.55;}
+host Cl6164 { hardware ethernet 00:1e:90:26:63:04; fixed-address 190.14.171.56;}
+host Cl5352 { hardware ethernet 00:14:bf:7a:fd:b3; fixed-address 190.14.171.57;}
+##host Cl23296 { hardware ethernet 00:14:bf:7a:fd:b3; fixed-address 190.14.171.58;}
+##190.14.171.59 - 190.14.171.63 CERAS SAN JUAN S.A
+
+
+
+# Cliente 503 5IP fijas 190.14.171.195 to 190.14.171.199
+#Leonardo-Tecnico- IP para el pruebas 190.14.171.60
+# Asterisk
+host Asterisk {
+	hardware ethernet 00:08:54:b2:46:b6;
+	fixed-address 190.114.142.69;
+	}

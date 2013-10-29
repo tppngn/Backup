@@ -1,0 +1,180 @@
+
+ sysname Quidway-15
+#
+radius scheme system
+#
+domain system
+#
+vlan 1
+#
+vlan 10
+#
+vlan 20
+#
+vlan 30
+#
+vlan 50
+#
+vlan 160
+#
+vlan 320
+#
+interface Vlan-interface1
+ ip address 10.15.128.15 255.255.224.0
+#
+ ntp-service unicast-server 10.15.128.128 
+#
+interface Aux1/0/0
+#
+interface Ethernet1/0/1
+ duplex full
+ speed 100
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 10
+ description Cascadeo SW 10.15.128.14
+#
+interface Ethernet1/0/2
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 10
+#
+interface Ethernet1/0/3
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 10
+ description sipura
+#
+interface Ethernet1/0/4
+ port link-type trunk                     
+ port trunk permit vlan all
+ broadcast-suppression 10
+ description PTP600-to-Caleta
+#
+interface Ethernet1/0/5
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30 320
+ broadcast-suppression 10
+#
+interface Ethernet1/0/6
+ port link-type trunk
+ port trunk permit vlan 1 10 20 30
+ flow-control
+ broadcast-suppression 10
+#
+interface Ethernet1/0/7
+ port access vlan 320
+#
+interface Ethernet1/0/8
+ port access vlan 320
+#
+interface Ethernet1/0/9
+ broadcast-suppression 10
+ port access vlan 160                     
+ description PC-10.15.160.160
+#
+interface Ethernet1/0/10
+ duplex full
+ speed 100
+ broadcast-suppression 10
+ port access vlan 10
+#
+interface Ethernet1/0/11
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/12
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/13
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/14
+ broadcast-suppression 10
+ port access vlan 160
+#                                         
+interface Ethernet1/0/15
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/16
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/17
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/18
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/19
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/20
+ broadcast-suppression 10
+ port access vlan 160
+#                                         
+interface Ethernet1/0/21
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/22
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/23
+ broadcast-suppression 10
+ port access vlan 160
+#
+interface Ethernet1/0/24
+ broadcast-suppression 10
+ port access vlan 160
+ description RED-192.168.1.0/24-Appear
+#
+interface GigabitEthernet1/1/1
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 10
+ shutdown
+ description Cooper-to-Chenque
+#                                         
+interface GigabitEthernet1/1/2
+ port link-type trunk
+ port trunk permit vlan all
+ broadcast-suppression 10
+ description FO-to-Chenque
+#
+interface GigabitEthernet1/2/1
+ port link-type trunk
+ port trunk permit vlan all
+ flow-control
+ broadcast-suppression 10
+ description Lnk-Oficina
+#
+interface GigabitEthernet1/2/2
+ port link-type trunk
+ port trunk permit vlan all
+ flow-control
+ broadcast-suppression 10
+ shutdown
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.1 preference 60
+#                                         
+ snmp-agent
+ snmp-agent local-engineid 800007DB000FE286CDF86877
+ snmp-agent community read tppsa
+ snmp-agent sys-info version all
+#
+user-interface aux 0
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password simple tppar
+#
+return

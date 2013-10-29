@@ -1,0 +1,8 @@
+vconfig add eth0 10
+ifconfig eth0.10 172.16.0.2 netmask 255.255.252.0
+vconfig add eth0 20
+ifconfig eth0.20 10.20.128.2 netmask 255.255.255.0
+vconfig add eth0 30
+ifconfig eth0.30 10.30.128.2 netmask 255.255.255.0
+
+tail -f /var/log/messages

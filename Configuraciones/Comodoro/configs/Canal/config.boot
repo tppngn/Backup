@@ -1,0 +1,544 @@
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    ip-src-route enable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    ethernet eth0 {
+        address 10.15.128.24/19
+        description LAN
+        duplex auto
+        hw-id 00:1b:21:75:82:c4
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 172.16.0.24/22
+        }
+        vif 20 {
+            address 10.20.128.24/19
+        }
+        vif 30 {
+            address 10.31.128.24/19
+        }
+    }
+    ethernet eth1 {
+        address 10.40.40.1/24
+        description CordonForestal
+        duplex auto
+        hw-id 00:1b:21:75:82:c5
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 10.40.41.1/24
+            address 172.40.41.1/24
+            description CFORESTAL-VLAN10-Morosos
+        }
+        vif 20 {
+            address 10.40.42.1/24
+            address 190.14.172.1/29
+            address 190.14.172.49/29
+            description CFORESTAL-VLAN20-PYME
+        }
+        vif 30 {
+            address 10.40.43.1/24
+            address 190.14.166.1/23
+            address 190.114.171.1/24
+            description CFORESTAL-VLAN30-Residencial
+        }
+    }
+    ethernet eth2 {
+        address 10.40.141.1/24
+        address 172.18.1.1/24
+        address 190.114.147.1/24
+        description DIADEMA
+        duplex auto
+        hw-id 00:1b:21:75:82:c6
+        smp_affinity auto
+        speed auto
+    }
+    ethernet eth3 {
+        address 10.40.110.1/24
+        description Carcamo
+        duplex auto
+        hw-id 00:1b:21:75:82:c7
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 10.40.111.1/24
+        }
+        vif 20 {
+            address 10.40.112.1/24
+            address 190.114.155.1/25
+            description CARCAMO-VLAN20-PyME
+        }
+        vif 30 {
+            address 10.40.113.1/24
+            address 190.114.149.1/24
+            address 190.114.150.1/24
+            address 190.114.151.1/24
+            address 190.114.152.1/24
+            address 190.114.153.1/24
+            address 190.114.154.1/24
+            address 190.14.164.1/24
+            address 190.14.165.1/24
+            address 190.114.190.1/24
+            description CARCAMO-VLAN30-Residencial
+        }
+    }
+    ethernet eth4 {
+        address 10.40.130.1/24
+        description RadaTilly
+        duplex auto
+        hw-id 00:1b:21:9e:05:80
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 10.40.131.1/24
+            address 172.40.131.1/24
+            description RADATILLY-VLAN10-Morosos
+        }
+        vif 20 {
+            address 10.40.132.1/24
+            address 190.14.172.9/29
+            address 190.14.172.17/29
+            address 190.14.172.25/29
+            description RADATILLY-VLAN20-PyME
+        }
+        vif 30 {
+            address 10.40.133.1/24
+            address 190.114.145.1/24
+            address 190.114.189.1/24
+            description RADATILLY-VLAN30-Residencial
+        }
+    }
+    ethernet eth5 {
+        address 10.40.120.1/24
+        description NodoPortuguez
+        duplex auto
+        hw-id 00:1b:21:9e:05:81
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 10.40.121.1/24
+            address 172.40.121.1/24
+        }
+        vif 20 {
+            address 10.40.122.1/24
+            address 190.14.172.41/29
+            address 190.14.172.57/29
+            address 190.14.172.73/24
+        }
+        vif 30 {
+            address 10.40.123.1/24
+            address 190.114.169.1/24
+            address 190.114.170.1/24
+        }
+    }
+    ethernet eth6 {
+        address 10.40.100.1/24
+        description NodoAbasolo
+        duplex auto
+        hw-id 00:1b:21:9e:05:82
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 10.40.101.1/24
+            address 172.40.101.1/24
+        }
+        vif 20 {
+            address 10.40.102.1/24
+            address 190.14.172.33/29
+            address 190.14.172.65/29
+        }
+        vif 30 {
+            address 190.114.172.1/24
+            address 190.114.173.1/24
+            address 10.40.103.1/24
+        }
+    }
+    ethernet eth7 {
+        duplex auto
+        hw-id 00:1b:21:9e:05:83
+        smp_affinity auto
+        speed auto
+    }
+    loopback lo {
+    }
+}
+policy {
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop 10.15.128.18 {
+            }
+        }
+        route 10.10.128.0/17 {
+            next-hop 10.15.128.1 {
+            }
+        }
+        route 10.115.40.0/24 {
+            next-hop 10.40.130.50 {
+            }
+        }
+        route 10.140.141.0/24 {
+            next-hop 10.40.141.10 {
+            }
+        }
+        route 10.141.141.0/24 {
+            next-hop 10.40.141.10 {
+            }
+        }
+        route 10.240.52.0/24 {
+            next-hop 10.40.141.52 {
+            }
+        }
+        route 10.240.61.0/24 {
+            next-hop 10.40.110.61 {
+            }
+        }
+        route 10.240.62.0/24 {
+            next-hop 10.40.110.62 {
+            }
+        }
+        route 10.240.63.0/24 {
+            next-hop 10.40.110.63 {
+            }
+        }
+        route 10.240.64.0/24 {
+            next-hop 10.40.110.64 {
+            }
+        }
+        route 10.240.65.0/24 {
+            next-hop 10.40.110.65 {
+            }
+        }
+        route 10.240.66.0/24 {
+            next-hop 10.40.110.66 {
+            }
+        }
+        route 10.240.67.0/24 {
+            next-hop 10.40.110.67 {
+            }
+        }
+        route 10.240.68.0/24 {
+            next-hop 10.40.110.68 {
+            }
+        }
+        route 10.240.80.0/24 {
+            next-hop 10.40.40.80 {
+            }
+        }
+        route 10.240.81.0/24 {
+            next-hop 10.40.40.81 {
+            }
+        }
+        route 10.240.82.0/24 {
+            next-hop 10.40.40.82 {
+            }
+        }
+        route 10.240.83.0/24 {
+            next-hop 10.40.40.83 {
+            }
+        }
+        route 10.240.84.0/24 {
+            next-hop 10.40.40.84 {
+            }
+        }
+        route 10.240.85.0/24 {
+            next-hop 10.40.40.85 {
+            }
+        }
+        route 10.240.88.0/24 {
+            next-hop 10.40.88.1 {
+            }
+        }
+        route 10.240.101.0/24 {
+            next-hop 10.40.100.101 {
+            }
+        }
+        route 10.240.102.0/24 {
+            next-hop 10.40.100.102 {
+            }
+        }
+        route 10.240.103.0/24 {
+            next-hop 10.40.100.103 {
+            }
+        }
+        route 10.240.104.0/24 {
+            next-hop 10.40.100.104 {
+            }
+        }
+        route 10.240.105.0/24 {
+            next-hop 10.40.100.105 {
+            }
+        }
+        route 10.240.106.0/24 {
+            next-hop 10.40.100.106 {
+            }
+        }
+        route 10.240.107.0/24 {
+            next-hop 10.40.100.107 {
+            }
+        }
+        route 10.240.154.0/24 {
+            next-hop 10.40.110.154 {
+            }
+        }
+        route 10.240.155.0/24 {
+            next-hop 10.40.110.155 {
+            }
+        }
+        route 10.240.156.0/24 {
+            next-hop 10.40.110.156 {
+            }
+        }
+        route 10.240.202.0/24 {
+            next-hop 10.40.120.202 {
+            }
+        }
+        route 10.240.203.0/24 {
+            next-hop 10.40.120.203 {
+            }
+        }
+        route 10.240.204.0/24 {
+            next-hop 10.40.120.204 {
+            }
+        }
+        route 10.240.205.0/24 {
+            next-hop 10.40.120.205 {
+            }
+        }
+        route 10.240.206.0/24 {
+            next-hop 10.40.120.206 {
+            }
+        }
+        route 10.240.230.0/24 {
+            next-hop 10.40.110.230 {
+            }
+        }
+        route 10.240.231.0/24 {
+            next-hop 10.40.110.231 {
+            }
+        }
+        route 10.240.232.0/24 {
+            next-hop 10.40.110.232 {
+            }
+        }
+        route 10.240.235.0/24 {
+            next-hop 10.40.110.235 {
+            }
+        }
+        route 10.240.236.0/24 {
+            next-hop 10.40.110.236 {
+            }
+        }
+        route 10.240.237.0/24 {
+            next-hop 10.40.110.237 {
+            }
+        }
+        route 10.240.240.0/24 {
+            next-hop 10.40.110.240 {
+            }
+        }
+        route 10.240.241.0/24 {
+            next-hop 10.40.110.241 {
+            }
+        }
+        route 10.240.242.0/24 {
+            next-hop 10.40.110.242 {
+            }
+        }
+        route 10.240.243.0/24 {
+            next-hop 10.40.110.243 {
+            }
+        }
+        route 10.240.244.0/24 {
+            next-hop 10.40.110.244 {
+            }
+        }
+        route 10.240.245.0/24 {
+            next-hop 10.40.110.245 {
+            }
+        }
+        route 10.240.246.0/24 {
+            next-hop 10.40.110.246 {
+            }
+        }
+        route 172.40.131.26/32 {
+            next-hop 172.16.0.26 {
+            }
+        }
+        route 190.114.155.128/26 {
+            next-hop 10.40.130.50 {
+            }
+        }
+        route 190.114.155.192/26 {
+            next-hop 10.40.130.50 {
+            }
+        }
+        route 192.168.0.0/16 {
+            next-hop 10.15.128.1 {
+            }
+        }
+    }
+}
+service {
+    dhcp-relay {
+        interface eth1
+        interface eth1.10
+        interface eth1.20
+        interface eth1.30
+        interface eth2
+        interface eth3.10
+        interface eth3.20
+        interface eth3.30
+        interface eth0
+        interface eth3
+        interface eth4.20
+        interface eth4.30
+        interface eth4
+        interface eth4.10
+        interface eth0.20
+        interface eth0.30
+        interface eth0.10
+        interface eth6
+        interface eth6.10
+        interface eth6.20
+        interface eth6.30
+        interface eth5
+        interface eth5.10
+        interface eth5.20
+        interface eth5.30
+        server 10.15.130.1
+        server 10.31.128.2
+        server 10.20.128.2
+        server 172.16.0.2
+    }
+    dns {
+        forwarding {
+            cache-size 500
+            listen-on eth0
+            listen-on eth1
+            listen-on eth2
+            listen-on eth3
+            listen-on eth4
+            listen-on eth3.10
+            listen-on eth3.20
+            listen-on eth3.30
+            listen-on eth5
+            listen-on eth5.10
+            listen-on eth5.20
+            listen-on eth6
+            listen-on eth6.10
+            listen-on eth6.20
+            listen-on eth6.30
+            listen-on eth5.30
+            name-server 8.8.8.8
+            name-server 8.8.4.4
+            system
+        }
+    }
+    https {
+        http-redirect enable
+    }
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+    }
+    ssh {
+        allow-root
+        port 3522
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    conntrack {
+        expect-table-size 4096
+        hash-size 4096
+        table-size 50000000
+        tcp {
+            half-open-connections 512
+            loose enable
+            max-retrans 3
+        }
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name vyatta
+    ip {
+        arp {
+            table-size 16384
+        }
+    }
+    login {
+        user root {
+            authentication {
+                encrypted-password $1$wai26Aef$peTPnePzXxQAgXrJwwrzm0
+                plaintext-password ""
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password $1$c0jUIrZq$dVdqVsXWDFYaeLTwjMhRu.
+            }
+            level admin
+        }
+    }
+    name-server 8.8.8.8
+    name-server 8.8.4.4
+    ntp {
+        server 0.vyatta.pool.ntp.org {
+        }
+        server 1.vyatta.pool.ntp.org {
+        }
+        server 2.vyatta.pool.ntp.org {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ""
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone GMT
+}
+vpn {
+}
+
+
+/* Warning: Do not remove the following line. */
+/* === vyatta-config-version: "qos@1:nat@4:webgui@1:vrrp@1:conntrack-sync@1:webproxy@1:quagga@2:dhcp-server@4:conntrack@1:ipsec@4:dhcp-relay@1:wanloadbalance@3:cluster@1:firewall@5:system@6:config-management@1:zone-policy@1" === */
+/* Release version: VC6.6R1 */

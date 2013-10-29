@@ -1,0 +1,195 @@
+!Software Version V100R005C01SPC100
+ sysname SW-Zapala
+#
+ super password level 3 cipher VV>D@COR%"_BG&\<+9^UaQ!!
+#
+ vlan batch 10 20 30
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ undo http server enable
+#
+vlan 10
+ description VLAN-MOROSOS
+vlan 20
+ description VLAN20-PyMES
+vlan 30
+ description VLAN30-Residencial
+#
+aaa
+ authentication-scheme default            
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user zp-admtpp password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+ local-user zp-admtpp privilege level 3
+ local-user zp-admtpp service-type telnet terminal ssh ftp web http
+ undo local-user admin
+#
+interface Vlanif1
+ ip address 10.24.128.2 255.255.255.0
+#
+interface MEth0/0/1
+#
+interface GigabitEthernet0/0/1
+ description "NetEq - 10.24.128.11"
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/2
+ description ""
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/4
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/5
+ description Entrada Morosos (eth1-MK)
+ port link-type access
+ port default vlan 10
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6
+ description Salida Morosos (eth4 MKT)    
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/7
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/8
+ description "UPS - 10.24.128.40"
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/9
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/10           
+ description "Equipo telefonia Grandstream-190.114.144.254"
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/11
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ description "Prizm-10.24.128.4 y Proxmox"
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/13
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ ntdp enable                              
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/15
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/16
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/18
+ ntdp enable
+ ndp enable
+ bpdu enable
+#                                         
+interface GigabitEthernet0/0/19
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/20
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/21
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ description "CMM y AP's"
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.24.128.1
+#
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F0000010000100F
+ snmp-agent community read  tppsa
+ snmp-agent sys-info version v2c v3
+#
+ stelnet server enable
+ ssh server port 3522
+ ssh authentication-type default password
+ ssh user zp-admtpp
+ ssh user zp-admtpp authentication-type password
+ ssh user zp-admtpp service-type all      
+#
+user-interface con 0
+ authentication-mode password
+ set authentication password cipher VV>D@COR%"_BG&\<+9^UaQ!!
+ idle-timeout 0 0
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ protocol inbound all
+#
+return

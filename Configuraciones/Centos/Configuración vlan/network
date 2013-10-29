@@ -1,0 +1,4 @@
+NETWORKING=yes
+HOSTNAME=localhost.localdomain
+VLAN=yes
+GATEWAY=10.16.128.1

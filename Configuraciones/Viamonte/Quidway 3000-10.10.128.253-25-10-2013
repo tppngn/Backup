@@ -1,0 +1,123 @@
+ sysname Q3000-Via
+#
+ super password level 3 cipher ^1,\MLQ9>Q^0Y+L8]\_#%!!!
+#
+radius scheme system
+ server-type huawei
+ primary authentication 127.0.0.1 1645
+ primary accounting 127.0.0.1 1646
+ user-name-format without-domain
+
+domain system
+ radius-scheme system
+ access-limit disable
+ state active
+ vlan-assignment-mode integer
+ idle-cut disable
+ self-service-url disable
+ messenger time disable
+
+ domain default enable system
+#
+ local-server nas-ip 127.0.0.1 key huawei
+#                                         
+ temperature-limit 0 42 65
+#
+vlan 1
+#
+interface Vlan-interface1
+ ip address 10.10.128.253 255.255.128.0
+#
+interface Aux0/0
+#
+interface Ethernet0/1
+#
+interface Ethernet0/2
+#
+interface Ethernet0/3
+ duplex full
+ speed 100
+#
+interface Ethernet0/4
+ description ""
+ duplex full
+ speed 100
+#                                         
+interface Ethernet0/5
+#
+interface Ethernet0/6
+#
+interface Ethernet0/7
+ description Vyatta VPN 10.10.128.90
+#
+interface Ethernet0/8
+#
+interface Ethernet0/9
+#
+interface Ethernet0/10
+ description PROXY-FW-10.10.128.25
+#
+interface Ethernet0/11
+#
+interface Ethernet0/12
+ description PC-IVAN
+#
+interface Ethernet0/13
+ description Link contra CISCO
+ duplex full                              
+#
+interface Ethernet0/14
+ description "port 1 sw oficina NGN - boca 9 pathp."
+#
+interface Ethernet0/15
+ description lnk-Mikrotik-TPP
+#
+interface Ethernet0/16
+ description PRTG
+#
+interface Ethernet0/17
+ description VPN2-10.10.128.91
+ duplex full
+ speed 100
+#
+interface Ethernet0/18
+ description Central IP
+#
+interface Ethernet0/19
+ description Port Firewall (10.10.255.253)
+ duplex full
+ speed 100
+#                                         
+interface Ethernet0/20
+#
+interface Ethernet0/21
+#
+interface Ethernet0/22
+#
+interface Ethernet0/23
+ description Proxmox 2 10.10.128.122
+#
+interface Ethernet0/24
+ duplex full
+ speed 100
+#
+interface NULL0
+#
+interface LoopBack0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.10.255.254 preference 60
+#
+ snmp-agent
+ snmp-agent local-engineid 800007DB00E0FC4CA6566877
+ snmp-agent community read  tpp           
+ snmp-agent community write  tpprw
+ snmp-agent community read  tppsa
+ snmp-agent sys-info location Argentina
+ snmp-agent sys-info version all
+#
+user-interface aux 0
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password cipher `!,IYE"4$LSQ=^Q`MAF4<1!!
+#
+return

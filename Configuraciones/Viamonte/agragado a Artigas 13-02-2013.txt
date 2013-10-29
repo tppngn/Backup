@@ -1,0 +1,6 @@
+access-list 8 permit 10.10.127.120
+access-list 8 permit 10.10.127.20
+access-list 8 permit 10.10.127.125
+access-list 8 permit 10.10.127.128
+access-list 8 permit 10.10.127.213
+access-list 8 permit 10.10.127.215

@@ -1,0 +1,1 @@
+/usr/local/Canopy/Prizm/bin/ServerAdminTool.sh

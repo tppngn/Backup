@@ -1,0 +1,187 @@
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    conntrack-expect-table-size 6250000
+    conntrack-hash-size 6250000
+    conntrack-table-size 50000000
+    conntrack-tcp-loose enable
+    ip-src-route enable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    ethernet eth0 {
+        duplex full
+        hw-id 00:1a:64:21:c4:59
+        smp_affinity auto
+        speed 100
+        vif 424 {
+            address 190.221.60.234/29
+        }
+    }
+    ethernet eth1 {
+        address 10.15.128.18/19
+        address 10.30.128.18/24
+        address 190.114.156.1/23
+        duplex auto
+        hw-id 00:1a:64:21:c4:5a
+        smp_affinity auto
+        speed auto
+    }
+    loopback lo {
+    }
+}
+protocols {
+    bgp 52232 {
+        neighbor 200.69.129.36 {
+            ebgp-multihop 4
+            remote-as 11664
+        }
+        network 190.114.156.0/23 {
+        }
+    }
+    static {
+        route 10.10.128.0/17 {
+            next-hop 10.15.128.1 {
+            }
+        }
+        route 10.40.0.0/16 {
+            next-hop 10.15.128.24 {
+            }
+        }
+        route 10.50.128.0/19 {
+            next-hop 10.15.128.6 {
+            }
+        }
+        route 200.69.129.36/30 {
+            next-hop 190.221.60.233 {
+            }
+        }
+    }
+}
+service {
+    dns {
+        forwarding {
+            cache-size 500
+            listen-on eth1
+            system
+        }
+    }
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+    }
+    ssh {
+        allow-root
+        port 3522
+        protocol-version v2
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    host-name CR-Telmex
+    login {
+        user cr-admtpp {
+            authentication {
+                encrypted-password ****************
+            }
+            level admin
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 8.8.8.8
+    name-server 8.8.4.4
+    ntp-server 0.vyatta.pool.ntp.org
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone GMT
+}
+vpn {
+    ipsec {
+        esp-group ESP-1COL {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1COL {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth1
+        }
+        site-to-site {
+            peer 190.114.133.1 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                ike-group IKE-1COL
+                local-ip 190.114.156.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1COL
+                    local-subnet 10.15.128.0/19
+                    remote-subnet 10.22.128.0/24
+                }
+            }
+        }
+    }
+}

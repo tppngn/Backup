@@ -1,0 +1,11 @@
+rmem_max: 223232
+rmem_default: 111616
+wmem_default: 111616
+rmem_max:131071
+
+Nuevo
+net.core.rmem_max = 223232
+net.core.rmem_default = 126976
+net.core.wmem_max = 131071
+net.core.wmem_default = 126976
+net.ipv4.route.max_size = 4194304

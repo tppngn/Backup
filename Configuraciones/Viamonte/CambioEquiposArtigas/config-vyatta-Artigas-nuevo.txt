@@ -1,0 +1,1078 @@
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    ip-src-route enable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    bridge br6 {
+        stp true
+    }
+    ethernet eth0 {
+        address 200.68.72.101/29
+        description "Iplan Internet-port 1 sw Iplan"
+        duplex auto
+        hw-id 40:f2:e9:07:ad:d2
+        smp_affinity auto
+        speed auto
+        traffic-policy {
+            out Congestion
+        }
+        vif 1 {
+            disable
+        }
+    }
+    ethernet eth1 {
+        address 172.18.18.2/30
+        description "TLS Viamonte-port 20 sw Iplan"
+        duplex auto
+        hw-id 40:f2:e9:07:ad:d3
+        smp_affinity auto
+        speed auto
+        traffic-policy {
+            out Congestion
+        }
+    }
+    ethernet eth2 {
+        description DNS-10.77.128.1-201.216.254.105
+        duplex auto
+        hw-id 40:f2:e9:07:ad:d4
+        smp_affinity auto
+        speed auto
+        vif 7 {
+            address 10.77.128.1/24
+            address 201.216.254.105/29
+            description DNS
+        }
+    }
+    ethernet eth3 {
+        bridge-group {
+            bridge br6
+        }
+        description "Sw Penales port 1"
+        duplex auto
+        hw-id 40:f2:e9:07:ad:d5
+        smp_affinity auto
+        speed auto
+        vif 4 {
+            address 10.10.127.1/24
+            address 10.10.129.1/28
+            description "link Viamonte"
+        }
+        vif 60 {
+            address 10.86.128.1/24
+            description "Vlan Prueba Penales"
+        }
+    }
+    ethernet eth4 {
+        bridge-group {
+            bridge br6
+        }
+        description "UMG8900-OMC-slot 1-MNG"
+        duplex full
+        hw-id 90:e2:ba:40:4b:84
+        smp_affinity auto
+        speed 100
+        vif 4 {
+        }
+    }
+    ethernet eth5 {
+        description "UMG8900-FE0-Slot 3"
+        duplex auto
+        hw-id 90:e2:ba:40:4b:85
+        smp_affinity auto
+        speed auto
+        vif 3 {
+            description "link UMG"
+        }
+    }
+    ethernet eth6 {
+        description "UMG8900-VPU-FE0-RTP-Slot 1"
+        duplex auto
+        hw-id 90:e2:ba:40:4b:86
+        smp_affinity auto
+        speed auto
+        vif 3 {
+            address 201.216.254.97/29
+            description "link UMG"
+        }
+    }
+    ethernet eth7 {
+        bridge-group {
+            bridge br6
+        }
+        description "Mux G. Catan-interface bridge"
+        duplex auto
+        hw-id 90:e2:ba:40:4b:87
+        smp_affinity auto
+        speed auto
+        vif 4 {
+            description "link Viamonte"
+        }
+    }
+    ethernet eth8 {
+        description "Mux San Martin-interface bridge"
+        duplex auto
+        hw-id 90:e2:ba:40:51:dc
+        smp_affinity auto
+        speed auto
+        vif 4 {
+            description "link Viamonte"
+        }
+    }
+    ethernet eth9 {
+        duplex auto
+        hw-id 90:e2:ba:40:51:dd
+        smp_affinity auto
+        speed auto
+    }
+    ethernet eth10 {
+        bridge-group {
+            bridge br6
+        }
+        description "Vlan prueba G. Catan"
+        duplex auto
+        hw-id 90:e2:ba:40:51:de
+        smp_affinity auto
+        speed auto
+        vif 60 {
+        }
+    }
+    ethernet eth11 {
+        address 55.10.10.66/24
+        duplex auto
+        hw-id 90:e2:ba:40:51:df
+        smp_affinity auto
+        speed auto
+    }
+    loopback lo {
+    }
+}
+nat {
+    destination {
+        rule 2 {
+            description Nat_Inside
+            destination {
+                address 200.68.72.101
+            }
+            inbound-interface eth0
+            translation {
+                address 172.18.18.2
+            }
+        }
+        rule 10 {
+            description "Nat_inside Vlan 4"
+            destination {
+                address 200.68.72.101
+            }
+            inbound-interface eth0
+            translation {
+                address 10.10.129.1
+            }
+        }
+        rule 11 {
+            description "Nat_inside Vlan 4_127"
+            destination {
+                address 200.68.72.101
+            }
+            inbound-interface eth0
+            translation {
+                address 10.10.127.1
+            }
+        }
+        rule 12 {
+            description "Nat_inside Vlan 60_10.86-pruebas"
+            destination {
+                address 200.68.72.101
+            }
+            inbound-interface eth0
+            translation {
+                address 10.86.128.1
+            }
+        }
+        rule 20 {
+            description "Nat_inside Vlan 7_10.77"
+            destination {
+                address 201.216.254.105
+            }
+            inbound-interface eth0
+            translation {
+                address 10.77.128.1
+            }
+        }
+        rule 60 {
+            description "Nat_inside Vlan 60_10.86.128"
+            destination {
+                address 200.68.72.101
+            }
+            inbound-interface eth0
+            translation {
+                address 10.86.128.1
+            }
+        }
+    }
+    source {
+        rule 1 {
+            description NAT_Outside_eth0
+            outbound-interface eth0
+            protocol all
+            source {
+                address 172.18.18.2/30
+            }
+            translation {
+                address 200.68.72.101-200.68.72.102
+            }
+        }
+        rule 30 {
+            description Nat_Overload
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.10.128.0/17
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 40 {
+            description Nat_Overload_172.16
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 172.16.1.0/24
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 70 {
+            description Nat_Overload_192.168
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 192.168.0.0/17
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 80 {
+            description Nat_Overload_10.10.127.117
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.10.127.117
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 81 {
+            description Nat_Overload_10.10.127.233
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.10.127.233
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 82 {
+            description Nat_Overload_10.10.127.193
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.10.127.193
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 83 {
+            description Nat_Overload_10.10.127.132
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.10.127.132
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 84 {
+            description Nat_Overload_10.10.127.144
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.10.127.144
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 85 {
+            description Nat_Overload_10.77.128.1
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.77.128.1
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 86 {
+            description Nat_Overload_10.77.128.2
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.77.128.2
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 87 {
+            description Nat_Overload_10.77.128.3
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.77.128.3
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 88 {
+            description Nat_Overload_10.77.128.4
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.77.128.4
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 89 {
+            description Nat_Overload_10.77.128.5
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol all
+            source {
+                address 10.77.128.5
+            }
+            translation {
+                address masquerade
+            }
+        }
+        rule 90 {
+            description NAT_TS_Lepore
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.248
+                port 3389
+            }
+            translation {
+                address 200.68.72.101
+                port 3389
+            }
+        }
+        rule 91 {
+            description NAT_TS_10.10.128.4
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.4
+                port 5948
+            }
+            translation {
+                address 200.68.72.101
+                port 5948
+            }
+        }
+        rule 92 {
+            description NAT_TS_10.10.128.212-1
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.212
+                port 5847
+            }
+            translation {
+                address 200.68.72.101
+                port 6847
+            }
+        }
+        rule 93 {
+            description NAT_TS_10.10.128.212-2
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.212
+                port 5947
+            }
+            translation {
+                address 200.68.72.101
+                port 6947
+            }
+        }
+        rule 95 {
+            description NAT_TS_10.10.1.200
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.1.200
+                port 5900
+            }
+            translation {
+                address 200.68.72.101
+                port 6948
+            }
+        }
+        rule 96 {
+            description NAT_TS_10.10.128.212-3
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.212
+                port 8080
+            }
+            translation {
+                address 200.68.72.101
+                port 8888
+            }
+        }
+        rule 97 {
+            description NAT_TS_10.10.128.128-PRTG
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.128
+                port 8080
+            }
+            translation {
+                address 200.68.72.101
+                port 8888
+            }
+        }
+        rule 98 {
+            description NAT_TS_10.10.128.166-Solar
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0
+            protocol tcp
+            source {
+                address 10.10.128.166
+                port 80
+            }
+            translation {
+                address 200.68.72.101
+                port 8282
+            }
+        }
+    }
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop 200.68.72.102 {
+            }
+        }
+        route 10.8.10.0/24 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.10.1.192/27 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.10.10.0/24 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.10.128.0/17 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.11.128.0/19 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.12.128.0/19 {
+            next-hop 10.10.0.1 {
+            }
+        }
+        route 10.15.128.0/19 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.16.128.0/19 {
+            next-hop 10.10.128.90 {
+            }
+            next-hop 10.10.255.254 {
+            }
+        }
+        route 10.24.128.0/24 {
+            next-hop 10.10.128.90 {
+            }
+        }
+        route 10.26.0.0/24 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 10.30.128.0/22 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 172.16.0.0/16 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 190.2.46.192/29 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 190.2.46.200/30 {
+            next-hop 10.10.127.131 {
+            }
+        }
+        route 190.2.46.204/30 {
+            next-hop 10.10.127.132 {
+            }
+        }
+        route 190.2.46.208/30 {
+            next-hop 10.10.127.193 {
+            }
+        }
+        route 190.2.46.212/30 {
+            next-hop 10.10.127.137 {
+            }
+        }
+        route 190.2.46.216/30 {
+            next-hop 10.10.127.138 {
+            }
+        }
+        route 190.2.46.220/30 {
+            next-hop 10.10.127.117 {
+            }
+        }
+        route 190.2.46.240/28 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 190.12.101.143/32 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 190.12.101.144/32 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 192.168.0.0/17 {
+            next-hop 172.18.18.1 {
+            }
+        }
+        route 200.73.185.64/27 {
+            next-hop 172.18.18.1 {
+            }
+        }
+    }
+}
+service {
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+        contact "TPP NGN - Email:ngn@tpp.com.ar - Web:www.tpp.com.ar"
+        description Vyatta-Artigas
+        location "Nodo Artigas-CABA"
+    }
+    ssh {
+        allow-root
+        port 3522
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    conntrack {
+        expect-table-size 625000
+        hash-size 625000
+        table-size 50000000
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    domain-name ba-02-ats.tpp.com.ar
+    host-name Artigas
+    login {
+        banner {
+            pre-login "\n\n\t--------------------------------------------------------------------\n\tThese is a device property of TPP SA\n\tAll unauthorized use will be traced and prosecuted\n\tFor more information contact TPP SA +54 11 43723310 - www.tpp.com.ar\n\t--------------------------------------------------------------------\n\n\n"
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 200.69.193.1
+    name-server 200.69.193.2
+    ntp {
+        server 0.vyatta.pool.ntp.org {
+        }
+        server 1.vyatta.pool.ntp.org {
+        }
+        server 2.vyatta.pool.ntp.org {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level crit
+            }
+            facility mark {
+                level warning
+            }
+            facility protocols {
+                level debug
+            }
+        }
+        host 10.10.128.166 {
+            facility all {
+                level warning
+            }
+        }
+    }
+    time-zone America/Argentina/Buenos_Aires
+}
+traffic-policy {
+    random-detect Congestion {
+        bandwidth 16mbit
+    }
+}
+ 
+set firewall all-ping 'enable'
+set firewall broadcast-ping 'disable'
+set firewall ipv6-receive-redirects 'disable'
+set firewall ipv6-src-route 'disable'
+set firewall ip-src-route 'enable'
+set firewall log-martians 'enable'
+set firewall receive-redirects 'enable'
+set firewall send-redirects 'enable'
+set firewall source-validation 'disable'
+set firewall syn-cookies 'enable'
+set interfaces bridge br6 stp 'true'
+set interfaces ethernet eth0 address '200.68.72.101/29'
+set interfaces ethernet eth0 description 'Iplan Internet-port 1 sw Iplan'
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id '40:f2:e9:07:ad:d2'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth0 traffic-policy out 'Congestion'
+set interfaces ethernet eth0 vif 1 'disable'
+set interfaces ethernet eth1 address '172.18.18.2/30'
+set interfaces ethernet eth1 description 'TLS Viamonte-port 20 sw Iplan'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id '40:f2:e9:07:ad:d3'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth1 traffic-policy out 'Congestion'
+set interfaces ethernet eth2 description 'DNS-10.77.128.1-201.216.254.105'
+set interfaces ethernet eth2 duplex 'auto'
+set interfaces ethernet eth2 hw-id '40:f2:e9:07:ad:d4'
+set interfaces ethernet eth2 smp_affinity 'auto'
+set interfaces ethernet eth2 speed 'auto'
+set interfaces ethernet eth2 vif 7 address '10.77.128.1/24'
+set interfaces ethernet eth2 vif 7 address '201.216.254.105/29'
+set interfaces ethernet eth2 vif 7 description 'DNS'
+set interfaces ethernet eth3 bridge-group bridge 'br6'
+set interfaces ethernet eth3 description 'Sw Penales port 1'
+set interfaces ethernet eth3 duplex 'auto'
+set interfaces ethernet eth3 hw-id '40:f2:e9:07:ad:d5'
+set interfaces ethernet eth3 smp_affinity 'auto'
+set interfaces ethernet eth3 speed 'auto'
+set interfaces ethernet eth3 vif 4 address '10.10.127.1/24'
+set interfaces ethernet eth3 vif 4 address '10.10.129.1/28'
+set interfaces ethernet eth3 vif 4 description 'link Viamonte'
+set interfaces ethernet eth3 vif 60 address '10.86.128.1/24'
+set interfaces ethernet eth3 vif 60 description 'Vlan Prueba Penales'
+set interfaces ethernet eth4 bridge-group bridge 'br6'
+set interfaces ethernet eth4 description 'UMG8900-OMC-slot 1-MNG'
+set interfaces ethernet eth4 duplex 'full'
+set interfaces ethernet eth4 hw-id '90:e2:ba:40:4b:84'
+set interfaces ethernet eth4 smp_affinity 'auto'
+set interfaces ethernet eth4 speed '100'
+set interfaces ethernet eth4 vif '4'
+set interfaces ethernet eth5 description 'UMG8900-FE0-Slot 3'
+set interfaces ethernet eth5 duplex 'auto'
+set interfaces ethernet eth5 hw-id '90:e2:ba:40:4b:85'
+set interfaces ethernet eth5 smp_affinity 'auto'
+set interfaces ethernet eth5 speed 'auto'
+set interfaces ethernet eth5 vif 3 description 'link UMG'
+set interfaces ethernet eth6 description 'UMG8900-VPU-FE0-RTP-Slot 1'
+set interfaces ethernet eth6 duplex 'auto'
+set interfaces ethernet eth6 hw-id '90:e2:ba:40:4b:86'
+set interfaces ethernet eth6 smp_affinity 'auto'
+set interfaces ethernet eth6 speed 'auto'
+set interfaces ethernet eth6 vif 3 address '201.216.254.97/29'
+set interfaces ethernet eth6 vif 3 description 'link UMG'
+set interfaces ethernet eth7 bridge-group bridge 'br6'
+set interfaces ethernet eth7 description 'Mux G. Catan-interface bridge'
+set interfaces ethernet eth7 duplex 'auto'
+set interfaces ethernet eth7 hw-id '90:e2:ba:40:4b:87'
+set interfaces ethernet eth7 smp_affinity 'auto'
+set interfaces ethernet eth7 speed 'auto'
+set interfaces ethernet eth7 vif 4 description 'link Viamonte'
+set interfaces ethernet eth8 description 'Mux San Martin-interface bridge'
+set interfaces ethernet eth8 duplex 'auto'
+set interfaces ethernet eth8 hw-id '90:e2:ba:40:51:dc'
+set interfaces ethernet eth8 smp_affinity 'auto'
+set interfaces ethernet eth8 speed 'auto'
+set interfaces ethernet eth8 vif 4 description 'link Viamonte'
+set interfaces ethernet eth9 duplex 'auto'
+set interfaces ethernet eth9 hw-id '90:e2:ba:40:51:dd'
+set interfaces ethernet eth9 smp_affinity 'auto'
+set interfaces ethernet eth9 speed 'auto'
+set interfaces ethernet eth10 bridge-group bridge 'br6'
+set interfaces ethernet eth10 description 'Vlan prueba G. Catan'
+set interfaces ethernet eth10 duplex 'auto'
+set interfaces ethernet eth10 hw-id '90:e2:ba:40:51:de'
+set interfaces ethernet eth10 smp_affinity 'auto'
+set interfaces ethernet eth10 speed 'auto'
+set interfaces ethernet eth10 vif '60'
+set interfaces ethernet eth11 address '55.10.10.66/24'
+set interfaces ethernet eth11 duplex 'auto'
+set interfaces ethernet eth11 hw-id '90:e2:ba:40:51:df'
+set interfaces ethernet eth11 smp_affinity 'auto'
+set interfaces ethernet eth11 speed 'auto'
+set interfaces loopback 'lo'
+set nat destination rule 2 description 'Nat_Inside'
+set nat destination rule 2 destination address '200.68.72.101'
+set nat destination rule 2 inbound-interface 'eth0'
+set nat destination rule 2 translation address '172.18.18.2'
+set nat destination rule 10 description 'Nat_inside Vlan 4'
+set nat destination rule 10 destination address '200.68.72.101'
+set nat destination rule 10 inbound-interface 'eth0'
+set nat destination rule 10 translation address '10.10.129.1'
+set nat destination rule 11 description 'Nat_inside Vlan 4_127'
+set nat destination rule 11 destination address '200.68.72.101'
+set nat destination rule 11 inbound-interface 'eth0'
+set nat destination rule 11 translation address '10.10.127.1'
+set nat destination rule 12 description 'Nat_inside Vlan 60_10.86-pruebas'
+set nat destination rule 12 destination address '200.68.72.101'
+set nat destination rule 12 inbound-interface 'eth0'
+set nat destination rule 12 translation address '10.86.128.1'
+set nat destination rule 20 description 'Nat_inside Vlan 7_10.77'
+set nat destination rule 20 destination address '201.216.254.105'
+set nat destination rule 20 inbound-interface 'eth0'
+set nat destination rule 20 translation address '10.77.128.1'
+set nat destination rule 60 description 'Nat_inside Vlan 60_10.86.128'
+set nat destination rule 60 destination address '200.68.72.101'
+set nat destination rule 60 inbound-interface 'eth0'
+set nat destination rule 60 translation address '10.86.128.1'
+set nat source rule 1 description 'NAT_Outside_eth0'
+set nat source rule 1 outbound-interface 'eth0'
+set nat source rule 1 protocol 'all'
+set nat source rule 1 source address '172.18.18.2/30'
+set nat source rule 1 translation address '200.68.72.101-200.68.72.102'
+set nat source rule 30 description 'Nat_Overload'
+set nat source rule 30 destination address '0.0.0.0/0'
+set nat source rule 30 outbound-interface 'eth0'
+set nat source rule 30 protocol 'all'
+set nat source rule 30 source address '10.10.128.0/17'
+set nat source rule 30 translation address 'masquerade'
+set nat source rule 40 description 'Nat_Overload_172.16'
+set nat source rule 40 destination address '0.0.0.0/0'
+set nat source rule 40 outbound-interface 'eth0'
+set nat source rule 40 protocol 'all'
+set nat source rule 40 source address '172.16.1.0/24'
+set nat source rule 40 translation address 'masquerade'
+set nat source rule 70 description 'Nat_Overload_192.168'
+set nat source rule 70 destination address '0.0.0.0/0'
+set nat source rule 70 outbound-interface 'eth0'
+set nat source rule 70 protocol 'all'
+set nat source rule 70 source address '192.168.0.0/17'
+set nat source rule 70 translation address 'masquerade'
+set nat source rule 80 description 'Nat_Overload_10.10.127.117'
+set nat source rule 80 destination address '0.0.0.0/0'
+set nat source rule 80 outbound-interface 'eth0'
+set nat source rule 80 protocol 'all'
+set nat source rule 80 source address '10.10.127.117'
+set nat source rule 80 translation address 'masquerade'
+set nat source rule 81 description 'Nat_Overload_10.10.127.233'
+set nat source rule 81 destination address '0.0.0.0/0'
+set nat source rule 81 outbound-interface 'eth0'
+set nat source rule 81 protocol 'all'
+set nat source rule 81 source address '10.10.127.233'
+set nat source rule 81 translation address 'masquerade'
+set nat source rule 82 description 'Nat_Overload_10.10.127.193'
+set nat source rule 82 destination address '0.0.0.0/0'
+set nat source rule 82 outbound-interface 'eth0'
+set nat source rule 82 protocol 'all'
+set nat source rule 82 source address '10.10.127.193'
+set nat source rule 82 translation address 'masquerade'
+set nat source rule 83 description 'Nat_Overload_10.10.127.132'
+set nat source rule 83 destination address '0.0.0.0/0'
+set nat source rule 83 outbound-interface 'eth0'
+set nat source rule 83 protocol 'all'
+set nat source rule 83 source address '10.10.127.132'
+set nat source rule 83 translation address 'masquerade'
+set nat source rule 84 description 'Nat_Overload_10.10.127.144'
+set nat source rule 84 destination address '0.0.0.0/0'
+set nat source rule 84 outbound-interface 'eth0'
+set nat source rule 84 protocol 'all'
+set nat source rule 84 source address '10.10.127.144'
+set nat source rule 84 translation address 'masquerade'
+set nat source rule 85 description 'Nat_Overload_10.77.128.1'
+set nat source rule 85 destination address '0.0.0.0/0'
+set nat source rule 85 outbound-interface 'eth0'
+set nat source rule 85 protocol 'all'
+set nat source rule 85 source address '10.77.128.1'
+set nat source rule 85 translation address 'masquerade'
+set nat source rule 86 description 'Nat_Overload_10.77.128.2'
+set nat source rule 86 destination address '0.0.0.0/0'
+set nat source rule 86 outbound-interface 'eth0'
+set nat source rule 86 protocol 'all'
+set nat source rule 86 source address '10.77.128.2'
+set nat source rule 86 translation address 'masquerade'
+set nat source rule 87 description 'Nat_Overload_10.77.128.3'
+set nat source rule 87 destination address '0.0.0.0/0'
+set nat source rule 87 outbound-interface 'eth0'
+set nat source rule 87 protocol 'all'
+set nat source rule 87 source address '10.77.128.3'
+set nat source rule 87 translation address 'masquerade'
+set nat source rule 88 description 'Nat_Overload_10.77.128.4'
+set nat source rule 88 destination address '0.0.0.0/0'
+set nat source rule 88 outbound-interface 'eth0'
+set nat source rule 88 protocol 'all'
+set nat source rule 88 source address '10.77.128.4'
+set nat source rule 88 translation address 'masquerade'
+set nat source rule 89 description 'Nat_Overload_10.77.128.5'
+set nat source rule 89 destination address '0.0.0.0/0'
+set nat source rule 89 outbound-interface 'eth0'
+set nat source rule 89 protocol 'all'
+set nat source rule 89 source address '10.77.128.5'
+set nat source rule 89 translation address 'masquerade'
+set nat source rule 90 description 'NAT_TS_Lepore'
+set nat source rule 90 destination address '0.0.0.0/0'
+set nat source rule 90 outbound-interface 'eth0'
+set nat source rule 90 protocol 'tcp'
+set nat source rule 90 source address '10.10.128.248'
+set nat source rule 90 source port '3389'
+set nat source rule 90 translation address '200.68.72.101'
+set nat source rule 90 translation port '3389'
+set nat source rule 91 description 'NAT_TS_10.10.128.4'
+set nat source rule 91 destination address '0.0.0.0/0'
+set nat source rule 91 outbound-interface 'eth0'
+set nat source rule 91 protocol 'tcp'
+set nat source rule 91 source address '10.10.128.4'
+set nat source rule 91 source port '5948'
+set nat source rule 91 translation address '200.68.72.101'
+set nat source rule 91 translation port '5948'
+set nat source rule 92 description 'NAT_TS_10.10.128.212-1'
+set nat source rule 92 destination address '0.0.0.0/0'
+set nat source rule 92 outbound-interface 'eth0'
+set nat source rule 92 protocol 'tcp'
+set nat source rule 92 source address '10.10.128.212'
+set nat source rule 92 source port '5847'
+set nat source rule 92 translation address '200.68.72.101'
+set nat source rule 92 translation port '6847'
+set nat source rule 93 description 'NAT_TS_10.10.128.212-2'
+set nat source rule 93 destination address '0.0.0.0/0'
+set nat source rule 93 outbound-interface 'eth0'
+set nat source rule 93 protocol 'tcp'
+set nat source rule 93 source address '10.10.128.212'
+set nat source rule 93 source port '5947'
+set nat source rule 93 translation address '200.68.72.101'
+set nat source rule 93 translation port '6947'
+set nat source rule 95 description 'NAT_TS_10.10.1.200'
+set nat source rule 95 destination address '0.0.0.0/0'
+set nat source rule 95 outbound-interface 'eth0'
+set nat source rule 95 protocol 'tcp'
+set nat source rule 95 source address '10.10.1.200'
+set nat source rule 95 source port '5900'
+set nat source rule 95 translation address '200.68.72.101'
+set nat source rule 95 translation port '6948'
+set nat source rule 96 description 'NAT_TS_10.10.128.212-3'
+set nat source rule 96 destination address '0.0.0.0/0'
+set nat source rule 96 outbound-interface 'eth0'
+set nat source rule 96 protocol 'tcp'
+set nat source rule 96 source address '10.10.128.212'
+set nat source rule 96 source port '8080'
+set nat source rule 96 translation address '200.68.72.101'
+set nat source rule 96 translation port '8888'
+set nat source rule 97 description 'NAT_TS_10.10.128.128-PRTG'
+set nat source rule 97 destination address '0.0.0.0/0'
+set nat source rule 97 outbound-interface 'eth0'
+set nat source rule 97 protocol 'tcp'
+set nat source rule 97 source address '10.10.128.128'
+set nat source rule 97 source port '8080'
+set nat source rule 97 translation address '200.68.72.101'
+set nat source rule 97 translation port '8888'
+set nat source rule 98 description 'NAT_TS_10.10.128.166-Solar'
+set nat source rule 98 destination address '0.0.0.0/0'
+set nat source rule 98 outbound-interface 'eth0'
+set nat source rule 98 protocol 'tcp'
+set nat source rule 98 source address '10.10.128.166'
+set nat source rule 98 source port '80'
+set nat source rule 98 translation address '200.68.72.101'
+set nat source rule 98 translation port '8282'
+set protocols static route 0.0.0.0/0 next-hop '200.68.72.102'
+set protocols static route 10.8.10.0/24 next-hop '172.18.18.1'
+set protocols static route 10.10.1.192/27 next-hop '172.18.18.1'
+set protocols static route 10.10.10.0/24 next-hop '172.18.18.1'
+set protocols static route 10.10.128.0/17 next-hop '172.18.18.1'
+set protocols static route 10.11.128.0/19 next-hop '172.18.18.1'
+set protocols static route 10.12.128.0/19 next-hop '10.10.0.1'
+set protocols static route 10.15.128.0/19 next-hop '172.18.18.1'
+set protocols static route 10.16.128.0/19 next-hop '10.10.128.90'
+set protocols static route 10.16.128.0/19 next-hop '10.10.255.254'
+set protocols static route 10.24.128.0/24 next-hop '10.10.128.90'
+set protocols static route 10.26.0.0/24 next-hop '172.18.18.1'
+set protocols static route 10.30.128.0/22 next-hop '172.18.18.1'
+set protocols static route 172.16.0.0/16 next-hop '172.18.18.1'
+set protocols static route 190.2.46.192/29 next-hop '172.18.18.1'
+set protocols static route 190.2.46.200/30 next-hop '10.10.127.131'
+set protocols static route 190.2.46.204/30 next-hop '10.10.127.132'
+set protocols static route 190.2.46.208/30 next-hop '10.10.127.193'
+set protocols static route 190.2.46.212/30 next-hop '10.10.127.137'
+set protocols static route 190.2.46.216/30 next-hop '10.10.127.138'
+set protocols static route 190.2.46.220/30 next-hop '10.10.127.117'
+set protocols static route 190.2.46.240/28 next-hop '172.18.18.1'
+set protocols static route 190.12.101.143/32 next-hop '172.18.18.1'
+set protocols static route 190.12.101.144/32 next-hop '172.18.18.1'
+set protocols static route 192.168.0.0/17 next-hop '172.18.18.1'
+set protocols static route 200.73.185.64/27 next-hop '172.18.18.1'
+set service snmp community tppsa authorization 'ro'
+set service snmp contact 'TPP NGN - Email:ngn@tpp.com.ar - Web:www.tpp.com.ar'
+set service snmp description 'Vyatta-Artigas'
+set service snmp location 'Nodo Artigas-CABA'
+set service ssh 'allow-root'
+set service ssh port '3522'
+set service telnet 'allow-root'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system conntrack expect-table-size '625000'
+set system conntrack hash-size '625000'
+set system conntrack table-size '50000000'
+set system console device ttyS0 speed '9600'
+set system domain-name 'ba-02-ats.tpp.com.ar'
+set system host-name 'Artigas'
+set system login banner pre-login '\n\n\t--------------------------------------------------------------------\n\tThese is a device property of TPP SA\n\tAll unauthorized use will be traced and prosecuted\n\tFor more information contact TPP SA +54 11 43723310 - www.tpp.com.ar\n\t--------------------------------------------------------------------\n\n\n'
+set system login user root authentication encrypted-password '$1$QqyrbsYt$S1jOYvRhR.OC74dgANfB6.'
+set system login user root authentication plaintext-password ''
+set system login user root level 'admin'
+set system login user vyatta authentication encrypted-password '$1$TEYXqM20$MmI1/lJcjkZwBAa4AN6Ya/'
+set system login user vyatta level 'admin'
+set system name-server '200.69.193.1'
+set system name-server '200.69.193.2'
+set system ntp server '0.vyatta.pool.ntp.org'
+set system ntp server '1.vyatta.pool.ntp.org'
+set system ntp server '2.vyatta.pool.ntp.org'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'crit'
+set system syslog global facility mark level 'warning'
+set system syslog global facility protocols level 'debug'
+set system syslog host 10.10.128.166 facility all level 'warning'
+set system time-zone 'America/Argentina/Buenos_Aires'
+set traffic-policy random-detect Congestion bandwidth '16mbit'
+

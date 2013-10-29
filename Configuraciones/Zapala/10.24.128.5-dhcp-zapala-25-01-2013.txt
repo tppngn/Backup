@@ -1,0 +1,130 @@
+###ldap-server "localhost";
+###ldap-port 389;
+###ldap-username "cn=manager, dc=telecentro, dc=com";
+###ldap-password secret;
+###ldap-base-dn "dc=telecentro, dc=com";
+###ldap-method dynamic;
+authoritative;
+ddns-update-style interim;
+DHCPARGS=eth0;
+
+######## NETWORK DECLARATIONS #######
+
+shared-network Vlan1-Default { 
+
+subnet 10.24.128.0 netmask 255.255.224.0 {
+       }
+      }
+#######################################
+############VLAN 10 MOROSOS############
+#######################################
+shared-network VLAN10-Morosos { 
+subnet 172.16.0.0 netmask 255.255.255.0 {
+       range 172.16.0.4 172.16.0.254;
+       option subnet-mask 255.255.255.0;
+       option broadcast-address 172.16.0.255;
+       option routers 172.16.0.3;
+       option domain-name-servers 172.16.0.1;
+       default-lease-time 43200;
+       max-lease-time 43200;
+       allow unknown-clients;
+}
+}
+#######################################
+############VLAN 20 Residencial########
+#######################################
+shared-network VLAN20-Pymes {
+subnet 10.20.128.0 netmask 255.255.224.0 {
+}
+	
+	subnet 190.114.164.0 netmask 255.255.255.0 {
+		range 190.114.164.2 190.114.164.250;
+		option subnet-mask 255.255.255.0;
+		option broadcast-address 190.114.164.255;
+		option routers 190.114.164.1;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 43200;
+		max-lease-time 43200;
+		allow unknown-clients;
+		}
+		
+##	subnet 190.114.144.0 netmask 255.255.255.0 {
+##		range 190.114.144.2 190.114.144.250;
+##		option subnet-mask 255.255.255.0;
+##		option broadcast-address 190.114.144.255;
+##		option routers 190.114.144.1;
+##		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+##		default-lease-time 43200;
+##		max-lease-time 43200;
+##		allow unknown-clients;
+##		}
+
+	subnet 190.114.165.0 netmask 255.255.255.192 {
+		range 190.114.165.2 190.114.165.62;
+                       option subnet-mask 255.255.255.192;
+		option broadcast-address 190.114.165.63;
+		option routers 190.114.165.1;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 43200;
+		max-lease-time 43200;
+		allow unknown-clients;		
+}
+	subnet 190.114.165.64 netmask 255.255.255.192 {
+		range 190.114.165.66 190.114.165.126;
+                       option subnet-mask 255.255.255.192;
+		option broadcast-address 190.114.165.127;
+		option routers 190.114.165.65;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 43200;
+		max-lease-time 43200;
+		allow unknown-clients;		
+}
+	subnet 190.114.165.128 netmask 255.255.255.192 {
+		range 190.114.165.130 190.114.165.190;
+                       option subnet-mask 255.255.255.192;
+		option broadcast-address 190.114.165.191;
+		option routers 190.114.165.129;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 43200;
+		max-lease-time 43200;
+		allow unknown-clients;		
+}
+}
+
+
+#######################################
+############VLAN 30 PYME###############
+#######################################
+shared-network VLAN30-RES { 
+subnet 10.30.128.0 netmask 255.255.224.0 {
+}
+
+	subnet 190.114.165.192 netmask 255.255.255.192 {
+		range 190.114.165.194 190.114.165.250;
+                option subnet-mask 255.255.255.192;
+		option broadcast-address 190.114.165.255;
+		option routers 190.114.165.193;
+		option domain-name-servers 208.67.222.222 , 8.8.8.8;
+		default-lease-time 43200;
+		max-lease-time 43200;
+		allow unknown-clients;		
+}
+}
+
+
+######## HOST SPECIFIC DECLARATIONS #######
+
+#ddns-update-style interim;
+
+#Red 190.14.163.0
+##190.14.163.220 to 190.14.163.224 cl1893
+##190.14.163.228 Switch-Quidway-TPP
+##190.14.163.229 --LIBRE
+
+#Red 190.14.173.0 VLAN20-PYME 
+##190.14.173.2  Prizm31 Eth0.20
+## Cl454 5 IPs FIJA 190.14.173.201 hasta 190.14.173.205
+##CRM 2000722 5IPs FIJA 190.14.173.206 hasta 190.14.173.210
+##CRM 2005972 5Ips FIJA 190.14.173.213 hasta 190.14.173.217 - 15062010
+##190.14.173.212 N-CTR-9403 Griffith 
+##190.114.164.251 Mikrotik Morosos 

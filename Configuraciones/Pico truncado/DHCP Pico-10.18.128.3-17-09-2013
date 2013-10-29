@@ -1,0 +1,139 @@
+	###ldap-server "localhost";
+	###ldap-port 389;
+	###ldap-username "cn=manager, dc=telecentro, dc=com";
+	###ldap-password secret;
+	###ldap-base-dn "dc=telecentro, dc=com";
+	###ldap-method dynamic;
+	#authoritative;
+	ddns-update-style interim;
+	#DHCPARGS=eth0;
+
+	######## NETWORK DECLARATIONS #######
+
+	shared-network Vlan1-Default { 
+		subnet 10.18.128.0 netmask 255.255.255.0 {
+		}
+	}	
+							 
+	shared-network VLAN10 {
+		subnet 172.16.0.0 netmask 255.255.255.0 {
+			range 172.16.0.10 172.16.0.254;
+			option subnet-mask 255.255.255.0;
+			option broadcast-address 172.16.0.255;
+			option routers 172.16.0.3;
+			option domain-name-servers 201.216.254.107, 201.216.254.108;
+			default-lease-time 3600;
+			max-lease-time 3600;
+			}
+	}
+	shared-network VLAN20 {
+		subnet 10.20.128.0 netmask 255.255.255.0 {
+							}
+		subnet 190.114.137.0 netmask 255.255.255.0 {
+			range 190.114.137.2 190.114.137.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 190.114.137.1;
+			option broadcast-address 190.114.137.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 190.114.138.0 netmask 255.255.255.0 {
+			range 190.114.138.2 190.114.138.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 190.114.138.1;
+			option broadcast-address 190.114.138.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 190.114.174.0 netmask 255.255.255.0 {
+			range 190.114.174.2 190.114.174.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 190.114.174.1;
+			option broadcast-address 190.114.174.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 190.114.175.0 netmask 255.255.255.0 {
+			range 190.114.175.2 190.114.175.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 190.114.175.1;
+			option broadcast-address 190.114.175.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 190.114.186.0 netmask 255.255.255.0 {
+			range 190.114.186.2 190.114.186.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 190.114.186.1;
+			option broadcast-address 190.114.186.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 181.225.12.0 netmask 255.255.255.0 {
+			range 181.225.12.2 181.225.12.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 181.225.12.1;
+			option broadcast-address 181.225.12.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 181.225.13.0 netmask 255.255.255.0 {
+			range 181.225.13.2 181.225.13.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 181.225.13.1;
+			option broadcast-address 181.225.13.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 181.225.14.0 netmask 255.255.255.0 {
+			range 181.225.14.2 181.225.14.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 181.225.14.1;
+			option broadcast-address 181.225.12.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+			subnet 181.225.15.0 netmask 255.255.255.0 {
+			range 181.225.15.2 181.225.15.250; 
+			option subnet-mask 255.255.255.0;
+			option routers 181.225.15.1;
+			option broadcast-address 181.225.12.255;
+			option domain-name-servers 201.216.254.107,201.216.254.108;
+			default-lease-time 43200;
+			max-lease-time 43200;
+			}
+	}
+	shared-network VLAN30 {
+		subnet 10.30.128.0 netmask 255.255.255.0 {
+							}
+	subnet 190.114.139.0 netmask 255.255.255.0 {
+		range 190.114.139.2 190.114.139.49;
+		range 190.114.139.50 190.114.139.240;
+		option subnet-mask 255.255.255.0;
+		option routers 190.114.139.1;
+		option broadcast-address 190.114.139.255;
+		option domain-name-servers 201.216.254.107 , 201.216.254.108;
+		default-lease-time 43200;
+		max-lease-time 43200;
+		}
+	}
+##################HOST Con IP Fija
+
+##host Mikrotik.Morosos { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.241;}
+##host WebCache { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.242;}
+##host WebCache2 { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.244;}
+##host PC-NODO{ hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.245;}
+##host JuanSalvadorDerra { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.246;}
+##host JMB { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.247;}
+##host LineasTASA { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.248;}
+
+
+##CruzDelSur { hardware ethernet 00:00:00:00:00; fixed-address 190.114.139.252;}

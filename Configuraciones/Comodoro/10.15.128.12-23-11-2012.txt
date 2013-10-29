@@ -1,0 +1,255 @@
+!Software Version V100R005C01SPC100
+ sysname Quidway-12
+#
+ super password level 3 simple tppar
+#
+ vlan batch 2 10 20 30 50 160 320 464
+#
+ stp mode stp
+#
+ web-auth-server listening-port 8080
+#
+ cluster enable
+ ntdp enable
+ ntdp hop 16
+ ndp enable
+#
+ mac-authen
+#
+ undo http server enable
+#
+aaa
+ authentication-scheme default
+ authentication-scheme system             
+  authentication-mode local radius
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ domain system
+ local-user admin password simple fiplextm
+ local-user admin privilege level 3
+ local-user admin service-type telnet
+ local-user root password simple fiplextm
+ local-user root privilege level 3
+ local-user root service-type telnet
+#
+ ntp-service unicast-server 10.15.128.128
+#
+interface Vlanif1
+ ip address 10.15.128.12 255.255.224.0
+#
+interface MEth0/0/1
+#
+interface Eth-Trunk1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094     
+#
+interface GigabitEthernet0/0/1
+ description Cascada SW-10.15.128.15
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+ undo negotiation auto
+ speed 100
+#
+interface GigabitEthernet0/0/2
+ port link-type trunk
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/3
+ description DHCP-10.15.130.1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+#
+interface GigabitEthernet0/0/4
+ description ""
+ shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/5
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/6
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable                               
+ bpdu enable
+ flow-control
+ broadcast-suppression 10
+#
+interface GigabitEthernet0/0/7
+ description ""
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/8
+ description ""
+ shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/9
+ description NETEQ 10.15.128.8            
+ port link-type trunk
+ port trunk allow-pass vlan 20 30 50 160
+ ntdp enable
+ ndp enable
+ bpdu enable
+ undo negotiation auto
+#
+interface GigabitEthernet0/0/10
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/11
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/12
+ description "DATOS PTP 800(10.15.128.35)Migracion"
+ shutdown
+ eth-trunk 1                              
+ undo ntdp enable
+ undo ndp enable
+#
+interface GigabitEthernet0/0/13
+ description "MGM PTP 800(10.15.128.35)Migracion"
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/14
+ description "sin configurar"
+ port link-type trunk
+ port trunk allow-pass vlan 20 30 50 160
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/15
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ loopback-detect enable                   
+ stp loop-protection
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/16
+ description PTP54500-SLAVE-10.15.128.101
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/17
+ description "DATOS PTP 800(10.15.128.31)Migracion"
+ shutdown
+ eth-trunk 1
+ undo ntdp enable
+ undo ndp enable
+#
+interface GigabitEthernet0/0/18
+ description "MGM PTP 800(10.15.128.31)Migracion"
+ port link-type trunk                     
+ port trunk allow-pass vlan 2 to 4094
+ undo ntdp enable
+ undo ndp enable
+#
+interface GigabitEthernet0/0/19
+ description "sin configurar"
+ port link-type trunk
+ port trunk allow-pass vlan 20 30 50 160
+ ntdp enable
+ ndp enable
+ bpdu enable
+ undo negotiation auto
+#
+interface GigabitEthernet0/0/20
+ description ""
+ shutdown
+ port link-type trunk
+ undo port trunk allow-pass vlan 1
+ undo ntdp enable
+ undo ndp enable
+ undo negotiation auto
+#
+interface GigabitEthernet0/0/21           
+ shutdown
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/22
+ description ""
+ shutdown
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/23
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface GigabitEthernet0/0/24
+ shutdown                                 
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ ntdp enable
+ ndp enable
+ bpdu enable
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.1
+#
+ snmp-agent
+ snmp-agent local-engineid 000007DB7F0000010000442D
+ snmp-agent community read  tppsa
+ snmp-agent sys-info version all
+#
+user-interface maximum-vty 6
+user-interface con 0
+ idle-timeout 0 0
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ set authentication password simple tppar
+user-interface vty 5                      
+#
+return

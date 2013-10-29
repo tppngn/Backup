@@ -1,0 +1,177 @@
+interfaces {
+    ethernet eth0 {
+        address 10.30.0.1/22
+        description Red-Canopy
+        hw-id 00:1a:64:21:96:ba
+        vif 30 {
+            address 200.63.12.129/25
+        }
+    }
+    ethernet eth1 {
+        address 200.63.20.94/29
+        description ITXSES
+        hw-id 00:1a:64:21:96:bb
+    }
+    loopback lo {
+    }
+}
+protocols {
+    snmp {
+        community tppar {
+        }
+        community tppsa {
+        }
+    }
+    static {
+        route 0.0.0.0/0 {
+            next-hop 200.63.20.89 {
+            }
+        }
+        route 10.230.11.0/24 {
+            next-hop 10.30.1.11 {
+            }
+        }
+        route 10.230.12.0/24 {
+            next-hop 10.30.1.12 {
+            }
+        }
+        route 10.230.13.0/24 {
+            next-hop 10.30.1.13 {
+            }
+        }
+        route 10.230.14.0/24 {
+            next-hop 10.30.1.14 {
+            }
+        }
+        route 10.230.15.0/24 {
+            next-hop 10.30.1.15 {
+            }
+        }
+        route 10.230.16.0/24 {
+            next-hop 10.30.1.16 {
+            }
+        }
+        route 190.103.1.112/28 {
+            next-hop 10.30.1.9 {
+            }
+        }
+    }
+}
+service {
+    nat {
+        rule 30 {
+            destination {
+                address !10.10.128.0/17
+            }
+            outbound-interface eth1
+            outside-address {
+                address 200.63.20.94
+            }
+            source {
+                address 10.30.0.0/22
+            }
+            type source
+        }
+    }
+    ssh {
+        allow-root true
+        port 3522
+    }
+    telnet {
+    }
+}
+system {
+    host-name Vyatta-Benavidez
+    login {
+        user admtpp {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+    }
+    ntp-server 69.59.150.135
+    package {
+        repository community {
+            components main
+            distribution stable
+            url http://packages.vyatta.com/vyatta
+        }
+    }
+    time-zone GMT-3
+}
+vpn {
+    ipsec {
+        esp-group ESP-1VILLANUEVA {
+            lifetime 1800
+            proposal 1 {
+                encryption aes256
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1VILLANUEVA {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+            }
+        }
+        ipsec-interfaces {
+            interface eth0
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.194 {
+                authentication {
+                    pre-shared-secret VPN-CDR-VILLANUEVA
+                }
+                ike-group IKE-1VILLANUEVA
+                local-ip 200.63.20.94
+                tunnel 1 {
+                    esp-group ESP-1VILLANUEVA
+                    local-subnet 10.30.0.0/22
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 2 {
+                    esp-group ESP-1VILLANUEVA
+                    local-subnet 10.230.12.0/24
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 3 {
+                    esp-group ESP-1VILLANUEVA
+                    local-subnet 10.30.0.0/22
+                    remote-subnet 10.10.0.0/24
+                }
+                tunnel 5 {
+                    esp-group ESP-1VILLANUEVA
+                    local-subnet 10.230.0.0/16
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 10 {
+                    esp-group ESP-1VILLANUEVA
+                    local-subnet 10.30.0.0/22
+                    remote-subnet 192.168.0.0/17
+                }
+                tunnel 11 {
+                    esp-group ESP-1VILLANUEVA
+                    local-subnet 10.230.0.0/16
+                    remote-subnet 192.168.0.0/17
+                }
+            }
+        }
+    }
+}

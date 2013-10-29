@@ -1,0 +1,14 @@
+etc/sysctl.conf. Se agregan en /etc/sysctl.conf
+
+net.ipv4.neigh.default.gc_thresh1 = 4096
+net.ipv4.neigh.default.gc_thresh2 = 8192
+net.ipv4.neigh.default.gc_thresh3 = 8192
+net.ipv4.neigh.default.base_reachable_time = 86400
+net.ipv4.neigh.default.gc_stale_time = 86400
+
+Salvado de sysctl.conf y ejecutamos sysctl -p. Y
+
+Otra forma:
+sysctl -w net.ipv4.neigh.default.gc_thresh3=8192
+sysctl -w net.ipv4.neigh.default.gc_thresh2=8192
+sysctl -w net.ipv4.neigh.default.gc_thresh1=4096

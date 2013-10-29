@@ -1,0 +1,8 @@
+ar.cctld.authdns.ripe.net 	O 	193.0.9.59 	2001:67c:e0::59
+ns2.switch.ch 	O 	130.59.138.49 	O 	2001:620:0:1b:5054:ff:fe74:8780
+athea.ar 	O 	200.16.98.2 		
+ctina.ar 	O 	200.16.97.17 		
+relay1.mecon.gov.ar 	O 	168.101.16.10 		
+
+190.2.46.245 (DNS TPP)
+208.67.222.222 (Open DNS)

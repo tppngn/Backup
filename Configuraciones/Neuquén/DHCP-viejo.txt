@@ -1,0 +1,324 @@
+###ldap-server "localhost";
+###ldap-port 389;
+###ldap-username "cn=manager, dc=telecentro, dc=com";
+###ldap-password secret;
+###ldap-base-dn "dc=telecentro, dc=com";
+###ldap-method dynamic;
+authoritative;
+ddns-update-style interim;
+
+
+######## NETWORK DECLARATIONS #######
+shared-network CPE { 
+subnet 10.14.128.0 netmask 255.255.224.0 {
+}
+}
+
+
+################Ruteado por VLAN 10 Suspensión####################
+shared-network VLAN10 {
+
+	# Suspendidos
+	subnet 172.16.0.0 netmask 255.255.252.0 {
+		range 172.16.0.27 172.16.3.254;
+		option subnet-mask 255.255.252.0;
+		option broadcast-address 172.16.3.255;
+		option routers 172.16.0.26;
+		option domain-name-servers 8.8.8.8 , 8.8.4.4;
+		default-lease-time 3600;
+		max-lease-time 3600;
+		}
+}
+################Ruteado por VLAN 30 Pyme####################
+
+shared-network VLAN30 {
+
+subnet 10.30.128.0 netmask 255.255.255.0 {
+						}
+
+subnet 190.14.176.0 netmask 255.255.252.0 {
+# Red Ruteada por TASA
+range 190.14.176.2 190.14.176.5;
+range 190.14.176.7 190.14.176.254;
+	range 190.14.177.2 190.14.177.124;
+	range 190.14.177.126 190.14.177.174;
+	range 190.14.177.176 190.14.177.254;
+	range 190.14.178.2 190.14.178.254;
+range 190.14.179.2 190.14.179.180;
+#	range 190.14.179.182 190.14.179.254; reservadopara IPs FIJAS o CLientes PYMES
+option subnet-mask 255.255.252.0;
+option routers 190.14.176.1;
+option broadcast-address 190.14.179.255;
+#  option domain-name "nq.tpp.com.ar";
+#	option domain-name-servers 8.8.8.8, 8.8.4.4;
+        option domain-name-servers 208.67.222.222, 8.8.8.8;
+default-lease-time 43200;
+max-lease-time 43200;
+allow unknown-clients;
+}
+
+subnet 190.14.175.0 netmask 255.255.255.0 {
+# Red Ruteada por TASA
+	range 190.14.175.2 190.14.175.250; 
+option subnet-mask 255.255.255.0;
+option routers 190.14.175.1;
+option broadcast-address 190.14.175.255;
+#  option domain-name "nq.tpp.com.ar";
+        option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 43200;
+max-lease-time 43200;
+allow unknown-clients;
+}
+
+}
+
+################Ruteado por VLAN 20 Residencial####################
+
+shared-network VLAN20 {
+
+subnet 10.20.128.0 netmask 255.255.255.0 {
+						}
+
+
+
+
+subnet 190.114.136.0 netmask 255.255.255.0 {
+#       Red Ruteada por TASA
+range 190.114.136.2 190.114.136.250;
+option subnet-mask 255.255.255.0;
+option routers 190.114.136.1;
+option broadcast-address 190.114.136.255;
+#       option domain-name "nq.tpp.com.ar";
+       option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 43200;
+max-lease-time 43200;
+allow unknown-clients;
+}
+
+subnet 190.114.167.0 netmask 255.255.255.0 {
+range 190.114.167.2 190.114.167.250;
+option subnet-mask 255.255.255.0;
+option routers 190.114.167.1;
+option broadcast-address 190.114.136.255;
+#       option domain-name "nq.tpp.com.ar";
+       option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 43200;
+max-lease-time 43200;
+allow unknown-clients;
+}
+
+subnet 190.114.130.0 netmask 255.255.255.0 {
+#       Red Ruteada por TASA
+range 190.114.130.2 190.114.130.250;
+option subnet-mask 255.255.255.0;
+option routers 190.114.130.1;
+option broadcast-address 190.114.130.255;
+#       option domain-name "nq.tpp.com.ar";
+       option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 43200;
+max-lease-time 43200;
+allow unknown-clients;
+
+}
+
+
+subnet 190.114.143.0 netmask 255.255.255.0 {
+#       Red Ruteada por TASA
+range 190.114.143.2 190.114.143.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.143.1;
+option broadcast-address 190.114.143.255;
+#       option domain-name "nq.tpp.com.ar";
+       option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 43200;
+max-lease-time 43200;
+allow unknown-clients;
+
+}
+
+
+subnet 190.114.158.0 netmask 255.255.255.0 {
+#       Red Ruteada por TASA
+range 190.114.158.2 190.114.158.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.158.1;
+option broadcast-address 190.114.158.255;
+#       option domain-name "nq.tpp.com.ar";
+       option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;
+
+}
+
+
+subnet 190.114.159.0 netmask 255.255.255.0 {
+#       Red Ruteada por TASA
+range 190.114.159.2 190.114.159.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.159.1;
+option broadcast-address 190.114.159.255;
+#       option domain-name "nq.tpp.com.ar";
+       option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;
+
+}
+
+
+## Ruteado por VLAN 30 Residencial
+subnet 190.114.176.0 netmask 255.255.255.0 {
+#      Red Ruteada por TASA
+range 190.114.176.2 190.114.176.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.176.1;
+option broadcast-address 190.114.176.255;
+      option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;       
+}
+
+
+subnet 190.114.177.0 netmask 255.255.255.0 {
+#      Red Ruteada por TASA
+range 190.114.177.2 190.114.177.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.177.1;
+option broadcast-address 190.114.177.255;
+      option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;       
+}
+
+
+subnet 190.114.178.0 netmask 255.255.255.0 {
+#      Red Ruteada por TASA
+range 190.114.178.2 190.114.178.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.178.1;
+option broadcast-address 190.114.178.255;
+      option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;       
+}
+
+
+subnet 190.114.179.0 netmask 255.255.255.0 {
+#      Red Ruteada por TASA
+range 190.114.179.2 190.114.179.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.179.1;
+option broadcast-address 190.114.179.255;
+      option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 8.8.4.4;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;       
+}
+
+## Ruteado por VLAN 30 Residencial
+subnet 190.114.162.0 netmask 255.255.255.0 {
+#Red Ruteada por TASA
+range 190.114.162.2 190.114.162.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.162.1;
+option broadcast-address 190.114.162.255;
+option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 200.69.193.1;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;       
+}
+
+## Ruteado por VLAN 30 Residencial
+subnet 190.114.163.0 netmask 255.255.255.0 {
+#Red Ruteada por TASA
+range 190.114.163.2 190.114.163.254;
+option subnet-mask 255.255.255.0;
+option routers 190.114.163.1;
+option broadcast-address 190.114.163.255;
+option domain-name-servers 208.67.222.222, 8.8.8.8;
+#option domain-name-servers 8.8.8.8, 200.69.193.1;
+default-lease-time 14400;
+max-lease-time 14400;
+allow unknown-clients;       
+}
+
+
+}
+
+######## HOST SPECIFIC DECLARATIONS #######
+
+#ddns-update-style interim;
+
+
+##### PYMES ####
+### IP NAT 190.14.179.254
+### Cl3964 Municpalidad de Cipolletti 5 IPs : 190.14.179.249 hasta 190.14.179.253
+### Cl1099 5-IP-Fija 190.14.179.244 hasta 190.14.179.248
+### Cl868 5-IP-Fija 190.14.179.239 hasta 190.14.179.243
+### Cl1398 IP-fija 190.14.179.238
+### Cl1970 IP-Fija 190.14.179.237
+### Cl2051 IP-Fija 190.14.179.236
+### Cl1527 IP-Fija 190.14.179.235 
+host Cl3968 { hardware ethernet 00:0c:f1:af:37:dd; fixed-address 190.14.179.234;}
+### Asterisk@NQN 190.14.179.233
+### Asterisk@NQN2 190.14.179.232 
+### Sipura2@asterisk 190.14.179.231
+host Cl2097 { hardware ethernet 00:06:4f:1c:9f:98; fixed-address 190.14.179.230;}
+host Cl354 { hardware ethernet 00:03:2F:3B:06:2D; fixed-address 190.14.179.229;}
+host Cl5864b { hardware ethernet 08:10:74:17:89:63; fixed-address 190.14.179.228;}
+host Cl5864 { hardware ethernet 00:13:8f:9e:3f:3c; fixed-address 190.14.179.227;}
+### Cl9600 IP-Fija 190.14.179.226
+### Cl9599 IP-Fija 190.14.179.225
+### IP Libre 190.14.179.224
+### UPS-Confluencia-10.14.129.3-- 190.14.179.223
+host Cl10166 { hardware ethernet 08:10:74:11:51:35; fixed-address 190.14.179.222;}
+host ClCRM783027 { hardware ethernet 00:16:b6:3d:34:a1; fixed-address 190.14.179.221;}
+host CRM781823 { hardware ethernet 00:06:4f:49:29:1f; fixed-address 190.14.179.220;}
+### C14809 IP-Fija 190.14.179.219
+### C11911 IP-Fija 190.14.179.218
+### C11898 IP-Fija 190.14.179.217
+### SuperKiosco IP-Fija 190.14.179.216
+### CRM15321 Carbone  Anotnio IP-Fija 190.14.179.215
+### CRM-2008273 190.14.179.214
+### CRM-2008274 190.14.179.213
+### C16652 Eduardo Scantamburlo 190.14.179.212
+### C16652 Eduardo Scantamburlo 190.14.179.211
+### C16652 Eduardo Scantamburlo 190.14.179.210
+### C16652 Eduardo Scantamburlo 190.14.179.209
+### Marcelo Velazquez AP 115 / SM D970C3 190.14.179.185
+### Juan Sandobal AP168 SM-0A003ED62075   190.14.179.208
+### NetEqualizer 190.14.179.206
+### 190.14.179.200 190.14.179.205
+### 190.14.179.198 municipalidad de senillosa
+### 190.14.179.204 Munoz Daniel SPF Unidad 9 SM 0A-00-3E-D2-74-59  AP129
+### 190.14.179.203  PC GROUP S.A.
+### 190.14.179.190 TRANSECOLOGICA S.R.L.
+### 190.14.179.189 PC GROUP S.A
+### 190.14.179.188 PRUEBA CLIENTE PROBLEMAS FOTOS SALATO NATALIA
+###########190.14.175
+## 190.14.175.251 TRANSECOLOGICA S.R.L. AP221 -- 0a-00-3e-dd-51-3d
+## 190.14.175.252 2010430 - BERNARDO ERIC SABELLA
+## 190.14.176.187 DI BIASE ROBERTO
+
+
+host MATAR5{ hardware ethernet  00:1b:38:08:e6:a8; fixed-address 190.14.177.125;}
+### Cta 781109 - contrato 1262 IP-Fija 190.14.179.5
+host cta781109 { hardware ethernet 00:19:d1:5a:27:4c; fixed-address 190.14.179.5;}
+### Cta 780411 - contrato 882 espiñeirajorge IP-Fija 190.14.179.240 20100121
+host cta783208 { hardware ethernet 00:21:29:b3:3a:a6; fixed-address 190.14.179.240;}

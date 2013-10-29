@@ -1,0 +1,26 @@
+Network
+-------
+
+Host Name:                    AC-VILL
+Domain:                       tpp.com.ar
+Default Gateway:              10.30.0.1
+Primary Name server:          200.69.193.1
+Secondary Name server:        200.69.193.2
+IP Address:                   10.30.0.10
+Network mask:                 255.255.252.0
+Disable management port:      no
+Enable VLAN Environment:      disable
+
+Ethernet Adapter Settings
+-------------------------
+
+Internal:
+  Mode:  full
+  Speed: 100
+External:
+  Mode:  full
+  Speed: 100
+Management:
+  Mode:  auto
+  Speed: auto
+

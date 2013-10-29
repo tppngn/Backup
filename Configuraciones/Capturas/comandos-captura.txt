@@ -1,0 +1,5 @@
+tcp.flags.reset eq 1
+
+( ! ip.dst == 224.0.0.0/4 && ip.ttl < 5 && !pim) || (ip.dst == 224.0.0.0/24 && ip.ttl != 1)
+
+tcp.analysis.flags && !tcp.analysis.window_update

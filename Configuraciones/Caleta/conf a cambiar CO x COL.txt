@@ -1,0 +1,36 @@
+set vpn ipsec site-to-site peer 190.114.133.1 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.114.133.1 authentication pre-shared-secret 'tppvpncol'
+set vpn ipsec site-to-site peer 190.114.133.1 connection-type 'initiate'
+set vpn ipsec site-to-site peer 190.114.133.1 ike-group 'IKE-1COL'
+set vpn ipsec site-to-site peer 190.114.133.1 local-ip '190.114.156.1'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 esp-group 'ESP-1COL'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 local subnet '10.15.128.0/19'
+set vpn ipsec site-to-site peer 190.114.133.1 tunnel 1 remote subnet '10.22.128.0/24'
+
+set vpn ipsec esp-group ESP-1CO compression 'disable'
+set vpn ipsec esp-group ESP-1CO lifetime '1800'
+set vpn ipsec esp-group ESP-1CO mode 'tunnel'
+set vpn ipsec esp-group ESP-1CO pfs 'enable'
+set vpn ipsec esp-group ESP-1CO proposal 1 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CO proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CO proposal 2 hash 'md5'
+
+
+
+  }
+            peer 190.114.156.1 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                ike-group IKE-1COL
+                local-ip 190.114.133.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1COL
+                    local-subnet 10.22.128.0/24
+                    remote-subnet 10.15.128.0/19

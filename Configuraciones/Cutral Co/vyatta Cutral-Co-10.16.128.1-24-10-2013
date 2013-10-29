@@ -1,0 +1,689 @@
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    ip-src-route enable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    ethernet eth0 {
+        description ISP-TASA
+        duplex auto
+        hw-id 40:f2:e9:32:27:fb
+        smp_affinity auto
+        speed auto
+        vif 417 {
+            address 200.63.145.186/30
+        }
+    }
+    ethernet eth1 {
+        address 10.16.128.1/19
+        address 190.114.161.193/26
+        description Red-Canopy
+        duplex auto
+        hw-id 40:f2:e9:32:27:fc
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 172.16.0.1/22
+            description Suspendidos
+        }
+        vif 20 {
+            address 10.20.128.1/24
+            address 190.114.128.1/24
+            address 190.114.129.1/24
+            address 190.114.131.1/24
+            address 190.114.132.1/24
+            address 190.114.160.1/24
+            address 190.14.181.1/24
+            address 190.14.182.1/23
+            address 190.14.180.1/25
+            address 190.114.161.65/26
+            address 190.114.161.129/26
+            address 190.114.184.1/24
+            address 190.114.185.1/24
+            address 190.114.187.1/24
+            address 181.225.8.1/24
+            address 181.225.9.1/24
+            description Residencial
+        }
+        vif 30 {
+            address 10.30.128.1/24
+            address 190.114.161.1/26
+            address 190.14.180.129/25
+            description Pymes
+        }
+        vif 80 {
+            address 10.80.128.1/24
+            description Activacion
+        }
+    }
+    loopback lo {
+    }
+}
+nat {
+    destination {
+        rule 11 {
+            destination {
+                address 190.14.180.125
+            }
+            inbound-interface eth0.417
+            translation {
+                address 10.16.128.11
+            }
+        }
+    }
+    source {
+        rule 20 {
+            description NatOutsideCutralCo
+            destination {
+                address !10.10.128.0/17
+            }
+            outbound-interface eth0.417
+            source {
+                address 10.16.128.5
+            }
+            translation {
+                address 190.14.180.124
+            }
+        }
+        rule 30 {
+            description Nat_Activaciones
+            destination {
+                address 0.0.0.0/0
+            }
+            outbound-interface eth0.417
+            protocol all
+            source {
+                address 10.80.128.0/24
+            }
+            translation {
+                address 190.114.185.250/24
+            }
+        }
+    }
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop 200.63.145.185 {
+            }
+        }
+        route 10.216.71.0/24 {
+            next-hop 10.16.128.71 {
+            }
+        }
+        route 10.216.72.0/24 {
+            next-hop 10.16.128.72 {
+            }
+        }
+        route 10.216.73.0/24 {
+            next-hop 10.16.128.73 {
+            }
+        }
+        route 10.216.81.0/24 {
+            next-hop 10.16.128.81 {
+            }
+        }
+        route 10.216.82.0/24 {
+            next-hop 10.16.128.82 {
+            }
+        }
+        route 10.216.83.0/24 {
+            next-hop 10.16.128.83 {
+            }
+        }
+        route 10.216.84.0/24 {
+            next-hop 10.16.128.84 {
+            }
+        }
+        route 10.216.91.0/24 {
+            next-hop 10.16.128.91 {
+            }
+        }
+        route 10.216.92.0/24 {
+            next-hop 10.16.128.92 {
+            }
+        }
+        route 10.216.93.0/24 {
+            next-hop 10.16.128.93 {
+            }
+        }
+        route 10.216.94.0/24 {
+            next-hop 10.16.128.94 {
+            }
+        }
+        route 10.216.121.0/24 {
+            next-hop 10.16.128.121 {
+            }
+        }
+        route 10.216.122.0/24 {
+            next-hop 10.16.128.122 {
+            }
+        }
+        route 10.216.123.0/24 {
+            next-hop 10.16.128.123 {
+            }
+        }
+        route 10.216.124.0/24 {
+            next-hop 10.16.128.124 {
+            }
+        }
+        route 10.216.125.0/24 {
+            next-hop 10.16.128.125 {
+            }
+        }
+        route 10.216.127.0/24 {
+            next-hop 10.16.128.127 {
+            }
+        }
+        route 10.216.129.0/24 {
+            next-hop 10.16.128.129 {
+            }
+        }
+        route 10.216.130.0/24 {
+            next-hop 10.16.128.130 {
+            }
+        }
+        route 10.216.131.0/24 {
+            next-hop 10.16.128.131 {
+            }
+        }
+        route 10.216.132.0/24 {
+            next-hop 10.16.128.132 {
+            }
+        }
+        route 10.216.133.0/24 {
+            next-hop 10.16.128.133 {
+            }
+        }
+        route 10.216.134.0/24 {
+            next-hop 10.16.128.134 {
+            }
+        }
+        route 10.216.135.0/24 {
+            next-hop 10.16.128.135 {
+            }
+        }
+        route 10.216.141.0/24 {
+            next-hop 10.16.128.141 {
+            }
+        }
+        route 10.216.142.0/24 {
+            next-hop 10.16.128.142 {
+            }
+        }
+        route 10.216.143.0/24 {
+            next-hop 10.16.128.143 {
+            }
+        }
+        route 10.216.144.0/24 {
+            next-hop 10.16.128.144 {
+            }
+        }
+        route 10.216.145.0/24 {
+            next-hop 10.16.128.145 {
+            }
+        }
+        route 10.216.156.0/24 {
+            next-hop 10.16.128.156 {
+            }
+        }
+        route 10.216.158.0/24 {
+            next-hop 10.16.128.158 {
+            }
+        }
+        route 10.216.174.0/24 {
+            next-hop 10.16.128.174 {
+            }
+        }
+        route 10.216.175.0/24 {
+            next-hop 10.16.128.175 {
+            }
+        }
+        route 10.216.176.0/24 {
+            next-hop 10.16.128.176 {
+            }
+        }
+        route 10.216.177.0/24 {
+            next-hop 10.16.128.177 {
+            }
+        }
+        route 10.216.178.0/24 {
+            next-hop 10.16.128.178 {
+            }
+        }
+        route 10.216.201.0/24 {
+            next-hop 10.16.128.201 {
+            }
+        }
+        route 10.216.202.0/24 {
+            next-hop 10.16.128.202 {
+            }
+        }
+        route 10.216.203.0/24 {
+            next-hop 10.16.128.203 {
+            }
+        }
+        route 10.216.204.0/24 {
+            next-hop 10.16.128.204 {
+            }
+        }
+        route 10.216.205.0/24 {
+            next-hop 10.16.128.205 {
+            }
+        }
+        route 10.216.206.0/24 {
+            next-hop 10.16.128.206 {
+            }
+        }
+        route 10.216.207.0/24 {
+            next-hop 10.16.128.207 {
+            }
+        }
+        route 10.216.208.0/24 {
+            next-hop 10.16.128.208 {
+            }
+        }
+        route 10.216.214.0/24 {
+            next-hop 10.16.128.214 {
+            }
+        }
+        route 10.216.215.0/24 {
+            next-hop 10.16.128.215 {
+            }
+        }
+        route 10.216.241.0/24 {
+            next-hop 10.16.128.241 {
+            }
+        }
+        route 10.216.242.0/24 {
+            next-hop 10.16.128.242 {
+            }
+        }
+        route 10.216.243.0/24 {
+            next-hop 10.16.128.243 {
+            }
+        }
+        route 10.216.244.0/24 {
+            next-hop 10.16.128.244 {
+            }
+        }
+    }
+}
+service {
+    snmp {
+        community tppsa {
+            authorization ro
+        }
+        contact ngn@tpp.com.ar
+        location Cutral-Co
+    }
+    ssh {
+        allow-root
+        port 3522
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    conntrack {
+        expect-table-size 625000
+        hash-size 625000
+        table-size 50000000
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name Vyatta-Cutral-Co
+    login {
+        banner {
+            pre-login "\n\n\t--------------------------------------------------------------------\n\tThese is a device property of TPP SA\n\tAll unauthorized use will be traced and prosecuted\n\tFor more information contact TPP SA +54 11 43723310 - www.tpp.com.ar\n\t--------------------------------------------------------------------\n\n\n"
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+            }
+            level admin
+        }
+    }
+    ntp {
+        server ar.pool.ntp.org {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone GMT
+}
+traffic-policy {
+    limiter Canal-8 {
+        class 10 {
+            bandwidth 5120
+            burst 15k
+            match Canal-8 {
+                ip {
+                    destination {
+                        address 190.114.161.199/26
+                    }
+                    source {
+                        address 190.114.161.199/26
+                    }
+                }
+            }
+            priority 20
+        }
+    }
+}
+vpn {
+    ipsec {
+        esp-group ESP-1CUTRALCO {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption 3des
+                hash md5
+            }
+        }
+        ike-group IKE-1CUTRALCO {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes256
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.194 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                connection-type initiate
+                ike-group IKE-1CUTRALCO
+                local-address 190.14.180.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local {
+                        prefix 10.16.128.0/19
+                    }
+                    remote {
+                        prefix 10.10.128.0/17
+                    }
+                }
+                tunnel 2 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local {
+                        prefix 10.216.0.0/16
+                    }
+                    remote {
+                        prefix 10.10.128.0/17
+                    }
+                }
+                tunnel 10 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local {
+                        prefix 10.16.128.0/19
+                    }
+                    remote {
+                        prefix 192.168.0.0/16
+                    }
+                }
+                tunnel 11 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1CUTRALCO
+                    local {
+                        prefix 10.216.0.0/16
+                    }
+                    remote {
+                        prefix 192.168.0.0/16
+                    }
+                }
+            }
+        }
+    }
+}
+
+set firewall all-ping 'enable'
+set firewall broadcast-ping 'disable'
+set firewall ipv6-receive-redirects 'disable'
+set firewall ipv6-src-route 'disable'
+set firewall ip-src-route 'enable'
+set firewall log-martians 'enable'
+set firewall receive-redirects 'enable'
+set firewall send-redirects 'enable'
+set firewall source-validation 'disable'
+set firewall syn-cookies 'enable'
+set interfaces ethernet eth0 description 'ISP-TASA'
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id '40:f2:e9:32:27:fb'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth0 vif 417 address '200.63.145.186/30'
+set interfaces ethernet eth1 address '10.16.128.1/19'
+set interfaces ethernet eth1 address '190.114.161.193/26'
+set interfaces ethernet eth1 description 'Red-Canopy'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id '40:f2:e9:32:27:fc'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth1 vif 10 address '172.16.0.1/22'
+set interfaces ethernet eth1 vif 10 description 'Suspendidos'
+set interfaces ethernet eth1 vif 20 address '10.20.128.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.128.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.129.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.131.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.132.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.160.1/24'
+set interfaces ethernet eth1 vif 20 address '190.14.181.1/24'
+set interfaces ethernet eth1 vif 20 address '190.14.182.1/23'
+set interfaces ethernet eth1 vif 20 address '190.14.180.1/25'
+set interfaces ethernet eth1 vif 20 address '190.114.161.65/26'
+set interfaces ethernet eth1 vif 20 address '190.114.161.129/26'
+set interfaces ethernet eth1 vif 20 address '190.114.184.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.185.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.187.1/24'
+set interfaces ethernet eth1 vif 20 address '181.225.8.1/24'
+set interfaces ethernet eth1 vif 20 address '181.225.9.1/24'
+set interfaces ethernet eth1 vif 20 description 'Residencial'
+set interfaces ethernet eth1 vif 30 address '10.30.128.1/24'
+set interfaces ethernet eth1 vif 30 address '190.114.161.1/26'
+set interfaces ethernet eth1 vif 30 address '190.14.180.129/25'
+set interfaces ethernet eth1 vif 30 description 'Pymes'
+set interfaces ethernet eth1 vif 80 address '10.80.128.1/24'
+set interfaces ethernet eth1 vif 80 description 'Activacion'
+set interfaces loopback 'lo'
+set nat destination rule 11 destination address '190.14.180.125'
+set nat destination rule 11 inbound-interface 'eth0.417'
+set nat destination rule 11 translation address '10.16.128.11'
+set nat source rule 20 description 'NatOutsideCutralCo'
+set nat source rule 20 destination address '!10.10.128.0/17'
+set nat source rule 20 outbound-interface 'eth0.417'
+set nat source rule 20 source address '10.16.128.5'
+set nat source rule 20 translation address '190.14.180.124'
+set nat source rule 30 description 'Nat_Activaciones'
+set nat source rule 30 destination address '0.0.0.0/0'
+set nat source rule 30 outbound-interface 'eth0.417'
+set nat source rule 30 protocol 'all'
+set nat source rule 30 source address '10.80.128.0/24'
+set nat source rule 30 translation address '190.114.185.250/24'
+set protocols static route 0.0.0.0/0 next-hop '200.63.145.185'
+set protocols static route 10.216.71.0/24 next-hop '10.16.128.71'
+set protocols static route 10.216.72.0/24 next-hop '10.16.128.72'
+set protocols static route 10.216.73.0/24 next-hop '10.16.128.73'
+set protocols static route 10.216.81.0/24 next-hop '10.16.128.81'
+set protocols static route 10.216.82.0/24 next-hop '10.16.128.82'
+set protocols static route 10.216.83.0/24 next-hop '10.16.128.83'
+set protocols static route 10.216.84.0/24 next-hop '10.16.128.84'
+set protocols static route 10.216.91.0/24 next-hop '10.16.128.91'
+set protocols static route 10.216.92.0/24 next-hop '10.16.128.92'
+set protocols static route 10.216.93.0/24 next-hop '10.16.128.93'
+set protocols static route 10.216.94.0/24 next-hop '10.16.128.94'
+set protocols static route 10.216.121.0/24 next-hop '10.16.128.121'
+set protocols static route 10.216.122.0/24 next-hop '10.16.128.122'
+set protocols static route 10.216.123.0/24 next-hop '10.16.128.123'
+set protocols static route 10.216.124.0/24 next-hop '10.16.128.124'
+set protocols static route 10.216.125.0/24 next-hop '10.16.128.125'
+set protocols static route 10.216.127.0/24 next-hop '10.16.128.127'
+set protocols static route 10.216.129.0/24 next-hop '10.16.128.129'
+set protocols static route 10.216.130.0/24 next-hop '10.16.128.130'
+set protocols static route 10.216.131.0/24 next-hop '10.16.128.131'
+set protocols static route 10.216.132.0/24 next-hop '10.16.128.132'
+set protocols static route 10.216.133.0/24 next-hop '10.16.128.133'
+set protocols static route 10.216.134.0/24 next-hop '10.16.128.134'
+set protocols static route 10.216.135.0/24 next-hop '10.16.128.135'
+set protocols static route 10.216.141.0/24 next-hop '10.16.128.141'
+set protocols static route 10.216.142.0/24 next-hop '10.16.128.142'
+set protocols static route 10.216.143.0/24 next-hop '10.16.128.143'
+set protocols static route 10.216.144.0/24 next-hop '10.16.128.144'
+set protocols static route 10.216.145.0/24 next-hop '10.16.128.145'
+set protocols static route 10.216.156.0/24 next-hop '10.16.128.156'
+set protocols static route 10.216.158.0/24 next-hop '10.16.128.158'
+set protocols static route 10.216.174.0/24 next-hop '10.16.128.174'
+set protocols static route 10.216.175.0/24 next-hop '10.16.128.175'
+set protocols static route 10.216.176.0/24 next-hop '10.16.128.176'
+set protocols static route 10.216.177.0/24 next-hop '10.16.128.177'
+set protocols static route 10.216.178.0/24 next-hop '10.16.128.178'
+set protocols static route 10.216.201.0/24 next-hop '10.16.128.201'
+set protocols static route 10.216.202.0/24 next-hop '10.16.128.202'
+set protocols static route 10.216.203.0/24 next-hop '10.16.128.203'
+set protocols static route 10.216.204.0/24 next-hop '10.16.128.204'
+set protocols static route 10.216.205.0/24 next-hop '10.16.128.205'
+set protocols static route 10.216.206.0/24 next-hop '10.16.128.206'
+set protocols static route 10.216.207.0/24 next-hop '10.16.128.207'
+set protocols static route 10.216.208.0/24 next-hop '10.16.128.208'
+set protocols static route 10.216.214.0/24 next-hop '10.16.128.214'
+set protocols static route 10.216.215.0/24 next-hop '10.16.128.215'
+set protocols static route 10.216.241.0/24 next-hop '10.16.128.241'
+set protocols static route 10.216.242.0/24 next-hop '10.16.128.242'
+set protocols static route 10.216.243.0/24 next-hop '10.16.128.243'
+set protocols static route 10.216.244.0/24 next-hop '10.16.128.244'
+set service snmp community tppsa authorization 'ro'
+set service snmp contact 'ngn@tpp.com.ar'
+set service snmp location 'Cutral-Co'
+set service ssh 'allow-root'
+set service ssh port '3522'
+set service telnet 'allow-root'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system conntrack expect-table-size '625000'
+set system conntrack hash-size '625000'
+set system conntrack table-size '50000000'
+set system console device ttyS0 speed '9600'
+set system host-name 'Vyatta-Cutral-Co'
+set system login banner pre-login '\n\n\t--------------------------------------------------------------------\n\tThese is a device property of TPP SA\n\tAll unauthorized use will be traced and prosecuted\n\tFor more information contact TPP SA +54 11 43723310 - www.tpp.com.ar\n\t--------------------------------------------------------------------\n\n\n'
+set system login user root authentication encrypted-password '$1$6XDGIPCA$QTL/8c63qye6va8Y8jURH1'
+set system login user root authentication plaintext-password ''
+set system login user root level 'admin'
+set system login user vyatta authentication encrypted-password '$1$dmb9MV0D$BYOffJfFn35I7w.ZQYG4o1'
+set system login user vyatta level 'admin'
+set system ntp server 'ar.pool.ntp.org'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'notice'
+set system syslog global facility protocols level 'debug'
+set system time-zone 'GMT'
+set traffic-policy limiter Canal-8 class 10 bandwidth '5120'
+set traffic-policy limiter Canal-8 class 10 burst '15k'
+set traffic-policy limiter Canal-8 class 10 match Canal-8 ip destination address '190.114.161.199/26'
+set traffic-policy limiter Canal-8 class 10 match Canal-8 ip source address '190.114.161.199/26'
+set traffic-policy limiter Canal-8 class 10 priority '20'
+set vpn ipsec esp-group ESP-1CUTRALCO compression 'disable'
+set vpn ipsec esp-group ESP-1CUTRALCO lifetime '1800'
+set vpn ipsec esp-group ESP-1CUTRALCO mode 'tunnel'
+set vpn ipsec esp-group ESP-1CUTRALCO pfs 'enable'
+set vpn ipsec esp-group ESP-1CUTRALCO proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1CUTRALCO proposal 1 hash 'sha1'
+set vpn ipsec esp-group ESP-1CUTRALCO proposal 2 encryption '3des'
+set vpn ipsec esp-group ESP-1CUTRALCO proposal 2 hash 'md5'
+set vpn ipsec ike-group IKE-1CUTRALCO lifetime '3600'
+set vpn ipsec ike-group IKE-1CUTRALCO proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CUTRALCO proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1CUTRALCO proposal 2 encryption 'aes256'
+set vpn ipsec ike-group IKE-1CUTRALCO proposal 2 hash 'sha1'
+set vpn ipsec ipsec-interfaces interface 'eth1'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication pre-shared-secret 'tppvpncco'
+set vpn ipsec site-to-site peer 190.2.46.194 connection-type 'initiate'
+set vpn ipsec site-to-site peer 190.2.46.194 ike-group 'IKE-1CUTRALCO'
+set vpn ipsec site-to-site peer 190.2.46.194 local-address '190.14.180.1'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 esp-group 'ESP-1CUTRALCO'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 local prefix '10.16.128.0/19'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 remote prefix '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 esp-group 'ESP-1CUTRALCO'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 local prefix '10.216.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 remote prefix '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 esp-group 'ESP-1CUTRALCO'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 local prefix '10.16.128.0/19'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 10 remote prefix '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 esp-group 'ESP-1CUTRALCO'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 local prefix '10.216.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 11 remote prefix '192.168.0.0/16'
+[edit]

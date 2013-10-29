@@ -1,0 +1,223 @@
+#
+ sysname Quidway-14
+#
+ super password level 3 simple tppar
+#
+ vfs check check-method fix
+#
+ link-aggregation group 3 mode manual
+ link-aggregation group 464 mode manual
+#
+ vrrp ping-enable
+#
+radius scheme system
+#
+domain system
+#
+local-user root
+ password simple fiplextm
+ service-type lan-access
+ service-type telnet
+ service-type ftp
+#
+ stp mode stp
+#                                         
+vlan 1
+#
+vlan 2
+#
+vlan 10
+#
+vlan 20
+#
+vlan 30
+#
+vlan 50
+#
+vlan 160
+#
+vlan 320
+#
+vlan 464
+#
+interface Vlan-interface1
+ ip address 10.15.128.14 255.255.224.0
+#
+interface Vlan-interface2                 
+ ip address 10.50.128.38 255.255.255.0
+ vrrp vrid 1 virtual-ip 10.50.128.39
+#
+interface Aux1/0/0
+#
+interface GigabitEthernet1/0/1
+ description Cascada SW-10.15.128.15
+ duplex full
+ speed 100
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/2
+ port link-type hybrid
+ port hybrid vlan 1 untagged
+#
+interface GigabitEthernet1/0/3
+ description DHCP-10.15.130.1
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/4            
+ description Prizm-10.15.128.4
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/5
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/6
+ port link-type trunk
+ port trunk permit vlan all
+ flow-control
+ broadcast-suppression 10
+#
+interface GigabitEthernet1/0/7
+ description Enlace Carcamo 23 Ghz
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/8
+ description MGT 10.15.128.31             
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/9
+ description NETEQ 10.15.128.8
+ duplex full
+ speed 1000
+ port link-type trunk
+ port trunk permit vlan 1 20 30 50 160
+#
+interface GigabitEthernet1/0/10
+ description "Vyatta Canal-10.15.128.24"
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/11
+ description PTP-600 Caleta 10.15.128.106
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 3
+#
+interface GigabitEthernet1/0/12           
+ description PTP-600 Caleta 10.15.128.102
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 3
+#
+interface GigabitEthernet1/0/13
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/14
+ port link-type trunk
+ port trunk permit vlan 1 20 30 50 160
+ lacp enable
+#
+interface GigabitEthernet1/0/15
+ stp loop-protection
+ description "Proxmox 10.15.13.10->Prizm 10.15.128.4"
+ port link-type trunk
+ port trunk permit vlan all
+ loopback-detection control enable
+#
+interface GigabitEthernet1/0/16           
+ description ""
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/17
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/18
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/19
+ description DATOS 10.15.128.30
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 464
+#
+interface GigabitEthernet1/0/20
+ speed 1000
+ port link-type trunk                     
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/21
+ description DATOS PTP 800 (10.15.128.35)
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+ port link-aggregation group 464
+#
+interface GigabitEthernet1/0/22
+ description MGT PTP 800 (10.15.128.35)
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface GigabitEthernet1/0/23
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/24
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown                                 
+#
+interface GigabitEthernet1/0/25
+ description MGT PTP 800 (10.15.128.35)
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/26
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet1/0/27
+ description DATOS PTP 800 (10.15.128.35)
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 464
+#
+interface GigabitEthernet1/0/28
+ port link-type trunk
+ port trunk permit vlan all
+ shutdown
+#
+interface Cascade1/2/1
+#                                         
+interface Cascade1/2/2
+#
+interface NULL0
+#
+ospf 1
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.15.128.1 preference 60
+#
+ snmp-agent
+ snmp-agent local-engineid 800007DB000FE21687F16877
+ snmp-agent community read tppsa
+ snmp-agent sys-info version all
+#
+ ntp-service unicast-server 10.15.128.128
+#
+user-interface aux 0 7
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password simple tppar
+#
+return

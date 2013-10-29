@@ -1,0 +1,965 @@
+firewall {
+    all-ping enable
+    broadcast-ping disable
+    conntrack-expect-table-size 625000
+    conntrack-hash-size 625000
+    conntrack-table-size 50000000
+    conntrack-tcp-loose enable
+    ipv6-receive-redirects disable
+    ipv6-src-route disable
+    ip-src-route disable
+    log-martians enable
+    receive-redirects enable
+    send-redirects enable
+    source-validation disable
+    syn-cookies enable
+}
+interfaces {
+    ethernet eth0 {
+        duplex auto
+        hw-id 00:1e:67:11:68:f4
+        smp_affinity auto
+        speed auto
+    }
+    ethernet eth1 {
+        address 10.14.128.1/19
+        address 190.14.174.1/24
+        duplex auto
+        hw-id 00:1b:21:a5:14:a0
+        smp_affinity auto
+        speed auto
+        vif 10 {
+            address 172.16.0.1/24
+        }
+        vif 20 {
+            address 10.20.128.1/24
+            address 190.114.136.1/24
+            address 190.114.130.1/24
+            address 190.114.143.1/24
+            address 190.114.158.1/24
+            address 190.114.159.1/24
+            address 190.114.176.1/24
+            address 190.114.177.1/24
+            address 190.114.178.1/24
+            address 190.114.179.1/24
+            address 190.114.167.1/24
+            address 190.114.162.1/24
+            address 190.114.163.1/24
+            address 190.114.180.1/24
+            address 190.114.181.1/24
+        }
+        vif 30 {
+            address 10.30.128.1/24
+            address 190.14.176.1/22
+            address 190.14.175.1/24
+        }
+    }
+    ethernet eth2 {
+        address 190.30.233.253/30
+        address 190.30.233.249/30
+        duplex auto
+        hw-id 00:1b:21:a5:14:a1
+        smp_affinity auto
+        speed auto
+        vif 418 {
+            address 200.63.145.166/30
+        }
+    }
+    loopback lo {
+    }
+}
+protocols {
+    static {
+        arp 10.14.128.5 {
+            hwaddr 00:1A:64:6D:ED:4B
+        }
+        arp 10.14.128.20 {
+            hwaddr 00:0c:42:0a:19:bc
+        }
+        arp 10.14.128.40 {
+            hwaddr 0a:00:3e:e0:45:53
+        }
+        arp 10.14.128.109 {
+            hwaddr 00:15:77:94:98:dc
+        }
+        arp 10.14.128.110 {
+            hwaddr 0a:00:3e:f8:d0:3c
+        }
+        arp 10.14.128.111 {
+            hwaddr 0a:00:3e:f8:f6:48
+        }
+        arp 10.14.128.112 {
+            hwaddr 0a:00:3e:f8:cf:e3
+        }
+        arp 10.14.128.113 {
+            hwaddr 0a:00:3e:f8:f6:22
+        }
+        arp 10.14.128.114 {
+            hwaddr 0a:00:3e:d2:af:64
+        }
+        arp 10.14.128.115 {
+            hwaddr 0a:00:3e:ff:7b:b3
+        }
+        arp 10.14.128.116 {
+            hwaddr 0a:00:3e:e0:4e:d5
+        }
+        arp 10.14.128.117 {
+            hwaddr 0a:00:3e:fc:a5:94
+        }
+        arp 10.14.128.118 {
+            hwaddr 0a:00:3e:fb:eb:64
+        }
+        arp 10.14.128.120 {
+            hwaddr 0a:00:3e:52:68:ca
+        }
+        arp 10.14.128.121 {
+            hwaddr 0a:00:3e:52:68:f5
+        }
+        arp 10.14.128.122 {
+            hwaddr 00:15:6d:8b:cd:81
+        }
+        arp 10.14.128.123 {
+            hwaddr 00:15:6d:8b:cb:6d
+        }
+        arp 10.14.128.128 {
+            hwaddr 0a:00:3e:e0:25:01
+        }
+        arp 10.14.128.129 {
+            hwaddr 0a:00:3e:f7:9e:01
+        }
+        arp 10.14.128.130 {
+            hwaddr 0a:00:3e:f7:2f:68
+        }
+        arp 10.14.128.131 {
+            hwaddr 0a:00:3e:f7:62:c1
+        }
+        arp 10.14.128.132 {
+            hwaddr 0a:00:3e:f7:30:04
+        }
+        arp 10.14.128.133 {
+            hwaddr 0a:00:3e:f7:2a:86
+        }
+        arp 10.14.128.134 {
+            hwaddr 0a:00:3e:f7:6d:cb
+        }
+        arp 10.14.128.137 {
+            hwaddr 0a:00:3e:e0:27:d0
+        }
+        arp 10.14.128.138 {
+            hwaddr 0a:00:3e:fb:72:14
+        }
+        arp 10.14.128.140 {
+            hwaddr 0a:00:3e:f7:2f:31
+        }
+        arp 10.14.128.141 {
+            hwaddr 0a:00:3e:f7:6d:cf
+        }
+        arp 10.14.128.142 {
+            hwaddr 0a:00:3e:f7:2a:85
+        }
+        arp 10.14.128.143 {
+            hwaddr 00:15:6d:5b:d5:d4
+        }
+        arp 10.14.128.145 {
+            hwaddr 0a:00:3e:e0:28:81
+        }
+        arp 10.14.128.146 {
+            hwaddr 0a:00:3e:f7:30:05
+        }
+        arp 10.14.128.147 {
+            hwaddr 0a:00:3e:f6:fa:cf
+        }
+        arp 10.14.128.148 {
+            hwaddr 0a:00:3e:f7:2f:3c
+        }
+        arp 10.14.128.149 {
+            hwaddr 0a:00:3e:f7:2e:b0
+        }
+        arp 10.14.128.150 {
+            hwaddr 0a:00:3e:f7:30:6c
+        }
+        arp 10.14.128.151 {
+            hwaddr 0a:00:3e:f7:5e:88
+        }
+        arp 10.14.128.152 {
+            hwaddr 0a:00:3e:d5:21:17
+        }
+        arp 10.14.128.153 {
+            hwaddr 0a:00:3e:d5:20:df
+        }
+        arp 10.14.128.156 {
+            hwaddr 0a:00:3e:f8:cf:63
+        }
+        arp 10.14.128.157 {
+            hwaddr 0a:00:3e:f8:f6:0e
+        }
+        arp 10.14.128.158 {
+            hwaddr 0a:00:3e:f8:f1:8c
+        }
+        arp 10.14.128.159 {
+            hwaddr 00:15:6d:5b:d5:60
+        }
+        arp 10.14.128.164 {
+            hwaddr 0a:00:3e:fd:66:f6
+        }
+        arp 10.14.128.165 {
+            hwaddr 0a:00:3e:fc:15:5d
+        }
+        arp 10.14.128.166 {
+            hwaddr 0a:00:3e:e0:43:a0
+        }
+        arp 10.14.128.167 {
+            hwaddr 0a:00:3e:f8:c8:4c
+        }
+        arp 10.14.128.168 {
+            hwaddr 0a:00:3e:f8:92:11
+        }
+        arp 10.14.128.169 {
+            hwaddr 0a:00:3e:f8:b1:70
+        }
+        arp 10.14.128.170 {
+            hwaddr 0a:00:3e:f8:59:bc
+        }
+        arp 10.14.128.171 {
+            hwaddr 0a:00:3e:d0:8f:9f
+        }
+        arp 10.14.128.173 {
+            hwaddr 0a:00:3e:db:34:91
+        }
+        arp 10.14.128.184 {
+            hwaddr 0a:00:3e:d2:a9:db
+        }
+        arp 10.14.128.185 {
+            hwaddr 0a:00:3e:d2:a8:50
+        }
+        arp 10.14.128.188 {
+            hwaddr 0a:00:3e:fc:29:19
+        }
+        arp 10.14.128.189 {
+            hwaddr 0a:00:3e:e0:46:ec
+        }
+        arp 10.14.128.190 {
+            hwaddr 0a:00:3e:fb:e4:47
+        }
+        arp 10.14.128.191 {
+            hwaddr 0a:00:3e:d8:5e:27
+        }
+        arp 10.14.128.200 {
+            hwaddr 0a:00:3e:e0:4f:5d
+        }
+        arp 10.14.128.201 {
+            hwaddr 0a:00:3e:fb:ef:75
+        }
+        arp 10.14.128.203 {
+            hwaddr 0a:00:3e:f8:2c:8a
+        }
+        arp 10.14.128.205 {
+            hwaddr 0a:00:3e:fb:f0:2e
+        }
+        arp 10.14.128.206 {
+            hwaddr 0a:00:3e:fb:e2:89
+        }
+        arp 10.14.128.207 {
+            hwaddr 0a:00:3e:d2:ab:5e
+        }
+        arp 10.14.128.208 {
+            hwaddr 0a:00:3e:d2:ac:29
+        }
+        arp 10.14.129.2 {
+            hwaddr 00:c0:b7:73:30:0d
+        }
+        arp 10.14.129.3 {
+            hwaddr 00:20:85:fd:22:15
+        }
+        route 0.0.0.0/0 {
+            next-hop 200.63.145.165 {
+            }
+        }
+        route 10.10.0.0/24 {
+            next-hop 10.10.255.254 {
+            }
+        }
+        route 10.14.160.0/24 {
+            next-hop 10.14.128.90 {
+            }
+        }
+        route 10.14.161.0/24 {
+            next-hop 10.14.160.1 {
+            }
+        }
+        route 10.214.110.0/24 {
+            next-hop 10.14.128.110 {
+            }
+        }
+        route 10.214.111.0/24 {
+            next-hop 10.14.128.111 {
+            }
+        }
+        route 10.214.112.0/24 {
+            next-hop 10.14.128.112 {
+            }
+        }
+        route 10.214.113.0/24 {
+            next-hop 10.14.128.113 {
+            }
+        }
+        route 10.214.114.0/24 {
+            next-hop 10.14.128.114 {
+            }
+        }
+        route 10.214.115.0/24 {
+            next-hop 10.14.128.115 {
+            }
+        }
+        route 10.214.118.0/24 {
+            next-hop 10.14.128.118 {
+            }
+        }
+        route 10.214.129.0/24 {
+            next-hop 10.14.128.129 {
+            }
+        }
+        route 10.214.130.0/24 {
+            next-hop 10.14.128.130 {
+            }
+        }
+        route 10.214.131.0/24 {
+            next-hop 10.14.128.131 {
+            }
+        }
+        route 10.214.132.0/24 {
+            next-hop 10.14.128.132 {
+            }
+        }
+        route 10.214.133.0/24 {
+            next-hop 10.14.128.133 {
+            }
+        }
+        route 10.214.134.0/24 {
+            next-hop 10.14.128.134 {
+            }
+        }
+        route 10.214.135.0/24 {
+            next-hop 10.14.128.135 {
+            }
+        }
+        route 10.214.138.0/24 {
+            next-hop 10.14.128.138 {
+            }
+        }
+        route 10.214.139.0/24 {
+            next-hop 10.14.128.139 {
+            }
+        }
+        route 10.214.140.0/24 {
+            next-hop 10.14.128.140 {
+            }
+        }
+        route 10.214.141.0/24 {
+            next-hop 10.14.128.141 {
+            }
+        }
+        route 10.214.142.0/24 {
+            next-hop 10.14.128.142 {
+            }
+        }
+        route 10.214.146.0/24 {
+            next-hop 10.14.128.146 {
+            }
+        }
+        route 10.214.147.0/24 {
+            next-hop 10.14.128.147 {
+            }
+        }
+        route 10.214.149.0/24 {
+            next-hop 10.14.128.149 {
+            }
+        }
+        route 10.214.150.0/24 {
+            next-hop 10.14.128.150 {
+            }
+        }
+        route 10.214.151.0/24 {
+            next-hop 10.14.128.151 {
+            }
+        }
+        route 10.214.156.0/24 {
+            next-hop 10.14.128.156 {
+            }
+        }
+        route 10.214.157.0/24 {
+            next-hop 10.14.128.157 {
+            }
+        }
+        route 10.214.158.0/24 {
+            next-hop 10.14.128.158 {
+            }
+        }
+        route 10.214.165.0/24 {
+            next-hop 10.14.128.165 {
+            }
+        }
+        route 10.214.167.0/24 {
+            next-hop 10.14.128.167 {
+            }
+        }
+        route 10.214.168.0/24 {
+            next-hop 10.14.128.168 {
+            }
+        }
+        route 10.214.169.0/24 {
+            next-hop 10.14.128.169 {
+            }
+        }
+        route 10.214.170.0/24 {
+            next-hop 10.14.128.170 {
+            }
+        }
+        route 10.214.171.0/24 {
+            next-hop 10.14.128.171 {
+            }
+        }
+        route 10.214.173.0/24 {
+            next-hop 10.14.128.173 {
+            }
+        }
+        route 10.214.174.0/24 {
+            next-hop 10.14.128.174 {
+            }
+        }
+        route 10.214.201.0/24 {
+            next-hop 10.14.128.201 {
+            }
+        }
+        route 10.214.202.0/24 {
+            next-hop 10.14.128.202 {
+            }
+        }
+        route 10.214.203.0/24 {
+            next-hop 10.14.128.203 {
+            }
+        }
+        route 10.214.204.0/24 {
+            next-hop 10.14.128.204 {
+            }
+        }
+        route 10.214.205.0/24 {
+            next-hop 10.14.128.205 {
+            }
+        }
+        route 10.214.206.0/24 {
+            next-hop 10.14.128.206 {
+            }
+        }
+        route 10.214.222.0/24 {
+            next-hop 10.14.128.222 {
+            }
+        }
+        route 10.214.223.0/24 {
+            next-hop 10.14.128.223 {
+            }
+        }
+        route 10.214.231.0/24 {
+            next-hop 10.14.128.231 {
+            }
+        }
+        route 10.214.232.0/24 {
+            next-hop 10.14.128.232 {
+            }
+        }
+        route 10.214.233.0/24 {
+            next-hop 10.14.128.233 {
+            }
+        }
+        route 10.214.234.0/24 {
+            next-hop 10.14.128.234 {
+            }
+        }
+        route 10.214.236.0/24 {
+            next-hop 10.14.128.236 {
+            }
+        }
+        route 10.214.240.0/24 {
+            next-hop 10.14.128.240 {
+            }
+        }
+        route 10.214.241.0/24 {
+            next-hop 10.14.128.240 {
+            }
+        }
+        route 10.214.242.0/24 {
+            next-hop 10.14.128.242 {
+            }
+        }
+        route 190.114.166.0/24 {
+            next-hop 10.14.128.90 {
+            }
+        }
+        route 192.168.1.0/24 {
+            next-hop 10.14.128.134 {
+            }
+        }
+    }
+}
+service {
+    nat {
+        rule 40 {
+            description natPrizm
+            destination {
+                address 190.14.174.246
+            }
+            inbound-interface eth2.418
+            inside-address {
+                address 10.14.128.246
+            }
+            type destination
+        }
+    }
+    snmp {
+        community tppar {
+            authorization ro
+        }
+        community tppnqar {
+            authorization ro
+        }
+        community tppsa {
+            authorization ro
+        }
+    }
+    ssh {
+        allow-root
+        port 3522
+        protocol-version v2
+    }
+    telnet {
+        allow-root
+        port 23
+    }
+}
+system {
+    config-management {
+        commit-revisions 20
+    }
+    console {
+        device ttyS0 {
+            speed 9600
+        }
+    }
+    host-name VyattaNeuquen
+    ip {
+        arp {
+            table-size 4096
+        }
+    }
+    login {
+        banner {
+        }
+        user root {
+            authentication {
+                encrypted-password ****************
+            }
+            level admin
+        }
+        user vyatta {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+            level admin
+        }
+    }
+    name-server 8.8.8.8
+    name-server 8.8.4.4
+    ntp {
+        server 0.vyatta.pool.ntp.org {
+        }
+        server 1.vyatta.pool.ntp.org {
+        }
+        server 2.vyatta.pool.ntp.org {
+        }
+    }
+    package {
+        auto-sync 1
+        repository community {
+            components main
+            distribution stable
+            password ****************
+            url http://packages.vyatta.com/vyatta
+            username ""
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level notice
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+    time-zone GMT
+}
+vpn {
+    ipsec {
+        esp-group ESP-1NQ {
+            compression disable
+            lifetime 1800
+            mode tunnel
+            pfs enable
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+        }
+        ike-group IKE-1NQ {
+            lifetime 3600
+            proposal 1 {
+                encryption aes256
+                hash sha1
+            }
+            proposal 2 {
+                encryption aes128
+                hash sha1
+            }
+        }
+        ipsec-interfaces {
+            interface eth1
+        }
+        site-to-site {
+            peer 190.2.46.194 {
+                authentication {
+                    mode pre-shared-secret
+                    pre-shared-secret ****************
+                }
+                ike-group IKE-1NQ
+                local-ip 190.14.174.1
+                tunnel 1 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.14.128.0/19
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 2 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.14.128.0/19
+                    remote-subnet 192.168.0.0/17
+                }
+                tunnel 3 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.214.0.0/16
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 4 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.214.0.0/16
+                    remote-subnet 192.168.0.0/17
+                }
+                tunnel 5 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.14.160.0/24
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 6 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.14.161.0/24
+                    remote-subnet 10.10.128.0/17
+                }
+                tunnel 7 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.14.161.0/24
+                    remote-subnet 192.168.0.0/16
+                }
+                tunnel 8 {
+                    allow-nat-networks disable
+                    allow-public-networks disable
+                    esp-group ESP-1NQ
+                    local-subnet 10.14.160.0/24
+                    remote-subnet 192.168.0.0/16
+                }
+            }
+        }
+    }
+}
+
+set firewall all-ping 'enable'
+set firewall broadcast-ping 'disable'
+set firewall conntrack-expect-table-size '625000'
+set firewall conntrack-hash-size '625000'
+set firewall conntrack-table-size '50000000'
+set firewall conntrack-tcp-loose 'enable'
+set firewall ipv6-receive-redirects 'disable'
+set firewall ipv6-src-route 'disable'
+set firewall ip-src-route 'disable'
+set firewall log-martians 'enable'
+set firewall receive-redirects 'enable'
+set firewall send-redirects 'enable'
+set firewall source-validation 'disable'
+set firewall syn-cookies 'enable'
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id '00:1e:67:11:68:f4'
+set interfaces ethernet eth0 smp_affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth1 address '10.14.128.1/19'
+set interfaces ethernet eth1 address '190.14.174.1/24'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id '00:1b:21:a5:14:a0'
+set interfaces ethernet eth1 smp_affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth1 vif 10 address '172.16.0.1/24'
+set interfaces ethernet eth1 vif 20 address '10.20.128.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.136.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.130.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.143.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.158.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.159.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.176.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.177.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.178.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.179.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.167.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.162.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.163.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.180.1/24'
+set interfaces ethernet eth1 vif 20 address '190.114.181.1/24'
+set interfaces ethernet eth1 vif 30 address '10.30.128.1/24'
+set interfaces ethernet eth1 vif 30 address '190.14.176.1/22'
+set interfaces ethernet eth1 vif 30 address '190.14.175.1/24'
+set interfaces ethernet eth2 address '190.30.233.253/30'
+set interfaces ethernet eth2 address '190.30.233.249/30'
+set interfaces ethernet eth2 duplex 'auto'
+set interfaces ethernet eth2 hw-id '00:1b:21:a5:14:a1'
+set interfaces ethernet eth2 smp_affinity 'auto'
+set interfaces ethernet eth2 speed 'auto'
+set interfaces ethernet eth2 vif 418 address '200.63.145.166/30'
+set interfaces loopback 'lo'
+set protocols static arp 10.14.128.5 hwaddr '00:1A:64:6D:ED:4B'
+set protocols static arp 10.14.128.20 hwaddr '00:0c:42:0a:19:bc'
+set protocols static arp 10.14.128.40 hwaddr '0a:00:3e:e0:45:53'
+set protocols static arp 10.14.128.109 hwaddr '00:15:77:94:98:dc'
+set protocols static arp 10.14.128.110 hwaddr '0a:00:3e:f8:d0:3c'
+set protocols static arp 10.14.128.111 hwaddr '0a:00:3e:f8:f6:48'
+set protocols static arp 10.14.128.112 hwaddr '0a:00:3e:f8:cf:e3'
+set protocols static arp 10.14.128.113 hwaddr '0a:00:3e:f8:f6:22'
+set protocols static arp 10.14.128.114 hwaddr '0a:00:3e:d2:af:64'
+set protocols static arp 10.14.128.115 hwaddr '0a:00:3e:ff:7b:b3'
+set protocols static arp 10.14.128.116 hwaddr '0a:00:3e:e0:4e:d5'
+set protocols static arp 10.14.128.117 hwaddr '0a:00:3e:fc:a5:94'
+set protocols static arp 10.14.128.118 hwaddr '0a:00:3e:fb:eb:64'
+set protocols static arp 10.14.128.120 hwaddr '0a:00:3e:52:68:ca'
+set protocols static arp 10.14.128.121 hwaddr '0a:00:3e:52:68:f5'
+set protocols static arp 10.14.128.122 hwaddr '00:15:6d:8b:cd:81'
+set protocols static arp 10.14.128.123 hwaddr '00:15:6d:8b:cb:6d'
+set protocols static arp 10.14.128.128 hwaddr '0a:00:3e:e0:25:01'
+set protocols static arp 10.14.128.129 hwaddr '0a:00:3e:f7:9e:01'
+set protocols static arp 10.14.128.130 hwaddr '0a:00:3e:f7:2f:68'
+set protocols static arp 10.14.128.131 hwaddr '0a:00:3e:f7:62:c1'
+set protocols static arp 10.14.128.132 hwaddr '0a:00:3e:f7:30:04'
+set protocols static arp 10.14.128.133 hwaddr '0a:00:3e:f7:2a:86'
+set protocols static arp 10.14.128.134 hwaddr '0a:00:3e:f7:6d:cb'
+set protocols static arp 10.14.128.137 hwaddr '0a:00:3e:e0:27:d0'
+set protocols static arp 10.14.128.138 hwaddr '0a:00:3e:fb:72:14'
+set protocols static arp 10.14.128.140 hwaddr '0a:00:3e:f7:2f:31'
+set protocols static arp 10.14.128.141 hwaddr '0a:00:3e:f7:6d:cf'
+set protocols static arp 10.14.128.142 hwaddr '0a:00:3e:f7:2a:85'
+set protocols static arp 10.14.128.143 hwaddr '00:15:6d:5b:d5:d4'
+set protocols static arp 10.14.128.145 hwaddr '0a:00:3e:e0:28:81'
+set protocols static arp 10.14.128.146 hwaddr '0a:00:3e:f7:30:05'
+set protocols static arp 10.14.128.147 hwaddr '0a:00:3e:f6:fa:cf'
+set protocols static arp 10.14.128.148 hwaddr '0a:00:3e:f7:2f:3c'
+set protocols static arp 10.14.128.149 hwaddr '0a:00:3e:f7:2e:b0'
+set protocols static arp 10.14.128.150 hwaddr '0a:00:3e:f7:30:6c'
+set protocols static arp 10.14.128.151 hwaddr '0a:00:3e:f7:5e:88'
+set protocols static arp 10.14.128.152 hwaddr '0a:00:3e:d5:21:17'
+set protocols static arp 10.14.128.153 hwaddr '0a:00:3e:d5:20:df'
+set protocols static arp 10.14.128.156 hwaddr '0a:00:3e:f8:cf:63'
+set protocols static arp 10.14.128.157 hwaddr '0a:00:3e:f8:f6:0e'
+set protocols static arp 10.14.128.158 hwaddr '0a:00:3e:f8:f1:8c'
+set protocols static arp 10.14.128.159 hwaddr '00:15:6d:5b:d5:60'
+set protocols static arp 10.14.128.164 hwaddr '0a:00:3e:fd:66:f6'
+set protocols static arp 10.14.128.165 hwaddr '0a:00:3e:fc:15:5d'
+set protocols static arp 10.14.128.166 hwaddr '0a:00:3e:e0:43:a0'
+set protocols static arp 10.14.128.167 hwaddr '0a:00:3e:f8:c8:4c'
+set protocols static arp 10.14.128.168 hwaddr '0a:00:3e:f8:92:11'
+set protocols static arp 10.14.128.169 hwaddr '0a:00:3e:f8:b1:70'
+set protocols static arp 10.14.128.170 hwaddr '0a:00:3e:f8:59:bc'
+set protocols static arp 10.14.128.171 hwaddr '0a:00:3e:d0:8f:9f'
+set protocols static arp 10.14.128.173 hwaddr '0a:00:3e:db:34:91'
+set protocols static arp 10.14.128.184 hwaddr '0a:00:3e:d2:a9:db'
+set protocols static arp 10.14.128.185 hwaddr '0a:00:3e:d2:a8:50'
+set protocols static arp 10.14.128.188 hwaddr '0a:00:3e:fc:29:19'
+set protocols static arp 10.14.128.189 hwaddr '0a:00:3e:e0:46:ec'
+set protocols static arp 10.14.128.190 hwaddr '0a:00:3e:fb:e4:47'
+set protocols static arp 10.14.128.191 hwaddr '0a:00:3e:d8:5e:27'
+set protocols static arp 10.14.128.200 hwaddr '0a:00:3e:e0:4f:5d'
+set protocols static arp 10.14.128.201 hwaddr '0a:00:3e:fb:ef:75'
+set protocols static arp 10.14.128.203 hwaddr '0a:00:3e:f8:2c:8a'
+set protocols static arp 10.14.128.205 hwaddr '0a:00:3e:fb:f0:2e'
+set protocols static arp 10.14.128.206 hwaddr '0a:00:3e:fb:e2:89'
+set protocols static arp 10.14.128.207 hwaddr '0a:00:3e:d2:ab:5e'
+set protocols static arp 10.14.128.208 hwaddr '0a:00:3e:d2:ac:29'
+set protocols static arp 10.14.129.2 hwaddr '00:c0:b7:73:30:0d'
+set protocols static arp 10.14.129.3 hwaddr '00:20:85:fd:22:15'
+set protocols static route 0.0.0.0/0 next-hop '200.63.145.165'
+set protocols static route 10.10.0.0/24 next-hop '10.10.255.254'
+set protocols static route 10.14.160.0/24 next-hop '10.14.128.90'
+set protocols static route 10.14.161.0/24 next-hop '10.14.160.1'
+set protocols static route 10.214.110.0/24 next-hop '10.14.128.110'
+set protocols static route 10.214.111.0/24 next-hop '10.14.128.111'
+set protocols static route 10.214.112.0/24 next-hop '10.14.128.112'
+set protocols static route 10.214.113.0/24 next-hop '10.14.128.113'
+set protocols static route 10.214.114.0/24 next-hop '10.14.128.114'
+set protocols static route 10.214.115.0/24 next-hop '10.14.128.115'
+set protocols static route 10.214.118.0/24 next-hop '10.14.128.118'
+set protocols static route 10.214.129.0/24 next-hop '10.14.128.129'
+set protocols static route 10.214.130.0/24 next-hop '10.14.128.130'
+set protocols static route 10.214.131.0/24 next-hop '10.14.128.131'
+set protocols static route 10.214.132.0/24 next-hop '10.14.128.132'
+set protocols static route 10.214.133.0/24 next-hop '10.14.128.133'
+set protocols static route 10.214.134.0/24 next-hop '10.14.128.134'
+set protocols static route 10.214.135.0/24 next-hop '10.14.128.135'
+set protocols static route 10.214.138.0/24 next-hop '10.14.128.138'
+set protocols static route 10.214.139.0/24 next-hop '10.14.128.139'
+set protocols static route 10.214.140.0/24 next-hop '10.14.128.140'
+set protocols static route 10.214.141.0/24 next-hop '10.14.128.141'
+set protocols static route 10.214.142.0/24 next-hop '10.14.128.142'
+set protocols static route 10.214.146.0/24 next-hop '10.14.128.146'
+set protocols static route 10.214.147.0/24 next-hop '10.14.128.147'
+set protocols static route 10.214.149.0/24 next-hop '10.14.128.149'
+set protocols static route 10.214.150.0/24 next-hop '10.14.128.150'
+set protocols static route 10.214.151.0/24 next-hop '10.14.128.151'
+set protocols static route 10.214.156.0/24 next-hop '10.14.128.156'
+set protocols static route 10.214.157.0/24 next-hop '10.14.128.157'
+set protocols static route 10.214.158.0/24 next-hop '10.14.128.158'
+set protocols static route 10.214.165.0/24 next-hop '10.14.128.165'
+set protocols static route 10.214.167.0/24 next-hop '10.14.128.167'
+set protocols static route 10.214.168.0/24 next-hop '10.14.128.168'
+set protocols static route 10.214.169.0/24 next-hop '10.14.128.169'
+set protocols static route 10.214.170.0/24 next-hop '10.14.128.170'
+set protocols static route 10.214.171.0/24 next-hop '10.14.128.171'
+set protocols static route 10.214.173.0/24 next-hop '10.14.128.173'
+set protocols static route 10.214.174.0/24 next-hop '10.14.128.174'
+set protocols static route 10.214.201.0/24 next-hop '10.14.128.201'
+set protocols static route 10.214.202.0/24 next-hop '10.14.128.202'
+set protocols static route 10.214.203.0/24 next-hop '10.14.128.203'
+set protocols static route 10.214.204.0/24 next-hop '10.14.128.204'
+set protocols static route 10.214.205.0/24 next-hop '10.14.128.205'
+set protocols static route 10.214.206.0/24 next-hop '10.14.128.206'
+set protocols static route 10.214.222.0/24 next-hop '10.14.128.222'
+set protocols static route 10.214.223.0/24 next-hop '10.14.128.223'
+set protocols static route 10.214.231.0/24 next-hop '10.14.128.231'
+set protocols static route 10.214.232.0/24 next-hop '10.14.128.232'
+set protocols static route 10.214.233.0/24 next-hop '10.14.128.233'
+set protocols static route 10.214.234.0/24 next-hop '10.14.128.234'
+set protocols static route 10.214.236.0/24 next-hop '10.14.128.236'
+set protocols static route 10.214.240.0/24 next-hop '10.14.128.240'
+set protocols static route 10.214.241.0/24 next-hop '10.14.128.240'
+set protocols static route 10.214.242.0/24 next-hop '10.14.128.242'
+set protocols static route 190.114.166.0/24 next-hop '10.14.128.90'
+set protocols static route 192.168.1.0/24 next-hop '10.14.128.134'
+set service nat rule 40 description 'natPrizm'
+set service nat rule 40 destination address '190.14.174.246'
+set service nat rule 40 inbound-interface 'eth2.418'
+set service nat rule 40 inside-address address '10.14.128.246'
+set service nat rule 40 type 'destination'
+set service snmp community tppar authorization 'ro'
+set service snmp community tppnqar authorization 'ro'
+set service snmp community tppsa authorization 'ro'
+set service ssh 'allow-root'
+set service ssh port '3522'
+set service ssh protocol-version 'v2'
+set service telnet 'allow-root'
+set service telnet port '23'
+set system config-management commit-revisions '20'
+set system console device ttyS0 speed '9600'
+set system host-name 'VyattaNeuquen'
+set system ip arp table-size '4096'
+set system login 'banner'
+set system login user root authentication encrypted-password '$1$F4gR3Hl7$I2ZP4Rwv/keroFFcoxrnd1'
+set system login user root level 'admin'
+set system login user vyatta authentication encrypted-password '$1$QkDSlj29$0m5OhifQFUQuzeMtjPq4l0'
+set system login user vyatta authentication plaintext-password ''
+set system login user vyatta level 'admin'
+set system name-server '8.8.8.8'
+set system name-server '8.8.4.4'
+set system ntp server '0.vyatta.pool.ntp.org'
+set system ntp server '1.vyatta.pool.ntp.org'
+set system ntp server '2.vyatta.pool.ntp.org'
+set system package auto-sync '1'
+set system package repository community components 'main'
+set system package repository community distribution 'stable'
+set system package repository community password ''
+set system package repository community url 'http://packages.vyatta.com/vyatta'
+set system package repository community username ''
+set system syslog global facility all level 'notice'
+set system syslog global facility protocols level 'debug'
+set system time-zone 'GMT'
+set vpn ipsec esp-group ESP-1NQ compression 'disable'
+set vpn ipsec esp-group ESP-1NQ lifetime '1800'
+set vpn ipsec esp-group ESP-1NQ mode 'tunnel'
+set vpn ipsec esp-group ESP-1NQ pfs 'enable'
+set vpn ipsec esp-group ESP-1NQ proposal 1 encryption 'aes256'
+set vpn ipsec esp-group ESP-1NQ proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1NQ lifetime '3600'
+set vpn ipsec ike-group IKE-1NQ proposal 1 encryption 'aes256'
+set vpn ipsec ike-group IKE-1NQ proposal 1 hash 'sha1'
+set vpn ipsec ike-group IKE-1NQ proposal 2 encryption 'aes128'
+set vpn ipsec ike-group IKE-1NQ proposal 2 hash 'sha1'
+set vpn ipsec ipsec-interfaces interface 'eth1'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication mode 'pre-shared-secret'
+set vpn ipsec site-to-site peer 190.2.46.194 authentication pre-shared-secret 'tppvpnnq'
+set vpn ipsec site-to-site peer 190.2.46.194 ike-group 'IKE-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 local-ip '190.14.174.1'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 local-subnet '10.14.128.0/19'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 1 remote-subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 local-subnet '10.14.128.0/19'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 2 remote-subnet '192.168.0.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 local-subnet '10.214.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 3 remote-subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 local-subnet '10.214.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 4 remote-subnet '192.168.0.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 local-subnet '10.14.160.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 5 remote-subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 local-subnet '10.14.161.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 6 remote-subnet '10.10.128.0/17'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 local-subnet '10.14.161.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 7 remote-subnet '192.168.0.0/16'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 allow-nat-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 allow-public-networks 'disable'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 esp-group 'ESP-1NQ'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 local-subnet '10.14.160.0/24'
+set vpn ipsec site-to-site peer 190.2.46.194 tunnel 8 remote-subnet '192.168.0.0/16'

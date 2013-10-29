@@ -1,0 +1,14 @@
+Nameservers for .arpa TLD and SOA Query Test
+Nameserver	Pass	A	Pass	AAAA
+a.root-servers.net 	O 	198.41.0.4 	O 	2001:503:ba3e::2:30
+b.root-servers.net 	O 	192.228.79.201 		
+c.root-servers.net 	O 	192.33.4.12 		
+d.root-servers.net 	O 	199.7.91.13 	O 	2001:500:2d::d
+e.root-servers.net 	O 	192.203.230.10 		
+f.root-servers.net 	O 	192.5.5.241 	O 	2001:500:2f::f
+g.root-servers.net 	O 	192.112.36.4 		
+h.root-servers.net 	O 	128.63.2.53 	O 	2001:500:1::803f:235
+i.root-servers.net 	O 	192.36.148.17 	O 	2001:7fe::53
+k.root-servers.net 	O 	193.0.14.129 	O 	2001:7fd::1
+l.root-servers.net 	O 	199.7.83.42 	O 	2001:500:3::42
+m.root-servers.net 	O 	202.12.27.33 	O 	2001:dc3::35

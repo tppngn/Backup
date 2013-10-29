@@ -1,0 +1,109 @@
+#
+ sysname Quidway-Esquel
+#
+ super password level 3 simple tppar
+#
+radius scheme system
+ server-type huawei
+ primary authentication 127.0.0.1 1645
+ primary accounting 127.0.0.1 1646
+ user-name-format without-domain
+
+domain system
+ radius-scheme system
+ access-limit disable
+ state active
+ vlan-assignment-mode integer
+ idle-cut disable
+ self-service-url disable
+ messenger time disable
+
+ domain default enable system
+#
+ local-server nas-ip 127.0.0.1 key huawei
+                                          
+local-user admin
+ password simple fiplextm
+ service-type telnet level 3
+#
+ temperature-limit 0 20 80
+#
+vlan 1
+#
+vlan 10
+#
+vlan 20
+#
+vlan 30
+#
+interface Vlan-interface1
+ ip address 10.26.128.2 255.255.255.0
+#
+interface Aux0/0
+#
+interface GigabitEthernet0/1
+ port link-type trunk
+ port trunk permit vlan all
+#                                         
+interface GigabitEthernet0/2
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/3
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/4
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/5
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/6
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/7
+ description Ingreso Morosos              
+ shutdown
+ port access vlan 10
+#
+interface GigabitEthernet0/8
+ description Salida Morosos
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/9
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/10
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/11
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface GigabitEthernet0/12
+ port link-type trunk                     
+ port trunk permit vlan all
+#
+interface NULL0
+#
+ ip route-static 0.0.0.0 0.0.0.0 10.26.128.1 preference 60
+#
+ snmp-agent
+ snmp-agent local-engineid 800007DB000FE214D6656877
+ snmp-agent community read  tppsa
+ snmp-agent sys-info location BeiJing China
+ snmp-agent sys-info version all
+#
+user-interface aux 0
+user-interface vty 0 4
+ user privilege level 3
+ set authentication password simple tppar
+#
+return

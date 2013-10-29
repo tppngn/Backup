@@ -1,0 +1,1371 @@
+# Copyright (c) Altai Technologies Limited, All Rights Reserved
+BCMode 0
+fwc: 40
+version 6
+login root
+password fiplextm
+SystemName 
+SystemNEId 
+SystemLocation 
+Telnet Enable
+Timeout 180
+GetSNMPCommunityName public
+SetSNMPCommunityName netman
+SnmpAgentPort 161
+SnmpTrapPort 162
+snmpaclmode Disable
+ip 10.14.160.2
+ipmask 255.255.255.0
+gateway 10.14.160.1
+wlan00 ssid Altai Wireless Network - 0
+wlan01 ssid Altai Wireless Network - 1
+wlan02 ssid PPPoE
+wlan03 ssid tpp-wifi-public
+wlan04 ssid Altai Wireless Network - 4
+wlan05 ssid Altai Wireless Network - 5
+wlan06 ssid Altai Wireless Network - 6
+wlan07 ssid Altai Wireless Network - 7
+xlan08 ssid Altai Wireless Network - 8
+xlan09 ssid Altai Wireless Network - 9
+xlan0: ssid Altai Wireless Network - 10
+xlan0; ssid Altai Wireless Network - 11
+xlan0< ssid Altai Wireless Network - 12
+xlan0= ssid Altai Wireless Network - 13
+xlan0> ssid Altai Wireless Network - 14
+xlan0? ssid Altai Wireless Network - 15
+wlan60 ssid Altai Wireless Network - 0
+wlan00 ssidSuppress Disable
+wlan01 ssidSuppress Disable
+wlan02 ssidSuppress Disable
+wlan03 ssidSuppress Disable
+wlan04 ssidSuppress Disable
+wlan05 ssidSuppress Disable
+wlan06 ssidSuppress Disable
+wlan07 ssidSuppress Disable
+xlan08 ssidSuppress Disable
+xlan09 ssidSuppress Disable
+xlan0: ssidSuppress Disable
+xlan0; ssidSuppress Disable
+xlan0< ssidSuppress Disable
+xlan0= ssidSuppress Disable
+xlan0> ssidSuppress Disable
+xlan0? ssidSuppress Disable
+wlan60 ssidSuppress Disable
+wlan00 active Enable
+wlan01 active Disable
+wlan02 active Enable
+wlan03 active Enable
+wlan04 active Disable
+wlan05 active Disable
+wlan06 active Disable
+wlan07 active Disable
+xlan08 active Disable
+xlan09 active Disable
+xlan0: active Disable
+xlan0; active Disable
+xlan0< active Disable
+xlan0= active Disable
+xlan0> active Disable
+xlan0? active Disable
+wlan60 active Enable
+vlan Enable
+vlanTable 0 1 0
+vlanTable 1 10 0
+vlanTable 2 20 0
+vlanTable 3 4 0
+vlanTable 4 5 0
+vlanTable 5 6 0
+vlanTable 6 7 0
+vlanTable 7 8 0
+vlanTable 8 9 0
+vlanTable 9 17 0
+vlanTable 10 11 0
+vlanTable 11 12 0
+vlanTable 12 13 0
+vlanTable 13 14 0
+vlanTable 14 15 0
+vlanTable 15 16 0
+wlan00 interVapForwarding Disable
+wlan60 interVapForwarding Disable
+wlan00 intraVF Enable
+wlan01 intraVF Enable
+wlan02 intraVF Enable
+wlan03 intraVF Enable
+wlan04 intraVF Enable
+wlan05 intraVF Enable
+wlan06 intraVF Enable
+wlan07 intraVF Enable
+xlan08 intraVF Enable
+xlan09 intraVF Enable
+xlan0: intraVF Enable
+xlan0; intraVF Enable
+xlan0< intraVF Enable
+xlan0= intraVF Enable
+xlan0> intraVF Enable
+xlan0? intraVF Enable
+wlan60 intraVF Enable
+dnsAutoUpdate Enable
+nameaddr 
+domainsuffix 
+wlan00 RADIUSaddr 
+wlan01 RADIUSaddr 
+wlan02 RADIUSaddr 
+wlan03 RADIUSaddr 
+wlan04 RADIUSaddr 
+wlan05 RADIUSaddr 
+wlan06 RADIUSaddr 
+wlan07 RADIUSaddr 
+xlan08 RADIUSaddr 
+xlan09 RADIUSaddr 
+xlan0: RADIUSaddr 
+xlan0; RADIUSaddr 
+xlan0< RADIUSaddr 
+xlan0= RADIUSaddr 
+xlan0> RADIUSaddr 
+xlan0? RADIUSaddr 
+wlan60 RADIUSaddr 
+wlan00 RADIUSport 1812
+wlan01 RADIUSport 1812
+wlan02 RADIUSport 1812
+wlan03 RADIUSport 1812
+wlan04 RADIUSport 1812
+wlan05 RADIUSport 1812
+wlan06 RADIUSport 1812
+wlan07 RADIUSport 1812
+xlan08 RADIUSport 1812
+xlan09 RADIUSport 1812
+xlan0: RADIUSport 1812
+xlan0; RADIUSport 1812
+xlan0< RADIUSport 1812
+xlan0= RADIUSport 1812
+xlan0> RADIUSport 1812
+xlan0? RADIUSport 1812
+wlan60 RADIUSport 1812
+wlan00 RADIUSsecret 
+wlan01 RADIUSsecret 
+wlan02 RADIUSsecret 
+wlan03 RADIUSsecret 
+wlan04 RADIUSsecret 
+wlan05 RADIUSsecret 
+wlan06 RADIUSsecret 
+wlan07 RADIUSsecret 
+xlan08 RADIUSsecret 
+xlan09 RADIUSsecret 
+xlan0: RADIUSsecret 
+xlan0; RADIUSsecret 
+xlan0< RADIUSsecret 
+xlan0= RADIUSsecret 
+xlan0> RADIUSsecret 
+xlan0? RADIUSsecret 
+wlan60 RADIUSsecret 
+wlan00 RADIUS2addr 
+wlan01 RADIUS2addr 
+wlan02 RADIUS2addr 
+wlan03 RADIUS2addr 
+wlan04 RADIUS2addr 
+wlan05 RADIUS2addr 
+wlan06 RADIUS2addr 
+wlan07 RADIUS2addr 
+xlan08 RADIUS2addr 
+xlan09 RADIUS2addr 
+xlan0: RADIUS2addr 
+xlan0; RADIUS2addr 
+xlan0< RADIUS2addr 
+xlan0= RADIUS2addr 
+xlan0> RADIUS2addr 
+xlan0? RADIUS2addr 
+wlan60 RADIUS2addr 
+wlan00 RADIUS2port 1812
+wlan01 RADIUS2port 1812
+wlan02 RADIUS2port 1812
+wlan03 RADIUS2port 1812
+wlan04 RADIUS2port 1812
+wlan05 RADIUS2port 1812
+wlan06 RADIUS2port 1812
+wlan07 RADIUS2port 1812
+xlan08 RADIUS2port 1812
+xlan09 RADIUS2port 1812
+xlan0: RADIUS2port 1812
+xlan0; RADIUS2port 1812
+xlan0< RADIUS2port 1812
+xlan0= RADIUS2port 1812
+xlan0> RADIUS2port 1812
+xlan0? RADIUS2port 1812
+wlan60 RADIUS2port 1812
+wlan00 RADIUS2secret 
+wlan01 RADIUS2secret 
+wlan02 RADIUS2secret 
+wlan03 RADIUS2secret 
+wlan04 RADIUS2secret 
+wlan05 RADIUS2secret 
+wlan06 RADIUS2secret 
+wlan07 RADIUS2secret 
+xlan08 RADIUS2secret 
+xlan09 RADIUS2secret 
+xlan0: RADIUS2secret 
+xlan0; RADIUS2secret 
+xlan0< RADIUS2secret 
+xlan0= RADIUS2secret 
+xlan0> RADIUS2secret 
+xlan0? RADIUS2secret 
+wlan60 RADIUS2secret 
+wlan00 RADIUSRetyrTimeout 5
+wlan01 RADIUSRetyrTimeout 5
+wlan02 RADIUSRetyrTimeout 5
+wlan03 RADIUSRetyrTimeout 5
+wlan04 RADIUSRetyrTimeout 5
+wlan05 RADIUSRetyrTimeout 5
+wlan06 RADIUSRetyrTimeout 5
+wlan07 RADIUSRetyrTimeout 5
+xlan08 RADIUSRetyrTimeout 5
+xlan09 RADIUSRetyrTimeout 5
+xlan0: RADIUSRetyrTimeout 5
+xlan0; RADIUSRetyrTimeout 5
+xlan0< RADIUSRetyrTimeout 5
+xlan0= RADIUSRetyrTimeout 5
+xlan0> RADIUSRetyrTimeout 5
+xlan0? RADIUSRetyrTimeout 5
+wlan60 RADIUSRetyrTimeout 5
+wlan00 qosProfile tos_8021Q
+wlan01 qosProfile tos_8021Q
+wlan02 qosProfile tos_8021Q
+wlan03 qosProfile tos_8021Q
+wlan04 qosProfile tos_8021Q
+wlan05 qosProfile tos_8021Q
+wlan06 qosProfile tos_8021Q
+wlan07 qosProfile tos_8021Q
+xlan08 qosProfile tos_8021Q
+xlan09 qosProfile tos_8021Q
+xlan0: qosProfile tos_8021Q
+xlan0; qosProfile tos_8021Q
+xlan0< qosProfile tos_8021Q
+xlan0= qosProfile tos_8021Q
+xlan0> qosProfile tos_8021Q
+xlan0? qosProfile tos_8021Q
+wlan60 qosProfile tos_8021Q
+wlan00 usrp 0
+wlan01 usrp 0
+wlan02 usrp 0
+wlan03 usrp 0
+wlan04 usrp 0
+wlan05 usrp 0
+wlan06 usrp 0
+wlan07 usrp 0
+xlan08 usrp 0
+xlan09 usrp 0
+xlan0: usrp 0
+xlan0; usrp 0
+xlan0< usrp 0
+xlan0= usrp 0
+xlan0> usrp 0
+xlan0? usrp 0
+wlan60 usrp 0
+wlan00 pvid 1
+wlan01 pvid 2
+wlan02 pvid 3
+wlan03 pvid 4
+wlan04 pvid 5
+wlan05 pvid 6
+wlan06 pvid 7
+wlan07 pvid 8
+xlan08 pvid 9
+xlan09 pvid 10
+xlan0: pvid 11
+xlan0; pvid 12
+xlan0< pvid 13
+xlan0= pvid 14
+xlan0> pvid 15
+xlan0? pvid 16
+wlan60 pvid 1
+wlan00 vlanIdx 0
+wlan01 vlanIdx 1
+wlan02 vlanIdx 2
+wlan03 vlanIdx 0
+wlan04 vlanIdx 0
+wlan05 vlanIdx 0
+wlan06 vlanIdx 0
+wlan07 vlanIdx 0
+xlan08 vlanIdx 0
+xlan09 vlanIdx 0
+xlan0: vlanIdx 0
+xlan0; vlanIdx 0
+xlan0< vlanIdx 0
+xlan0= vlanIdx 0
+xlan0> vlanIdx 0
+xlan0? vlanIdx 0
+wlan60 vlanIdx 0
+wlan00 vlanPortMode trunk
+wlan01 vlanPortMode trunk
+wlan02 vlanPortMode trunk
+wlan03 vlanPortMode access
+wlan04 vlanPortMode access
+wlan05 vlanPortMode access
+wlan06 vlanPortMode access
+wlan07 vlanPortMode access
+xlan08 vlanPortMode access
+xlan09 vlanPortMode access
+xlan0: vlanPortMode access
+xlan0; vlanPortMode access
+xlan0< vlanPortMode access
+xlan0= vlanPortMode access
+xlan0> vlanPortMode access
+xlan0? vlanPortMode access
+wlan60 vlanPortMode access
+wlan00 ManagementIfMode 3
+wlan01 ManagementIfMode 2
+wlan02 ManagementIfMode 2
+wlan03 ManagementIfMode 2
+wlan04 ManagementIfMode 2
+wlan05 ManagementIfMode 2
+wlan06 ManagementIfMode 2
+wlan07 ManagementIfMode 2
+xlan08 ManagementIfMode 2
+xlan09 ManagementIfMode 2
+xlan0: ManagementIfMode 2
+xlan0; ManagementIfMode 2
+xlan0< ManagementIfMode 2
+xlan0= ManagementIfMode 2
+xlan0> ManagementIfMode 2
+xlan0? ManagementIfMode 2
+wlan60 ManagementIfMode 3
+wlan00 passphrase 
+wlan01 passphrase tpp-pppoe
+wlan02 passphrase tpp-pppoe
+wlan03 passphrase 
+wlan04 passphrase 
+wlan05 passphrase 
+wlan06 passphrase 
+wlan07 passphrase 
+xlan08 passphrase 
+xlan09 passphrase 
+xlan0: passphrase 
+xlan0; passphrase 
+xlan0< passphrase 
+xlan0= passphrase 
+xlan0> passphrase 
+xlan0? passphrase 
+wlan60 passphrase 
+wlan00 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+wlan01 passphraseKey e81d2a8ea56a9ab0ac3becfca90cbe56f68333ab557d12292478369e82641f336ff1e741ba4eb5a8
+wlan02 passphraseKey 81969b23e62682968f63d4dae73d714c8f2b89ccdbbce56fe67d9b3b2fa91b415c18987f133adbac
+wlan03 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+wlan04 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+wlan05 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+wlan06 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+wlan07 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan08 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan09 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan0: passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan0; passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan0< passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan0= passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan0> passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+xlan0? passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+wlan60 passphraseKey 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+AgingInterval 300000
+wlan00 Abolt 0
+wlan60 Abolt 0
+wlan00 pktLogEnable 0
+wlan10 pktLogEnable 0
+wlan20 pktLogEnable 0
+wlan30 pktLogEnable 0
+wlan40 pktLogEnable 0
+wlan50 pktLogEnable 0
+wlan60 pktLogEnable 0
+ofdmTrigLow 800
+ofdmTrigHigh 1500
+cckTrigLow 200
+cckTrigHigh 500
+enableANI 3
+noiseImmunityLvl 0
+spurImmunityLvl 0
+ofdmWeakSigDet 1
+cckWeakSigThr 1
+firStepLvl 0
+btLongBound 350:280:1250:550:
+btShortTrig 250
+btShortTrigStep 3
+btMinCckLvl 1
+btMinOfdmLvl 1
+btLongPollDownTime 45
+btLongTrigTrialLvl 30
+btLongTrigGain 10
+btErrLen 2
+btShortLen 1
+btLongLen 10
+btLongTrigRetractRatio 3
+btMaxOtherTime 23
+btMinBusyRatio 10
+btMaxErrReport 2000
+btMinErrReport 500
+btMinIdleTime 30
+btMinUsedRatio 100
+CalNoiseDiffThres 15
+wlan00 groupKeyUpdateInterval 3600
+wlan01 groupKeyUpdateInterval 3600
+wlan02 groupKeyUpdateInterval 3600
+wlan03 groupKeyUpdateInterval 3600
+wlan04 groupKeyUpdateInterval 3600
+wlan05 groupKeyUpdateInterval 3600
+wlan06 groupKeyUpdateInterval 3600
+wlan07 groupKeyUpdateInterval 3600
+xlan08 groupKeyUpdateInterval 3600
+xlan09 groupKeyUpdateInterval 3600
+xlan0: groupKeyUpdateInterval 3600
+xlan0; groupKeyUpdateInterval 3600
+xlan0< groupKeyUpdateInterval 3600
+xlan0= groupKeyUpdateInterval 3600
+xlan0> groupKeyUpdateInterval 3600
+xlan0? groupKeyUpdateInterval 3600
+wlan60 groupKeyUpdateInterval 3600
+wlan00 autoBeaconInterval 1
+wlan60 autoBeaconInterval 1
+wlan00 BeaconInterval 100
+wlan60 BeaconInterval 100
+wlan00 BurstTime 2
+wlan60 BurstTime 2
+wlan00 BurstSeqThreshold 3
+wlan60 BurstSeqThreshold 3
+wlan00 CalibrationPeriod 15
+wlan60 CalibrationPeriod 15
+System A8
+CountryCode DB
+RegDmn ROW
+wlan00 WirelessMode 11g
+wlan60 WirelessMode 11a
+wlan00 AntennaGain 30
+wlan60 AntennaGain 0
+wlan00 CableLoss 0
+wlan60 CableLoss 0
+wlan00 WlanState Enable
+wlan60 WlanState Enable
+wlan00 OpMode Access Point
+wlan60 OpMode Wireless Bridge
+wlan00 RemoteApMacAddr 00:00:00:00:00:00
+wlan60 RemoteApMacAddr 00:00:00:00:00:00
+wlan00 RadioChannel 2412
+wlan60 RadioChannel 5260
+wlan00 DataRate best
+wlan60 DataRate best
+wlan00 Antenna best
+wlan60 Antenna 1
+wlan00 DTIM 1
+wlan60 DTIM 1
+wlan00 wmmParam 3 17968 19056 6173712 3089168
+wlan60 wmmParam 0 17968 19056 6173712 3089168
+wlan00 wmmParamBss 3 18992 19056 6173728 3089184
+wlan60 wmmParamBss 0 18992 19056 6173728 3089184
+wlan00 gOptimize 1
+wlan60 gOptimize 1
+wlan00 CTSMODE 2
+wlan60 CTSMODE 2
+wlan00 CTSRATE 3
+wlan60 CTSRATE 3
+wlan00 CTSTYPE 0
+wlan60 CTSTYPE 0
+wlan00 ShortSlotTime Enable
+wlan60 ShortSlotTime Enable
+wlan00 Basic11g 1
+wlan60 Basic11g 1
+wlan00 GBEACON 0
+wlan60 GBEACON 0
+wlan00 gOnly Disable
+wlan60 gOnly Disable
+wlan00 gOverlap Enable
+wlan60 gOverlap Enable
+wlan00 gDraft5 Disable
+wlan60 gDraft5 Disable
+wlan00 FragmentThreshold 2346
+wlan60 FragmentThreshold 2346
+wlan00 RTSThreshold 2347
+wlan60 RTSThreshold 2347
+SyslogIP 
+SntpServer 
+wlan00 SwRetry Disable
+wlan60 SwRetry Disable
+wlan00 HwTxRetries 4
+wlan60 HwTxRetries 4
+wlan00 SwTxRetries 3
+wlan60 SwTxRetries 3
+RebootTime 0
+ResetMode no_reset
+TimeZone 
+TimeZoneOffset 0
+TimeZoneName 1
+DaylightSaving Disable
+SNTPClientEnable Disable
+NtpPollSecs 43200
+xsector0 SectorAgc Enable
+xsector1 SectorAgc Enable
+xsector2 SectorAgc Enable
+xsector3 SectorAgc Enable
+xsector0 SectorTxPower 23
+xsector1 SectorTxPower 23
+xsector2 SectorTxPower 23
+xsector3 SectorTxPower 23
+xsector0 SectorDsa 63
+xsector1 SectorDsa 63
+xsector2 SectorDsa 63
+xsector3 SectorDsa 63
+AgcCalPeriod 300
+wlan00 radioTxPowerReduction 0
+wlan10 radioTxPowerReduction 0
+wlan20 radioTxPowerReduction 0
+wlan30 radioTxPowerReduction 0
+wlan40 radioTxPowerReduction 0
+wlan50 radioTxPowerReduction 0
+wlan60 radioTxPowerReduction 0
+OverRideTxPower 0
+wlan00 WDS Disable
+wlan60 WDS Disable
+QoS Enable
+DiffServTagging Enable
+TkipMicCounter Disable
+wlan00 UPSD Disable
+wlan60 UPSD Disable
+wlan00 rogueAPDetect Disable
+wlan60 rogueAPDetect Disable
+wlan00 bkScanInterval 1
+wlan60 bkScanInterval 1
+wlan00 QuietAckCtsAllow Disable
+wlan60 QuietAckCtsAllow Disable
+wlan00 QuietDuration 0
+wlan60 QuietDuration 0
+wlan00 QuietOffset 0
+wlan60 QuietOffset 0
+wlan00 CompressionProc 0
+wlan60 CompressionProc 0
+wlan00 CompressionWinSize 4096
+wlan60 CompressionWinSize 4096
+wlan00 Keytable 60
+wlan60 Keytable 60
+wlan00 Keyentrymethod hexadecimal
+wlan60 Keyentrymethod hexadecimal
+wlan00 Keysource flash
+wlan01 Keysource flash
+wlan02 Keysource server
+wlan03 Keysource flash
+wlan04 Keysource flash
+wlan05 Keysource flash
+wlan06 Keysource flash
+wlan07 Keysource flash
+xlan08 Keysource flash
+xlan09 Keysource flash
+xlan0: Keysource flash
+xlan0; Keysource flash
+xlan0< Keysource flash
+xlan0= Keysource flash
+xlan0> Keysource flash
+xlan0? Keysource flash
+wlan60 Keysource flash
+wlan00 DefaultKey 1
+wlan01 DefaultKey 1
+wlan02 DefaultKey 1
+wlan03 DefaultKey 1
+wlan04 DefaultKey 1
+wlan05 DefaultKey 1
+wlan06 DefaultKey 1
+wlan07 DefaultKey 1
+xlan08 DefaultKey 1
+xlan09 DefaultKey 1
+xlan0: DefaultKey 1
+xlan0; DefaultKey 1
+xlan0< DefaultKey 1
+xlan0= DefaultKey 1
+xlan0> DefaultKey 1
+xlan0? DefaultKey 1
+wlan60 DefaultKey 1
+WATCHDOG Enable
+extendedchanmode Enable
+wlan00 encryption Disable
+wlan01 encryption Disable
+wlan02 encryption Enable
+wlan03 encryption Disable
+wlan04 encryption Disable
+wlan05 encryption Disable
+wlan06 encryption Disable
+wlan07 encryption Disable
+xlan08 encryption Disable
+xlan09 encryption Disable
+xlan0: encryption Disable
+xlan0; encryption Disable
+xlan0< encryption Disable
+xlan0= encryption Disable
+xlan0> encryption Disable
+xlan0? encryption Disable
+wlan60 encryption Disable
+wlan00 cipher wep
+wlan01 cipher wep
+wlan02 cipher tkip
+wlan03 cipher wep
+wlan04 cipher wep
+wlan05 cipher wep
+wlan06 cipher wep
+wlan07 cipher wep
+xlan08 cipher wep
+xlan09 cipher wep
+xlan0: cipher wep
+xlan0; cipher wep
+xlan0< cipher wep
+xlan0= cipher wep
+xlan0> cipher wep
+xlan0? cipher wep
+wlan60 cipher wep
+wlan00 AuthenticationType Open-System
+wlan01 AuthenticationType Open-System
+wlan02 AuthenticationType WPA-PSK
+wlan03 AuthenticationType Open-System
+wlan04 AuthenticationType Open-System
+wlan05 AuthenticationType Open-System
+wlan06 AuthenticationType Open-System
+wlan07 AuthenticationType Open-System
+xlan08 AuthenticationType Open-System
+xlan09 AuthenticationType Open-System
+xlan0: AuthenticationType Open-System
+xlan0; AuthenticationType Open-System
+xlan0< AuthenticationType Open-System
+xlan0= AuthenticationType Open-System
+xlan0> AuthenticationType Open-System
+xlan0? AuthenticationType Open-System
+wlan60 AuthenticationType Open-System
+wlan00 autochanselect Disable
+wlan60 autochanselect Disable
+wlan00 OutdoorChannel Enable
+wlan60 OutdoorChannel Enable
+wlan00 ShortPreamble Enable
+wlan60 ShortPreamble Enable
+wlan00 Basic11b Disable
+wlan60 Basic11b Disable
+wlan00 AccessPermission Enable
+wlan01 AccessPermission Enable
+wlan02 AccessPermission Enable
+wlan03 AccessPermission Enable
+wlan04 AccessPermission Enable
+wlan05 AccessPermission Enable
+wlan06 AccessPermission Enable
+wlan07 AccessPermission Enable
+xlan08 AccessPermission Enable
+xlan09 AccessPermission Enable
+xlan0: AccessPermission Enable
+xlan0; AccessPermission Enable
+xlan0< AccessPermission Enable
+xlan0= AccessPermission Enable
+xlan0> AccessPermission Enable
+xlan0? AccessPermission Enable
+wlan60 AccessPermission Enable
+wlan00 Acltable 4
+wlan01 Acltable 4
+wlan02 Acltable 4
+wlan03 Acltable 4
+wlan04 Acltable 4
+wlan05 Acltable 4
+wlan06 Acltable 4
+wlan07 Acltable 4
+xlan08 Acltable 4
+xlan09 Acltable 4
+xlan0: Acltable 4
+xlan0; Acltable 4
+xlan0< Acltable 4
+xlan0= Acltable 4
+xlan0> Acltable 4
+xlan0? Acltable 4
+wlan60 Acltable 4
+FtpServerIPAddress ffffffff
+FtpVenDef ; 21; ; ; ; ; ; 0
+FtpUpdate ; 21; ; ; ; ; ; 0
+FtpFpgaUpdate ; 21; ; ; ; ; ; 0
+FtpCfgFileUpdate ; 21; ; ; ; ; ; 0
+FtpEventLogUpdate ; 21; ; ; ; ; ; 0
+FtpServerCertUpdate ; 0; ; ; ; ; ; 0
+FtpCACertUpdate ; 0; ; ; ; ; ; 0
+FtpAcsProfileUpdate ; 0; ; ; ; ; ; 0
+FtpScript ; 21; ; ; ; ; _stemp_; 0
+wlan00 XR Disable
+wlan60 XR Disable
+wlan00 XRPoll 100
+wlan60 XRPoll 100
+wlan00 XRQueueFrameLimit 25
+wlan60 XRQueueFrameLimit 25
+wlan00 XRQueuePollRate 0.25 1 1 3 3 6 6 20
+wlan60 XRQueuePollRate 0.25 1 1 3 3 6 6 20
+wlan00 XRFragmentThreshold 540
+wlan60 XRFragmentThreshold 540
+wlan00 MinimumRate 1
+wlan60 MinimumRate 6
+wlan00 MCastRate 1
+wlan60 MCastRate 1
+networkOpMode 0
+dhcpc Disable
+dhcpVendorClassId 
+AccessControllerURL 
+Dhcps 0
+DhcpsDnsAutoUpdate 0 Disable
+DhcpsDnsAutoUpdate 1 Disable
+DhcpsDnsAutoUpdate 2 Disable
+DhcpsDnsAutoUpdate 3 Disable
+DhcpsDnsAutoUpdate 4 Disable
+DhcpsDnsAutoUpdate 5 Disable
+DhcpsDnsAutoUpdate 6 Disable
+DhcpsDnsAutoUpdate 7 Disable
+DhcpsAddrTbl 0 ;;;dfll=86400;0
+DhcpsAddrTbl 1 ;;;dfll=86400;0
+DhcpsAddrTbl 2 ;;;dfll=86400;0
+DhcpsAddrTbl 3 ;;;dfll=86400;0
+DhcpsAddrTbl 4 ;;;dfll=86400;0
+DhcpsAddrTbl 5 ;;;dfll=86400;0
+DhcpsAddrTbl 6 ;;;dfll=86400;0
+DhcpsAddrTbl 7 ;;;dfll=86400;0
+Nat Disable
+NatStaticXlat Disable
+NatTcpStaticTbl 0  0 0 0
+NatTcpStaticTbl 1  0 0 0
+NatTcpStaticTbl 2  0 0 0
+NatTcpStaticTbl 3  0 0 0
+NatTcpStaticTbl 4  0 0 0
+NatTcpStaticTbl 5  0 0 0
+NatTcpStaticTbl 6  0 0 0
+NatTcpStaticTbl 7  0 0 0
+NatUdpStaticTbl 0  0 0 0
+NatUdpStaticTbl 1  0 0 0
+NatUdpStaticTbl 2  0 0 0
+NatUdpStaticTbl 3  0 0 0
+NatUdpStaticTbl 4  0 0 0
+NatUdpStaticTbl 5  0 0 0
+NatUdpStaticTbl 6  0 0 0
+NatUdpStaticTbl 7  0 0 0
+NatLocalAddr a0ea05a
+NatLocalMask ffffff00
+PppoeStartupFlag Disable
+PppoeUsername 
+PppoePassword 
+PppoeSrvName 
+PppoeRequestIp Enable
+PppoeLocalAddr 
+MssClamping Disable
+MssValue 1452
+wlan00 MaxClient 256
+wlan60 MaxClient 256
+wlan00 MaxVapClient 256
+wlan01 MaxVapClient 256
+wlan02 MaxVapClient 256
+wlan03 MaxVapClient 256
+wlan04 MaxVapClient 256
+wlan05 MaxVapClient 256
+wlan06 MaxVapClient 256
+wlan07 MaxVapClient 256
+xlan08 MaxVapClient 256
+xlan09 MaxVapClient 256
+xlan0: MaxVapClient 256
+xlan0; MaxVapClient 256
+xlan0< MaxVapClient 256
+xlan0= MaxVapClient 256
+xlan0> MaxVapClient 256
+xlan0? MaxVapClient 256
+wlan60 MaxVapClient 256
+wlan00 MaxRate 0
+wlan60 MaxRate 0
+wlan00 MaxRateIndex 0
+wlan60 MaxRateIndex 0
+stp Disable
+stpBdgCfg 2 20 15 32768
+stpPortTbl 1 128 19
+rstp Disable
+rstpBdgCfg 2 20 15 32768
+SSHD Disable
+SSHdPort 16
+SSL Disable
+SSLPort 1bb
+MULTICAST Enable
+IGMPSNOOP Disable
+HTTPS Enable
+HTTP Enable
+HTTPPort 50
+b4Mode Enable
+b4DbgFlags 0
+b4Sectors f
+b4SectorTxMode optimal
+b4TxAntenna best
+b4SecTblAvgWin 256
+b4SecTblMode Enable
+b4SectorDefault 0
+ActiveAlarm 0; 0; 4; System Date Invalid; 4; System Date is not configured; System Date Invalid; 16; 0; .1.3.6.1.4.1.27586.2.3.2.1.1.0; 1009152026
+logFeature -1
+panicReboot Enable
+MaxSIL 6
+ShutoffPeriod 10
+FpgaAckTimeOut 12
+wlan00 wbrDistance 2
+wlan60 wbrDistance 2
+wlan00 MaxTxFailures 128
+wlan60 MaxTxFailures 128
+WarmReboot Disable
+GoodExit Disable
+ColdRebootCount 0
+WarmRebootCount 1
+IPAddrCount 1
+SysFileReadonly Enable
+SyslogConfig 
+RedConfig 128 100 300 100 128000 99 25
+RedVersion 2
+wlan00 KeepAliveMode Enable
+wlan60 KeepAliveMode Enable
+wlan00 KeepAlivePeriod 2
+wlan60 KeepAlivePeriod 2
+wlan00 keepAliveIdleTime 5
+wlan60 keepAliveIdleTime 5
+AutoFallback Disable
+SelfHealing Disable
+AcLinkFalledBack Disable
+BhPingInterval 10
+BhPingHostTbl 0 ;0
+BhPingHostTbl 1 ;0
+BhPingHostTbl 2 ;0
+FallbackSSIDPrefix A8_SafeMode_
+BhDefaultLink 0
+wlan00 a8Basic11b 3
+wlan60 a8Basic11b 3
+wlan00 a8Basic11g 15
+wlan60 a8Basic11g 15
+wlan00 a8Supported11b 15
+wlan60 a8Supported11b 15
+wlan00 a8Supported11g 4095
+wlan60 a8Supported11g 4095
+ManagementVlanTagId 1
+NativeVlanTagId 1
+NativeVlanTagging Disable
+HeaterMode 2
+ETH2PowCtrl Disable
+Acs Disable
+wlan00 AcsProfile 
+wlan01 AcsProfile 
+wlan02 AcsProfile 
+wlan03 AcsProfile 
+wlan04 AcsProfile 
+wlan05 AcsProfile 
+wlan06 AcsProfile 
+wlan07 AcsProfile 
+xlan08 AcsProfile 
+xlan09 AcsProfile 
+xlan0: AcsProfile 
+xlan0; AcsProfile 
+xlan0< AcsProfile 
+xlan0= AcsProfile 
+xlan0> AcsProfile 
+xlan0? AcsProfile 
+wlan60 AcsProfile 
+AcsAutoUpdate 0
+LegitimateApBssid 
+LegitimateApSsid 
+NoiseThreshold 0
+ThinAp Disable
+wlan00 ThinApTunnelMode Enable
+wlan01 ThinApTunnelMode Enable
+wlan02 ThinApTunnelMode Enable
+wlan03 ThinApTunnelMode Enable
+wlan04 ThinApTunnelMode Enable
+wlan05 ThinApTunnelMode Enable
+wlan06 ThinApTunnelMode Enable
+wlan07 ThinApTunnelMode Enable
+xlan08 ThinApTunnelMode Enable
+xlan09 ThinApTunnelMode Enable
+xlan0: ThinApTunnelMode Enable
+xlan0; ThinApTunnelMode Enable
+xlan0< ThinApTunnelMode Enable
+xlan0= ThinApTunnelMode Enable
+xlan0> ThinApTunnelMode Enable
+xlan0? ThinApTunnelMode Enable
+wlan60 ThinApTunnelMode Enable
+wlan00 DosMode Disable
+wlan01 DosMode Disable
+wlan02 DosMode Disable
+wlan03 DosMode Disable
+wlan04 DosMode Disable
+wlan05 DosMode Disable
+wlan06 DosMode Disable
+wlan07 DosMode Disable
+xlan08 DosMode Disable
+xlan09 DosMode Disable
+xlan0: DosMode Disable
+xlan0; DosMode Disable
+xlan0< DosMode Disable
+xlan0= DosMode Disable
+xlan0> DosMode Disable
+xlan0? DosMode Disable
+wlan60 DosMode Disable
+wlan00 DosDetectThreshold 500
+wlan01 DosDetectThreshold 500
+wlan02 DosDetectThreshold 500
+wlan03 DosDetectThreshold 500
+wlan04 DosDetectThreshold 500
+wlan05 DosDetectThreshold 500
+wlan06 DosDetectThreshold 500
+wlan07 DosDetectThreshold 500
+xlan08 DosDetectThreshold 500
+xlan09 DosDetectThreshold 500
+xlan0: DosDetectThreshold 500
+xlan0; DosDetectThreshold 500
+xlan0< DosDetectThreshold 500
+xlan0= DosDetectThreshold 500
+xlan0> DosDetectThreshold 500
+xlan0? DosDetectThreshold 500
+wlan60 DosDetectThreshold 500
+wlan00 DosDetectInterval 5
+wlan01 DosDetectInterval 5
+wlan02 DosDetectInterval 5
+wlan03 DosDetectInterval 5
+wlan04 DosDetectInterval 5
+wlan05 DosDetectInterval 5
+wlan06 DosDetectInterval 5
+wlan07 DosDetectInterval 5
+xlan08 DosDetectInterval 5
+xlan09 DosDetectInterval 5
+xlan0: DosDetectInterval 5
+xlan0; DosDetectInterval 5
+xlan0< DosDetectInterval 5
+xlan0= DosDetectInterval 5
+xlan0> DosDetectInterval 5
+xlan0? DosDetectInterval 5
+wlan60 DosDetectInterval 5
+wlan00 DosKickTime 300
+wlan01 DosKickTime 300
+wlan02 DosKickTime 300
+wlan03 DosKickTime 300
+wlan04 DosKickTime 300
+wlan05 DosKickTime 300
+wlan06 DosKickTime 300
+wlan07 DosKickTime 300
+xlan08 DosKickTime 300
+xlan09 DosKickTime 300
+xlan0: DosKickTime 300
+xlan0; DosKickTime 300
+xlan0< DosKickTime 300
+xlan0= DosKickTime 300
+xlan0> DosKickTime 300
+xlan0? DosKickTime 300
+wlan60 DosKickTime 300
+wlan00 SnmpStaTrapMode Disable
+wlan60 SnmpStaTrapMode Disable
+wlan00 DTpcMode Disable
+wlan60 DTpcMode Disable
+wlan00 DtpcBeaconRssi 15
+wlan60 DtpcBeaconRssi 15
+wlan00 DtpcInterval 60
+wlan60 DtpcInterval 60
+wlan00 DacsMode Disable
+wlan60 DacsMode Disable
+wlan00 DacsInterval 300
+wlan60 DacsInterval 300
+wlan00 StaUpLoadLimitRate 2048
+wlan01 StaUpLoadLimitRate 2048
+wlan02 StaUpLoadLimitRate 2048
+wlan03 StaUpLoadLimitRate 2048
+wlan04 StaUpLoadLimitRate 2048
+wlan05 StaUpLoadLimitRate 2048
+wlan06 StaUpLoadLimitRate 2048
+wlan07 StaUpLoadLimitRate 2048
+xlan08 StaUpLoadLimitRate 2048
+xlan09 StaUpLoadLimitRate 2048
+xlan0: StaUpLoadLimitRate 2048
+xlan0; StaUpLoadLimitRate 2048
+xlan0< StaUpLoadLimitRate 2048
+xlan0= StaUpLoadLimitRate 2048
+xlan0> StaUpLoadLimitRate 2048
+xlan0? StaUpLoadLimitRate 2048
+wlan60 StaUpLoadLimitRate 2048
+wlan00 StaUpLoadLimit Disable
+wlan01 StaUpLoadLimit Disable
+wlan02 StaUpLoadLimit Disable
+wlan03 StaUpLoadLimit Disable
+wlan04 StaUpLoadLimit Disable
+wlan05 StaUpLoadLimit Disable
+wlan06 StaUpLoadLimit Disable
+wlan07 StaUpLoadLimit Disable
+xlan08 StaUpLoadLimit Disable
+xlan09 StaUpLoadLimit Disable
+xlan0: StaUpLoadLimit Disable
+xlan0; StaUpLoadLimit Disable
+xlan0< StaUpLoadLimit Disable
+xlan0= StaUpLoadLimit Disable
+xlan0> StaUpLoadLimit Disable
+xlan0? StaUpLoadLimit Disable
+wlan60 StaUpLoadLimit Disable
+wlan00 StaUpLoadLimitQueueDepth 10
+wlan01 StaUpLoadLimitQueueDepth 10
+wlan02 StaUpLoadLimitQueueDepth 10
+wlan03 StaUpLoadLimitQueueDepth 10
+wlan04 StaUpLoadLimitQueueDepth 10
+wlan05 StaUpLoadLimitQueueDepth 10
+wlan06 StaUpLoadLimitQueueDepth 10
+wlan07 StaUpLoadLimitQueueDepth 10
+xlan08 StaUpLoadLimitQueueDepth 10
+xlan09 StaUpLoadLimitQueueDepth 10
+xlan0: StaUpLoadLimitQueueDepth 10
+xlan0; StaUpLoadLimitQueueDepth 10
+xlan0< StaUpLoadLimitQueueDepth 10
+xlan0= StaUpLoadLimitQueueDepth 10
+xlan0> StaUpLoadLimitQueueDepth 10
+xlan0? StaUpLoadLimitQueueDepth 10
+wlan60 StaUpLoadLimitQueueDepth 10
+wlan00 StaDownLoadLimitRate 2048
+wlan01 StaDownLoadLimitRate 2048
+wlan02 StaDownLoadLimitRate 2048
+wlan03 StaDownLoadLimitRate 2048
+wlan04 StaDownLoadLimitRate 2048
+wlan05 StaDownLoadLimitRate 2048
+wlan06 StaDownLoadLimitRate 2048
+wlan07 StaDownLoadLimitRate 2048
+xlan08 StaDownLoadLimitRate 2048
+xlan09 StaDownLoadLimitRate 2048
+xlan0: StaDownLoadLimitRate 2048
+xlan0; StaDownLoadLimitRate 2048
+xlan0< StaDownLoadLimitRate 2048
+xlan0= StaDownLoadLimitRate 2048
+xlan0> StaDownLoadLimitRate 2048
+xlan0? StaDownLoadLimitRate 2048
+wlan60 StaDownLoadLimitRate 2048
+wlan00 StaDownLoadLimit Disable
+wlan01 StaDownLoadLimit Disable
+wlan02 StaDownLoadLimit Disable
+wlan03 StaDownLoadLimit Disable
+wlan04 StaDownLoadLimit Disable
+wlan05 StaDownLoadLimit Disable
+wlan06 StaDownLoadLimit Disable
+wlan07 StaDownLoadLimit Disable
+xlan08 StaDownLoadLimit Disable
+xlan09 StaDownLoadLimit Disable
+xlan0: StaDownLoadLimit Disable
+xlan0; StaDownLoadLimit Disable
+xlan0< StaDownLoadLimit Disable
+xlan0= StaDownLoadLimit Disable
+xlan0> StaDownLoadLimit Disable
+xlan0? StaDownLoadLimit Disable
+wlan60 StaDownLoadLimit Disable
+wlan00 StaDownLoadLimitQueueDepth 10
+wlan01 StaDownLoadLimitQueueDepth 10
+wlan02 StaDownLoadLimitQueueDepth 10
+wlan03 StaDownLoadLimitQueueDepth 10
+wlan04 StaDownLoadLimitQueueDepth 10
+wlan05 StaDownLoadLimitQueueDepth 10
+wlan06 StaDownLoadLimitQueueDepth 10
+wlan07 StaDownLoadLimitQueueDepth 10
+xlan08 StaDownLoadLimitQueueDepth 10
+xlan09 StaDownLoadLimitQueueDepth 10
+xlan0: StaDownLoadLimitQueueDepth 10
+xlan0; StaDownLoadLimitQueueDepth 10
+xlan0< StaDownLoadLimitQueueDepth 10
+xlan0= StaDownLoadLimitQueueDepth 10
+xlan0> StaDownLoadLimitQueueDepth 10
+xlan0? StaDownLoadLimitQueueDepth 10
+wlan60 StaDownLoadLimitQueueDepth 10
+wlan00 VapUpLoadLimitRate 2048
+wlan01 VapUpLoadLimitRate 2048
+wlan02 VapUpLoadLimitRate 2048
+wlan03 VapUpLoadLimitRate 2048
+wlan04 VapUpLoadLimitRate 2048
+wlan05 VapUpLoadLimitRate 2048
+wlan06 VapUpLoadLimitRate 2048
+wlan07 VapUpLoadLimitRate 2048
+xlan08 VapUpLoadLimitRate 2048
+xlan09 VapUpLoadLimitRate 2048
+xlan0: VapUpLoadLimitRate 2048
+xlan0; VapUpLoadLimitRate 2048
+xlan0< VapUpLoadLimitRate 2048
+xlan0= VapUpLoadLimitRate 2048
+xlan0> VapUpLoadLimitRate 2048
+xlan0? VapUpLoadLimitRate 2048
+wlan60 VapUpLoadLimitRate 2048
+wlan00 VapUpLoadLimit Disable
+wlan01 VapUpLoadLimit Disable
+wlan02 VapUpLoadLimit Disable
+wlan03 VapUpLoadLimit Disable
+wlan04 VapUpLoadLimit Disable
+wlan05 VapUpLoadLimit Disable
+wlan06 VapUpLoadLimit Disable
+wlan07 VapUpLoadLimit Disable
+xlan08 VapUpLoadLimit Disable
+xlan09 VapUpLoadLimit Disable
+xlan0: VapUpLoadLimit Disable
+xlan0; VapUpLoadLimit Disable
+xlan0< VapUpLoadLimit Disable
+xlan0= VapUpLoadLimit Disable
+xlan0> VapUpLoadLimit Disable
+xlan0? VapUpLoadLimit Disable
+wlan60 VapUpLoadLimit Disable
+wlan00 VapUpLoadLimitQueueDepth 10
+wlan01 VapUpLoadLimitQueueDepth 10
+wlan02 VapUpLoadLimitQueueDepth 10
+wlan03 VapUpLoadLimitQueueDepth 10
+wlan04 VapUpLoadLimitQueueDepth 10
+wlan05 VapUpLoadLimitQueueDepth 10
+wlan06 VapUpLoadLimitQueueDepth 10
+wlan07 VapUpLoadLimitQueueDepth 10
+xlan08 VapUpLoadLimitQueueDepth 10
+xlan09 VapUpLoadLimitQueueDepth 10
+xlan0: VapUpLoadLimitQueueDepth 10
+xlan0; VapUpLoadLimitQueueDepth 10
+xlan0< VapUpLoadLimitQueueDepth 10
+xlan0= VapUpLoadLimitQueueDepth 10
+xlan0> VapUpLoadLimitQueueDepth 10
+xlan0? VapUpLoadLimitQueueDepth 10
+wlan60 VapUpLoadLimitQueueDepth 10
+wlan00 VapDownLoadLimitRate 2048
+wlan01 VapDownLoadLimitRate 2048
+wlan02 VapDownLoadLimitRate 2048
+wlan03 VapDownLoadLimitRate 2048
+wlan04 VapDownLoadLimitRate 2048
+wlan05 VapDownLoadLimitRate 2048
+wlan06 VapDownLoadLimitRate 2048
+wlan07 VapDownLoadLimitRate 2048
+xlan08 VapDownLoadLimitRate 2048
+xlan09 VapDownLoadLimitRate 2048
+xlan0: VapDownLoadLimitRate 2048
+xlan0; VapDownLoadLimitRate 2048
+xlan0< VapDownLoadLimitRate 2048
+xlan0= VapDownLoadLimitRate 2048
+xlan0> VapDownLoadLimitRate 2048
+xlan0? VapDownLoadLimitRate 2048
+wlan60 VapDownLoadLimitRate 2048
+wlan00 VapDownLoadLimit Disable
+wlan01 VapDownLoadLimit Disable
+wlan02 VapDownLoadLimit Disable
+wlan03 VapDownLoadLimit Disable
+wlan04 VapDownLoadLimit Disable
+wlan05 VapDownLoadLimit Disable
+wlan06 VapDownLoadLimit Disable
+wlan07 VapDownLoadLimit Disable
+xlan08 VapDownLoadLimit Disable
+xlan09 VapDownLoadLimit Disable
+xlan0: VapDownLoadLimit Disable
+xlan0; VapDownLoadLimit Disable
+xlan0< VapDownLoadLimit Disable
+xlan0= VapDownLoadLimit Disable
+xlan0> VapDownLoadLimit Disable
+xlan0? VapDownLoadLimit Disable
+wlan60 VapDownLoadLimit Disable
+wlan00 VapDownLoadLimitQueueDepth 10
+wlan01 VapDownLoadLimitQueueDepth 10
+wlan02 VapDownLoadLimitQueueDepth 10
+wlan03 VapDownLoadLimitQueueDepth 10
+wlan04 VapDownLoadLimitQueueDepth 10
+wlan05 VapDownLoadLimitQueueDepth 10
+wlan06 VapDownLoadLimitQueueDepth 10
+wlan07 VapDownLoadLimitQueueDepth 10
+xlan08 VapDownLoadLimitQueueDepth 10
+xlan09 VapDownLoadLimitQueueDepth 10
+xlan0: VapDownLoadLimitQueueDepth 10
+xlan0; VapDownLoadLimitQueueDepth 10
+xlan0< VapDownLoadLimitQueueDepth 10
+xlan0= VapDownLoadLimitQueueDepth 10
+xlan0> VapDownLoadLimitQueueDepth 10
+xlan0? VapDownLoadLimitQueueDepth 10
+wlan60 VapDownLoadLimitQueueDepth 10
+wlan00 StaUpLoadLimitRateAirtime 5
+wlan01 StaUpLoadLimitRateAirtime 5
+wlan02 StaUpLoadLimitRateAirtime 5
+wlan03 StaUpLoadLimitRateAirtime 5
+wlan04 StaUpLoadLimitRateAirtime 5
+wlan05 StaUpLoadLimitRateAirtime 5
+wlan06 StaUpLoadLimitRateAirtime 5
+wlan07 StaUpLoadLimitRateAirtime 5
+xlan08 StaUpLoadLimitRateAirtime 5
+xlan09 StaUpLoadLimitRateAirtime 5
+xlan0: StaUpLoadLimitRateAirtime 5
+xlan0; StaUpLoadLimitRateAirtime 5
+xlan0< StaUpLoadLimitRateAirtime 5
+xlan0= StaUpLoadLimitRateAirtime 5
+xlan0> StaUpLoadLimitRateAirtime 5
+xlan0? StaUpLoadLimitRateAirtime 5
+wlan60 StaUpLoadLimitRateAirtime 5
+wlan00 StaUpLoadLimitAirtime Disable
+wlan01 StaUpLoadLimitAirtime Disable
+wlan02 StaUpLoadLimitAirtime Disable
+wlan03 StaUpLoadLimitAirtime Disable
+wlan04 StaUpLoadLimitAirtime Disable
+wlan05 StaUpLoadLimitAirtime Disable
+wlan06 StaUpLoadLimitAirtime Disable
+wlan07 StaUpLoadLimitAirtime Disable
+xlan08 StaUpLoadLimitAirtime Disable
+xlan09 StaUpLoadLimitAirtime Disable
+xlan0: StaUpLoadLimitAirtime Disable
+xlan0; StaUpLoadLimitAirtime Disable
+xlan0< StaUpLoadLimitAirtime Disable
+xlan0= StaUpLoadLimitAirtime Disable
+xlan0> StaUpLoadLimitAirtime Disable
+xlan0? StaUpLoadLimitAirtime Disable
+wlan60 StaUpLoadLimitAirtime Disable
+wlan00 StaUpLoadLimitQueueDepthAirtime 10
+wlan01 StaUpLoadLimitQueueDepthAirtime 10
+wlan02 StaUpLoadLimitQueueDepthAirtime 10
+wlan03 StaUpLoadLimitQueueDepthAirtime 10
+wlan04 StaUpLoadLimitQueueDepthAirtime 10
+wlan05 StaUpLoadLimitQueueDepthAirtime 10
+wlan06 StaUpLoadLimitQueueDepthAirtime 10
+wlan07 StaUpLoadLimitQueueDepthAirtime 10
+xlan08 StaUpLoadLimitQueueDepthAirtime 10
+xlan09 StaUpLoadLimitQueueDepthAirtime 10
+xlan0: StaUpLoadLimitQueueDepthAirtime 10
+xlan0; StaUpLoadLimitQueueDepthAirtime 10
+xlan0< StaUpLoadLimitQueueDepthAirtime 10
+xlan0= StaUpLoadLimitQueueDepthAirtime 10
+xlan0> StaUpLoadLimitQueueDepthAirtime 10
+xlan0? StaUpLoadLimitQueueDepthAirtime 10
+wlan60 StaUpLoadLimitQueueDepthAirtime 10
+wlan00 StaDownLoadLimitRateAirtime 5
+wlan01 StaDownLoadLimitRateAirtime 5
+wlan02 StaDownLoadLimitRateAirtime 5
+wlan03 StaDownLoadLimitRateAirtime 5
+wlan04 StaDownLoadLimitRateAirtime 5
+wlan05 StaDownLoadLimitRateAirtime 5
+wlan06 StaDownLoadLimitRateAirtime 5
+wlan07 StaDownLoadLimitRateAirtime 5
+xlan08 StaDownLoadLimitRateAirtime 5
+xlan09 StaDownLoadLimitRateAirtime 5
+xlan0: StaDownLoadLimitRateAirtime 5
+xlan0; StaDownLoadLimitRateAirtime 5
+xlan0< StaDownLoadLimitRateAirtime 5
+xlan0= StaDownLoadLimitRateAirtime 5
+xlan0> StaDownLoadLimitRateAirtime 5
+xlan0? StaDownLoadLimitRateAirtime 5
+wlan60 StaDownLoadLimitRateAirtime 5
+wlan00 StaDownLoadLimitAirtime Disable
+wlan01 StaDownLoadLimitAirtime Disable
+wlan02 StaDownLoadLimitAirtime Disable
+wlan03 StaDownLoadLimitAirtime Disable
+wlan04 StaDownLoadLimitAirtime Disable
+wlan05 StaDownLoadLimitAirtime Disable
+wlan06 StaDownLoadLimitAirtime Disable
+wlan07 StaDownLoadLimitAirtime Disable
+xlan08 StaDownLoadLimitAirtime Disable
+xlan09 StaDownLoadLimitAirtime Disable
+xlan0: StaDownLoadLimitAirtime Disable
+xlan0; StaDownLoadLimitAirtime Disable
+xlan0< StaDownLoadLimitAirtime Disable
+xlan0= StaDownLoadLimitAirtime Disable
+xlan0> StaDownLoadLimitAirtime Disable
+xlan0? StaDownLoadLimitAirtime Disable
+wlan60 StaDownLoadLimitAirtime Disable
+wlan00 StaDownLoadLimitQueueDepthAirtime 10
+wlan01 StaDownLoadLimitQueueDepthAirtime 10
+wlan02 StaDownLoadLimitQueueDepthAirtime 10
+wlan03 StaDownLoadLimitQueueDepthAirtime 10
+wlan04 StaDownLoadLimitQueueDepthAirtime 10
+wlan05 StaDownLoadLimitQueueDepthAirtime 10
+wlan06 StaDownLoadLimitQueueDepthAirtime 10
+wlan07 StaDownLoadLimitQueueDepthAirtime 10
+xlan08 StaDownLoadLimitQueueDepthAirtime 10
+xlan09 StaDownLoadLimitQueueDepthAirtime 10
+xlan0: StaDownLoadLimitQueueDepthAirtime 10
+xlan0; StaDownLoadLimitQueueDepthAirtime 10
+xlan0< StaDownLoadLimitQueueDepthAirtime 10
+xlan0= StaDownLoadLimitQueueDepthAirtime 10
+xlan0> StaDownLoadLimitQueueDepthAirtime 10
+xlan0? StaDownLoadLimitQueueDepthAirtime 10
+wlan60 StaDownLoadLimitQueueDepthAirtime 10
+wlan00 VapUpLoadLimitRateAirtime 5
+wlan01 VapUpLoadLimitRateAirtime 5
+wlan02 VapUpLoadLimitRateAirtime 5
+wlan03 VapUpLoadLimitRateAirtime 5
+wlan04 VapUpLoadLimitRateAirtime 5
+wlan05 VapUpLoadLimitRateAirtime 5
+wlan06 VapUpLoadLimitRateAirtime 5
+wlan07 VapUpLoadLimitRateAirtime 5
+xlan08 VapUpLoadLimitRateAirtime 5
+xlan09 VapUpLoadLimitRateAirtime 5
+xlan0: VapUpLoadLimitRateAirtime 5
+xlan0; VapUpLoadLimitRateAirtime 5
+xlan0< VapUpLoadLimitRateAirtime 5
+xlan0= VapUpLoadLimitRateAirtime 5
+xlan0> VapUpLoadLimitRateAirtime 5
+xlan0? VapUpLoadLimitRateAirtime 5
+wlan60 VapUpLoadLimitRateAirtime 5
+wlan00 VapUpLoadLimitAirtime Disable
+wlan01 VapUpLoadLimitAirtime Disable
+wlan02 VapUpLoadLimitAirtime Disable
+wlan03 VapUpLoadLimitAirtime Disable
+wlan04 VapUpLoadLimitAirtime Disable
+wlan05 VapUpLoadLimitAirtime Disable
+wlan06 VapUpLoadLimitAirtime Disable
+wlan07 VapUpLoadLimitAirtime Disable
+xlan08 VapUpLoadLimitAirtime Disable
+xlan09 VapUpLoadLimitAirtime Disable
+xlan0: VapUpLoadLimitAirtime Disable
+xlan0; VapUpLoadLimitAirtime Disable
+xlan0< VapUpLoadLimitAirtime Disable
+xlan0= VapUpLoadLimitAirtime Disable
+xlan0> VapUpLoadLimitAirtime Disable
+xlan0? VapUpLoadLimitAirtime Disable
+wlan60 VapUpLoadLimitAirtime Disable
+wlan00 VapUpLoadLimitQueueDepthAirtime 10
+wlan01 VapUpLoadLimitQueueDepthAirtime 10
+wlan02 VapUpLoadLimitQueueDepthAirtime 10
+wlan03 VapUpLoadLimitQueueDepthAirtime 10
+wlan04 VapUpLoadLimitQueueDepthAirtime 10
+wlan05 VapUpLoadLimitQueueDepthAirtime 10
+wlan06 VapUpLoadLimitQueueDepthAirtime 10
+wlan07 VapUpLoadLimitQueueDepthAirtime 10
+xlan08 VapUpLoadLimitQueueDepthAirtime 10
+xlan09 VapUpLoadLimitQueueDepthAirtime 10
+xlan0: VapUpLoadLimitQueueDepthAirtime 10
+xlan0; VapUpLoadLimitQueueDepthAirtime 10
+xlan0< VapUpLoadLimitQueueDepthAirtime 10
+xlan0= VapUpLoadLimitQueueDepthAirtime 10
+xlan0> VapUpLoadLimitQueueDepthAirtime 10
+xlan0? VapUpLoadLimitQueueDepthAirtime 10
+wlan60 VapUpLoadLimitQueueDepthAirtime 10
+wlan00 VapDownLoadLimitRateAirtime 5
+wlan01 VapDownLoadLimitRateAirtime 5
+wlan02 VapDownLoadLimitRateAirtime 5
+wlan03 VapDownLoadLimitRateAirtime 5
+wlan04 VapDownLoadLimitRateAirtime 5
+wlan05 VapDownLoadLimitRateAirtime 5
+wlan06 VapDownLoadLimitRateAirtime 5
+wlan07 VapDownLoadLimitRateAirtime 5
+xlan08 VapDownLoadLimitRateAirtime 5
+xlan09 VapDownLoadLimitRateAirtime 5
+xlan0: VapDownLoadLimitRateAirtime 5
+xlan0; VapDownLoadLimitRateAirtime 5
+xlan0< VapDownLoadLimitRateAirtime 5
+xlan0= VapDownLoadLimitRateAirtime 5
+xlan0> VapDownLoadLimitRateAirtime 5
+xlan0? VapDownLoadLimitRateAirtime 5
+wlan60 VapDownLoadLimitRateAirtime 5
+wlan00 VapDownLoadLimitAirtime Disable
+wlan01 VapDownLoadLimitAirtime Disable
+wlan02 VapDownLoadLimitAirtime Disable
+wlan03 VapDownLoadLimitAirtime Disable
+wlan04 VapDownLoadLimitAirtime Disable
+wlan05 VapDownLoadLimitAirtime Disable
+wlan06 VapDownLoadLimitAirtime Disable
+wlan07 VapDownLoadLimitAirtime Disable
+xlan08 VapDownLoadLimitAirtime Disable
+xlan09 VapDownLoadLimitAirtime Disable
+xlan0: VapDownLoadLimitAirtime Disable
+xlan0; VapDownLoadLimitAirtime Disable
+xlan0< VapDownLoadLimitAirtime Disable
+xlan0= VapDownLoadLimitAirtime Disable
+xlan0> VapDownLoadLimitAirtime Disable
+xlan0? VapDownLoadLimitAirtime Disable
+wlan60 VapDownLoadLimitAirtime Disable
+wlan00 VapDownLoadLimitQueueDepthAirtime 10
+wlan01 VapDownLoadLimitQueueDepthAirtime 10
+wlan02 VapDownLoadLimitQueueDepthAirtime 10
+wlan03 VapDownLoadLimitQueueDepthAirtime 10
+wlan04 VapDownLoadLimitQueueDepthAirtime 10
+wlan05 VapDownLoadLimitQueueDepthAirtime 10
+wlan06 VapDownLoadLimitQueueDepthAirtime 10
+wlan07 VapDownLoadLimitQueueDepthAirtime 10
+xlan08 VapDownLoadLimitQueueDepthAirtime 10
+xlan09 VapDownLoadLimitQueueDepthAirtime 10
+xlan0: VapDownLoadLimitQueueDepthAirtime 10
+xlan0; VapDownLoadLimitQueueDepthAirtime 10
+xlan0< VapDownLoadLimitQueueDepthAirtime 10
+xlan0= VapDownLoadLimitQueueDepthAirtime 10
+xlan0> VapDownLoadLimitQueueDepthAirtime 10
+xlan0? VapDownLoadLimitQueueDepthAirtime 10
+wlan60 VapDownLoadLimitQueueDepthAirtime 10
+NegativeChannel Disable
+wlan00 DhcpTrustPort Enable
+wlan60 DhcpTrustPort Enable
+Bytes: 38571
+checksum: 325ba2
+# www.altaitechnologies.com
